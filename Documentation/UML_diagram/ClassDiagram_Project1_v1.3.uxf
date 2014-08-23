@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>534</y>
+      <w>270</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*WriteToCSV*
+
+--
+
+-outputCsvName: Path //outputFileName
+
+--
+
++writeDatatoCsv(outputCsvName: Path, String outputData):boolean //returns true if successfull/else false
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>858</x>
+      <y>792</y>
+      <w>258</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*InitiateHtmlQuery*
+
+--
+
+-urlAddress: URL //URL address to query
+
+--
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>150</y>
+      <w>252</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*FinancialQueryToool*
+
+--
+
+--
+
++main()
++go()
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1104</x>
+      <y>150</y>
+      <w>276</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*GenerateQueryURL*
+
+--
+
+-StockQuotesArray: String[] //Stock Quotes to query
+-QueryParameters: String[] // Parameters to query for
+-QueryType: String //determine query type (api/historical/html)
+
+--
+
++getURL(StockQuotesArray: String[],QueryParameters: String[],QueryType: String):URL
+//returns URL for query
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1404</x>
+      <y>792</y>
+      <w>282</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*InitiateHistoricalQuery*
+
+--
+
+-urlAddress: URL //URL address to query
+
+--
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>1014</y>
+      <w>222</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*ParseHtml*
+
+--
+
+-queriedHtml: String //queried HTML data in String format
+
+--
+
++parseHtml(queriedHtml: String):Map&lt;String, String&gt; 
+//returns parsed data
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1134</x>
+      <y>408</y>
+      <w>216</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>InitiateQueryInterface : Interface
+--
++printURI: URI
++printStock: void
++setQueryParam: void
++setQueryStockName: void
++getQueryParam: String[]
++getQueryStockName: String[]
++setUri: void
++getUri: String
++initiateQuery: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>402</y>
+      <w>216</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*Stock*
+
+--
+
+-PrevClose: String
+-Open: String
+-Bid: String
+-Ask: String
+-OneYrTarg: String
+-Beta: String
+-EarnDate: String
+-DaysRng: String
+-Wk52Rng: String
+-Vol: String
+-AvgVol: String
+-MktCap: String
+-PEttm: String
+-EPSttm: String
+-DivnYield: String
+
+--
+
++getter/setter
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1164</x>
+      <y>792</y>
+      <w>216</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*InitiateApiQuery*
+
+--
+
+-urlAddress: URL //URL address to query
+
+--
+
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1008</x>
+      <y>504</y>
+      <w>162</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;288;150;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1218</x>
+      <y>504</y>
+      <w>30</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;288;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1314</x>
+      <y>504</y>
+      <w>174</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>162;288;18;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>0</y>
+      <w>228</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*ParseInputXml*
+
+--
+
+-inputFileLoc: Path //location to input xml file
+
+--
+
++parseInputXml(inputFileLoc: Path):Map&lt;String, String&gt; 
+	//returns parsed data
+
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>150</y>
+      <w>252</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*InputData*
+
+--
+
+-outPutFile: Path
+-requiredParameters: String[]
+-requiredStockSymbols: String[]
+-tempFileLoc: Path
+-typeOfQuery: String //use case statement for type of query
+
+--
+
++parseInputXml(inputFileLoc: Path):Map&lt;String, String&gt; 
+	//returns parsed data
++getterSetter
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>0</x>
+      <y>210</y>
+      <w>156</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..n
+r1=creates</panel_attributes>
+    <additional_attributes>144;276;18;276;18;18;72;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>948</x>
+      <y>870</y>
+      <w>54</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;144;42;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>642</x>
+      <y>270</y>
+      <w>86</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=   1
+r1=            
+       writes to</panel_attributes>
+    <additional_attributes>48;258;48;18</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>138</x>
+      <y>672</y>
+      <w>216</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*HistoricalData*
+
+--
+
+-Date
+-Open
+-Close
+
+--
+
++getter/setter
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>810</x>
+      <y>162</y>
+      <w>306</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.&gt;
+&lt;&lt;getsQueryString&gt;&gt;</panel_attributes>
+    <additional_attributes>294;30;18;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>762</x>
+      <y>270</y>
+      <w>504</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=   1..n
+initiatesQuery</panel_attributes>
+    <additional_attributes>492;132;492;78;18;84;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>1134</x>
+      <y>1056</y>
+      <w>162</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue
+Parses the queried HTML data and
+extracts the required data</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1068</x>
+      <y>1050</y>
+      <w>78</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>18;18;66;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>1434</x>
+      <y>192</y>
+      <w>162</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue
+Generates a query string based on
+the query type/query parameters</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1362</x>
+      <y>186</y>
+      <w>84</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>18;18;72;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>306</x>
+      <y>198</y>
+      <w>144</w>
+      <h>564</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..n
+r1=creates</panel_attributes>
+    <additional_attributes>48;552;132;552;126;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>174</x>
+      <y>24</y>
+      <w>174</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=   1
+creates</panel_attributes>
+    <additional_attributes>36;126;36;30;162;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>414</x>
+      <y>102</y>
+      <w>174</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=   1
+initiates</panel_attributes>
+    <additional_attributes>36;18;36;84;36;120;162;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>876</x>
+      <y>564</y>
+      <w>114</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue
+Writes data to csv file</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>792</x>
+      <y>570</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>18;18;84;18</additional_attributes>
+  </element>
+</diagram>
