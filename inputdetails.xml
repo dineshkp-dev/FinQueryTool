@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Input>
+<UserData>
+	<RequiredStockSymbols>GOOG,AAPL,AMZN,BIDU,MA,NFLX</RequiredStockSymbols>
+	<RequiredParameters>Day's Range,52wk Range,Prev Close,Open,Div &amp; Yield,P/E (ttm),EPS (ttm),Beta,1y Target Est</RequiredParameters>
+</UserData>
+<FileLocation>
+	<TempFile>koreInfoProject/tempFile.html</TempFile>
+	<OutputFile>koreInfoProject/stockData.csv</OutputFile>
+</FileLocation>
+
+
+</Input>
+
