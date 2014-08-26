@@ -8,7 +8,12 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
-
+/**
+ * @author dineshkp
+ * 
+ * This class is deprecated.
+ *
+ */
 
 public class WToFile {
 	BufferedWriter writeToFile = null;
