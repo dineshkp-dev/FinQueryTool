@@ -87,10 +87,26 @@ GIT PUSH:
 	- have to provide online repo link, unless the '.git/config' file has been updated with the remote repo location
 	- $git push -u origin master
 GIT DIFF:
+	- shows the diff between two versions of a file
 	$ git diff
 		- shows the diff between working copy vs the local repository
 	$ git diff --staged
 		- shows the diff between 'staged' directory vs the local repo
+	$ git diff master https://github.com/dingy007/FinQueryTool.git
+		- shows the diff between the local-master and the remote git (master)
+GIT REMOTE:
+	- allows creation of a shortcut to a remote repository
+	- the shortcut name can be used in other commands instead of typing the full repository path
+	$ git remote
+		- shows all the shortcuts available
+	$ git remote -v
+		- shows the shortcuts + URI associated
+	$ git remote add finqureyrepo https://github.com/dingy007/FinQueryTool.git
+		- creates a shortcut named 'finqueryrepo' for the URI 'https://github.com/dingy007/FinQueryTool.git'
+			- this allows the following command:
+			$ git diff master finqueryrepo/master
+				- comparing the changes in the local-master with the remote repository
+	$ 
 GIT DELETE FILE:
 	$ git rm FileName
 		- removes a file from the repository

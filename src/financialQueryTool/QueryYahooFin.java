@@ -1,5 +1,6 @@
 package financialQueryTool;
 
+import java.io.IOException;
 import java.nio.file.FileSystems;
 //import java.jsoup;
 import java.nio.file.Path;
@@ -73,6 +74,11 @@ public class QueryYahooFin {
 		/* 
 		 * Write the overall data into the csv file
 		 */
-		WriteToCSV.WriteDataToCSV(csvPath, overallData);
+		try {
+			WriteToCSV.WriteDataToCSV(csvPath, overallData);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

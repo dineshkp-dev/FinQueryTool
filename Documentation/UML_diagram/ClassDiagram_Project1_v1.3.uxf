@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>720</x>
-      <y>888</y>
+      <y>768</y>
       <w>360</w>
       <h>200</h>
     </coordinates>
@@ -29,7 +29,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1144</x>
-      <y>1232</y>
+      <y>1112</y>
       <w>344</w>
       <h>128</h>
     </coordinates>
@@ -49,7 +49,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>768</x>
-      <y>376</y>
+      <y>256</y>
       <w>336</w>
       <h>184</h>
     </coordinates>
@@ -69,18 +69,18 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1472</x>
-      <y>376</y>
+      <y>256</y>
       <w>368</w>
       <h>168</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
-*GenerateQueryURL*
+*GenerateURI*
 
 --
 
--StockQuotesArray: String[] //Stock Quotes to query
--QueryParameters: String[] // Parameters to query for
--QueryType: String //determine query type (api/historical/html)
+-stockNames: String[] //Stock Quotes to query
+-stockParameters: String[] // Parameters to query for
+-queryType: String //determine query type (api/historical/html)
 
 --
 
@@ -93,7 +93,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1872</x>
-      <y>1232</y>
+      <y>1112</y>
       <w>376</w>
       <h>128</h>
     </coordinates>
@@ -113,7 +113,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1152</x>
-      <y>1528</y>
+      <y>1408</y>
       <w>296</w>
       <h>136</h>
     </coordinates>
@@ -135,8 +135,8 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1512</x>
-      <y>720</y>
+      <x>1504</x>
+      <y>736</y>
       <w>288</w>
       <h>152</h>
     </coordinates>
@@ -157,7 +157,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>192</x>
-      <y>712</y>
+      <y>592</y>
       <w>288</w>
       <h>280</h>
     </coordinates>
@@ -192,7 +192,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1552</x>
-      <y>1232</y>
+      <y>1112</y>
       <w>288</w>
       <h>136</h>
     </coordinates>
@@ -213,40 +213,40 @@ elementstyle=wordwrap</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1344</x>
-      <y>848</y>
-      <w>216</w>
-      <h>400</h>
+      <y>864</y>
+      <w>200</w>
+      <h>256</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>24;384;200;24</additional_attributes>
+    <additional_attributes>24;248;192;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1624</x>
-      <y>848</y>
+      <x>1616</x>
+      <y>864</y>
       <w>40</w>
-      <h>400</h>
+      <h>256</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>24;384;24;24</additional_attributes>
+    <additional_attributes>32;248;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1752</x>
-      <y>848</y>
+      <x>1744</x>
+      <y>864</y>
       <w>232</w>
-      <h>400</h>
+      <h>256</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>216;384;24;24</additional_attributes>
+    <additional_attributes>224;248;24;24</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>448</x>
-      <y>176</y>
+      <y>56</y>
       <w>304</w>
       <h>160</h>
     </coordinates>
@@ -269,7 +269,7 @@ elementstyle=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>96</x>
-      <y>376</y>
+      <y>256</y>
       <w>336</w>
       <h>184</h>
     </coordinates>
@@ -296,7 +296,7 @@ elementstyle=wordwrap</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>0</x>
-      <y>456</y>
+      <y>336</y>
       <w>208</w>
       <h>384</h>
     </coordinates>
@@ -309,7 +309,7 @@ r1=creates</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1264</x>
-      <y>1336</y>
+      <y>1216</y>
       <w>72</w>
       <h>208</h>
     </coordinates>
@@ -320,8 +320,8 @@ r1=creates</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>864</x>
-      <y>536</y>
-      <w>108</w>
+      <y>416</y>
+      <w>96</w>
       <h>360</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -334,7 +334,7 @@ r1=
     <id>UMLClass</id>
     <coordinates>
       <x>184</x>
-      <y>1072</y>
+      <y>952</y>
       <w>288</w>
       <h>160</h>
     </coordinates>
@@ -357,7 +357,7 @@ elementstyle=wordwrap</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1080</x>
-      <y>392</y>
+      <y>272</y>
       <w>408</w>
       <h>56</h>
     </coordinates>
@@ -369,20 +369,20 @@ elementstyle=wordwrap</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1016</x>
-      <y>536</y>
+      <y>416</y>
       <w>672</w>
-      <h>192</h>
+      <h>328</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1..n
 initiatesQuery</panel_attributes>
-    <additional_attributes>656;176;656;104;24;112;24;24</additional_attributes>
+    <additional_attributes>656;312;656;104;24;112;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
       <x>1512</x>
-      <y>1584</y>
+      <y>1464</y>
       <w>216</w>
       <h>56</h>
     </coordinates>
@@ -396,7 +396,7 @@ extracts the required data</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1424</x>
-      <y>1576</y>
+      <y>1456</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
@@ -408,7 +408,7 @@ extracts the required data</panel_attributes>
     <type>com.umlet.element.Note</type>
     <coordinates>
       <x>1912</x>
-      <y>432</y>
+      <y>312</y>
       <w>216</w>
       <h>56</h>
     </coordinates>
@@ -422,7 +422,7 @@ the query type/query parameters</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1816</x>
-      <y>424</y>
+      <y>304</y>
       <w>112</w>
       <h>40</h>
     </coordinates>
@@ -434,46 +434,46 @@ the query type/query parameters</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>408</x>
-      <y>440</y>
+      <y>320</y>
       <w>192</w>
       <h>752</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n
 r1=creates</panel_attributes>
-    <additional_attributes>64;736;176;736;168;24;24;24</additional_attributes>
+    <additional_attributes>64;736;176;736;176;408;168;24;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>232</x>
-      <y>208</y>
-      <w>232</w>
+      <x>240</x>
+      <y>88</y>
+      <w>224</w>
       <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1
 creates</panel_attributes>
-    <additional_attributes>48;168;48;40;216;40</additional_attributes>
+    <additional_attributes>40;168;40;40;208;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>552</x>
-      <y>312</y>
-      <w>232</w>
+      <x>560</x>
+      <y>192</y>
+      <w>224</w>
       <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1
 initiates</panel_attributes>
-    <additional_attributes>48;24;48;112;48;160;216;160</additional_attributes>
+    <additional_attributes>40;24;40;112;40;160;208;160</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
       <x>1168</x>
-      <y>928</y>
+      <y>808</y>
       <w>152</w>
       <h>40</h>
     </coordinates>
@@ -486,12 +486,76 @@ Writes data to csv file</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>1056</x>
-      <y>936</y>
+      <y>816</y>
       <w>128</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
     <additional_attributes>24;24;112;24</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>48</y>
+      <w>304</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*QueryType*
+
+--
+
+Enum (WEB,API,HISTORICAL)
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1600</x>
+      <y>104</y>
+      <w>124</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+UsesEnumType</panel_attributes>
+    <additional_attributes>64;152;64;24</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1128</x>
+      <y>0</y>
+      <w>296</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>TPackage::FinancialQueryTool
+*ParamMap*
+
+--
+	PreviousClose("p"),
+	Open("o"),
+	Bid("b"),
+	Ask("a"),
+	OneYearTarget("t8"), //1 yr Target Price 
+	//Beta(""),
+	//EarnDate("d2"), // using 'trade date' instead
+	DaysRange("m"), //days range
+	Week52Range("w"), //52 week range
+	Volume("v"), 
+	AverageVolume("a2"), //average daily volume
+	MarketCap("j1"), //Market capitalization
+	PERatio("r"),
+	EarningsPerShare("e"), //EPS
+	DividendYield("y"),
+	Name("n");
+
+--
+
+private ApiParamMap(String val)
+elementstyle=wordwrap</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
