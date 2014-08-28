@@ -1,0 +1,118 @@
+Basics:
+	- VERSIONS/Flavours:
+		-git
+		-github-sandwich
+		-github
+	- developed by Linus for Linux developments (so quite similar to Linux)
+	- Very small foot-print
+	- can work without a 'proper installation', with just some binaries in the $PATH environment variable
+	- command line at its core
+	- .git folder
+		- Only one '.git'
+		- To 'un-git', just delete this directory.
+			- hooks
+				-files to 'hook' into to do some stuff using scripts
+			- info/objects/refs
+				- contains actual data for the commits
+				- versioned controlled timestamped copies of the rep are stored
+	- GIT PROCESS:
+		- [LOCAL REPO] git init 		-> git pull (from server repo) 			-> git add (add files locally) 						-> git commit 		-> git push
+		=> create '.git' dir locally 	-> get copy of files from server repo	-> add files to 'working copy'/'staging area' 		-> in local copy 	-> push local commits to server repo
+	- FEATURES:
+        - Anyone can checkout a branch and make local changes
+            - the changes can be reviewed and checked-in to the main trunk by someone with access
+        - Easy to merge two branches
+        - Allows multiple local branches with their own code changes/bug fixes that can then be merged back to the main trunk
+
+
+DOWNLOAD:
+	(For UBUNTU)
+	$sudo apt-get install git
+
+VERSION:
+	$git --version
+
+ADD USER:
+	$git config --global user.name "dingy007"
+ADD EMAIL:
+	$git config --global user.email "xxx@xmail.com"
+GET HELP:
+	$git help
+GET HELP FOR SPECIFIC COMMAND:
+	- E.g get help for a command 'commit'
+	$git help commit
+GIT PULL
+	- to get the initial repository from an existing repository
+	- eg.
+		$ git pull https://github.com/dingy007/project_trial1.git
+GIT REMOTE ADD:
+	- configure the git repository to be able to check into the original repository
+	- must provide a name for the repository
+	- eg.
+		$ git remote add origin https://github.com/dingy007/project_trial1.git
+						 'branch name' 'repo location'
+GIT INIT (START A PROJECT)
+	-$ git init
+Initialized empty Git repository in /home/dineshkp/git/git_trial/.git/
+(create files etc)
+GIT ADD:
+	-$git add .
+	- Adds all the files in the git local repository
+GIT COMMIT:
+	-$git commit -m "Detailed message about the commit"
+GIT STATUS:
+	-$git status
+GIT BRANCH:
+	-Create a new Branch
+		-$git branch NewBranch
+			- create a new branch called 'NewBranch'
+		-$git checkout NewBranch
+			- switch to the branch called 'NewBranch'
+		-$ git checkout -b NewBranch
+	:Switched to a new branch 'NewBranch'
+			- create a new branch called 'NewBranch' and switch to it in  one step using the '-b' option
+	-Switch to a branch
+		-$git checkout another-branch
+			- Swtich to the 'another-branch' branch
+	-Commit changes from a branch to 'master' branch
+			-$git checkout master
+				- switch to master branch
+			-$git merge another-branch
+				- merge the changes from 'another-branch' to the master branch
+	- Delete a branch
+		-$git branch -d another-branch
+			- Delete a branch called 'another-branch'
+GIT PUSH:
+	- push locally committed changes to online repository
+	- have to provide online repo link, unless the '.git/config' file has been updated with the remote repo location
+	- $git push -u origin master
+GIT DIFF:
+	$ git diff
+		- shows the diff between working copy vs the local repository
+	$ git diff --staged
+		- shows the diff between 'staged' directory vs the local repo
+GIT DELETE FILE:
+	$ git rm FileName
+		- removes a file from the repository
+GIT RENAME/MOVE FILE:
+	- 'mv' the file using GIT
+		$ git mv oldLocation/oldFileName newLocation/newFileName
+			[OR]
+	- Rename the file on shell/windows
+	- add the 'new' file name to GIT
+		$ git add newFileName
+	- remove the 'old' file name in GIT
+		$ git rm oldFileName
+	- do git status (to ensure that GIT understood the Renaming of files)
+		$ git status
+GIT TAG:
+	$git tag -a v1.0.rc1 -m "trial tag"
+		- creates a tag in the local repository
+	$ git push origin --tags
+		- pushes the tags to the git repository
+More info:
+	- youtube: GitHub Training & Guides
+	- Free book: 'Pro Git' : http://git-scm.com/book
+	-  Link: http://teach.github.com
+	-  Link: http://help.github.com
+
