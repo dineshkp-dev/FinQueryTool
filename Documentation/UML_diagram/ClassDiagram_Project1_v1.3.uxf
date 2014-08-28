@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="12.2">
-  <zoom_level>13</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>1157</y>
-      <w>585</w>
-      <h>260</h>
+      <x>720</x>
+      <y>888</y>
+      <w>360</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *WriteToCSV*
@@ -18,8 +18,9 @@
 
 --
 
-+writeDatatoCsv(outputCsvName: Path, String outputData):boolean //returns true if successfull/else false
-+writeDatatoCsv(outputCsvName: Path, OutputStream outputstream, int BufferSize):boolean //returns true if successfull/else false
++writeDatatoCsv(Path outputCsvName, String outputData):boolean //returns true if successfull/else false
++writeDatatoCsv(Path outputCsvName, InputStream connectionStream, int BufferSize):boolean //returns true if successfull/else false
++fileExistsCheck(Path filePath) //checks if the file exists or created successfully
 
 elementstyle=wordwrap</panel_attributes>
     <additional_attributes/>
@@ -27,10 +28,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1859</x>
-      <y>1716</y>
-      <w>559</w>
-      <h>208</h>
+      <x>1144</x>
+      <y>1232</y>
+      <w>344</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *InitiateHtmlQuery*
@@ -47,10 +48,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1248</x>
-      <y>325</y>
-      <w>546</w>
-      <h>299</h>
+      <x>768</x>
+      <y>376</y>
+      <w>336</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *FinancialQueryToool*
@@ -67,10 +68,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2392</x>
-      <y>325</y>
-      <w>598</w>
-      <h>273</h>
+      <x>1472</x>
+      <y>376</y>
+      <w>368</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *GenerateQueryURL*
@@ -91,10 +92,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3042</x>
-      <y>1716</y>
-      <w>611</w>
-      <h>208</h>
+      <x>1872</x>
+      <y>1232</y>
+      <w>376</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *InitiateHistoricalQuery*
@@ -111,10 +112,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1872</x>
-      <y>2197</y>
-      <w>481</w>
-      <h>221</h>
+      <x>1152</x>
+      <y>1528</y>
+      <w>296</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *ParseHtml*
@@ -134,10 +135,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>2457</x>
-      <y>884</y>
-      <w>468</w>
-      <h>247</h>
+      <x>1512</x>
+      <y>720</y>
+      <w>288</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>InitiateQueryInterface : Interface
 --
@@ -155,10 +156,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>312</x>
-      <y>871</y>
-      <w>468</w>
-      <h>455</h>
+      <x>192</x>
+      <y>712</y>
+      <w>288</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *Stock*
@@ -190,10 +191,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2522</x>
-      <y>1716</y>
-      <w>468</w>
-      <h>221</h>
+      <x>1552</x>
+      <y>1232</y>
+      <w>288</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *InitiateApiQuery*
@@ -211,43 +212,43 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2184</x>
-      <y>1092</y>
-      <w>351</w>
-      <h>650</h>
+      <x>1344</x>
+      <y>848</y>
+      <w>216</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>39;624;325;39</additional_attributes>
+    <additional_attributes>24;384;200;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2639</x>
-      <y>1092</y>
-      <w>65</w>
-      <h>650</h>
+      <x>1624</x>
+      <y>848</y>
+      <w>40</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>39;624;39;39</additional_attributes>
+    <additional_attributes>24;384;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2847</x>
-      <y>1092</y>
-      <w>377</w>
-      <h>650</h>
+      <x>1752</x>
+      <y>848</y>
+      <w>232</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>351;624;39;39</additional_attributes>
+    <additional_attributes>216;384;24;24</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>728</x>
-      <y>0</y>
-      <w>494</w>
-      <h>260</h>
+      <x>448</x>
+      <y>176</y>
+      <w>304</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *ParseInputXml*
@@ -267,10 +268,10 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>156</x>
-      <y>325</y>
-      <w>546</w>
-      <h>299</h>
+      <x>96</x>
+      <y>376</y>
+      <w>336</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *InputData*
@@ -295,47 +296,47 @@ elementstyle=wordwrap</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>0</x>
-      <y>455</y>
-      <w>325</w>
-      <h>611</h>
+      <y>456</y>
+      <w>208</w>
+      <h>384</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n
 r1=creates</panel_attributes>
-    <additional_attributes>312;598;39;598;39;39;156;39</additional_attributes>
+    <additional_attributes>192;368;24;368;24;24;96;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2054</x>
-      <y>1885</y>
-      <w>117</w>
-      <h>338</h>
+      <x>1264</x>
+      <y>1336</y>
+      <w>72</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>39;312;91;39</additional_attributes>
+    <additional_attributes>24;192;56;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1404</x>
-      <y>585</y>
-      <w>176</w>
-      <h>584</h>
+      <x>864</x>
+      <y>536</y>
+      <w>108</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1
 r1=            
        writes to</panel_attributes>
-    <additional_attributes>91;559;91;39</additional_attributes>
+    <additional_attributes>56;344;56;24</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>299</x>
-      <y>1456</y>
-      <w>468</w>
-      <h>260</h>
+      <x>184</x>
+      <y>1072</y>
+      <w>288</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *HistoricalData*
@@ -355,35 +356,35 @@ elementstyle=wordwrap</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1755</x>
-      <y>351</y>
-      <w>663</w>
-      <h>91</h>
+      <x>1080</x>
+      <y>392</y>
+      <w>408</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 &lt;&lt;getsQueryString&gt;&gt;</panel_attributes>
-    <additional_attributes>637;65;39;65</additional_attributes>
+    <additional_attributes>392;40;24;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1651</x>
-      <y>585</y>
-      <w>1079</w>
-      <h>299</h>
+      <x>1016</x>
+      <y>536</y>
+      <w>672</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1..n
 initiatesQuery</panel_attributes>
-    <additional_attributes>1066;286;1066;169;39;182;39;39</additional_attributes>
+    <additional_attributes>656;176;656;104;24;112;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>2457</x>
-      <y>2288</y>
-      <w>351</w>
-      <h>91</h>
+      <x>1512</x>
+      <y>1584</y>
+      <w>216</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Note..
 bg=blue
@@ -394,22 +395,22 @@ extracts the required data</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2314</x>
-      <y>2275</y>
-      <w>169</w>
-      <h>65</h>
+      <x>1424</x>
+      <y>1576</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>39;39;143;39</additional_attributes>
+    <additional_attributes>24;24;88;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>3107</x>
-      <y>416</y>
-      <w>351</w>
-      <h>91</h>
+      <x>1912</x>
+      <y>432</y>
+      <w>216</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Note..
 bg=blue
@@ -420,61 +421,61 @@ the query type/query parameters</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>2951</x>
-      <y>403</y>
-      <w>182</w>
-      <h>65</h>
+      <x>1816</x>
+      <y>424</y>
+      <w>112</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>39;39;156;39</additional_attributes>
+    <additional_attributes>24;24;96;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>663</x>
-      <y>429</y>
-      <w>312</w>
-      <h>1222</h>
+      <x>408</x>
+      <y>440</y>
+      <w>192</w>
+      <h>752</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n
 r1=creates</panel_attributes>
-    <additional_attributes>104;1196;286;1196;273;39;39;39</additional_attributes>
+    <additional_attributes>64;736;176;736;168;24;24;24</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>377</x>
-      <y>52</y>
-      <w>364</w>
-      <h>286</h>
+      <x>232</x>
+      <y>208</y>
+      <w>232</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1
 creates</panel_attributes>
-    <additional_attributes>78;273;78;65;351;65</additional_attributes>
+    <additional_attributes>48;168;48;40;216;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>897</x>
-      <y>221</y>
-      <w>364</w>
-      <h>273</h>
+      <x>552</x>
+      <y>312</y>
+      <w>232</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=   1
 initiates</panel_attributes>
-    <additional_attributes>78;39;78;182;78;260;351;260</additional_attributes>
+    <additional_attributes>48;24;48;112;48;160;216;160</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>1898</x>
-      <y>1222</y>
-      <w>247</w>
-      <h>65</h>
+      <x>1168</x>
+      <y>928</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Note..
 bg=blue
@@ -484,13 +485,13 @@ Writes data to csv file</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>1716</x>
-      <y>1235</y>
-      <w>207</w>
-      <h>64</h>
+      <x>1056</x>
+      <y>936</y>
+      <w>128</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>39;39;182;39</additional_attributes>
+    <additional_attributes>24;24;112;24</additional_attributes>
   </element>
 </diagram>

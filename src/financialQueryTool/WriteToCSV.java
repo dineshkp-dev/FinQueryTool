@@ -24,20 +24,24 @@ public class WriteToCSV {
 	 * @param csvFilePath Path where the csv file has to be written
 	 * @param finalData
 	 * @return boolean value, showing success/fail.
+	 * @throws IOException 
 	 */
-	public static boolean WriteDataToCSV( Path csvFilePath, ArrayList<String> finalData ) {
+	public static boolean WriteDataToCSV( Path csvFilePath, ArrayList<String> finalData ) throws IOException {
 		OpenOption[] options = {StandardOpenOption.CREATE, StandardOpenOption.APPEND};
 		String writeInto = "";
+		BufferedWriter writer = null;
 		for (int i =0; i<finalData.size(); i++) {
 			writeInto = writeInto + finalData.get(i) + "\n";
 		}
 			try {
-				BufferedWriter writer = Files.newBufferedWriter(csvFilePath, StandardCharsets.UTF_8, options);
+				writer = Files.newBufferedWriter(csvFilePath, StandardCharsets.UTF_8, options);
 				writer.write(writeInto);
-				writer.close();
 				System.out.println("Done writing to file.");
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+			finally {
+				writer.close();
 			}
 		return false;
 		
@@ -69,8 +73,10 @@ public class WriteToCSV {
 			System.out.println("Downloaded successfully to:\n" + (csvFilePath.toFile().getAbsolutePath()));
 			writeSuccess = fileExistsCheck(csvFilePath);
 		} catch (IOException err) {
-			outputStream.close();
 			err.printStackTrace();
+		}
+		finally {
+			outputStream.close();
 		}
 		return writeSuccess;
 	}
