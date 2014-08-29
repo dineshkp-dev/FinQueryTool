@@ -25,6 +25,12 @@ public class TesterClass {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
+		ParamListInterface paramOpen = new ParamOpen();
+		
+		paramOpen.setparamData("1234");
+		System.out.println(paramOpen.getparamName() + paramOpen.getparamUlsdCode() + paramOpen.getparamData());
+		
+		
 	}
 
 }
