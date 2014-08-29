@@ -20,11 +20,9 @@ public class GenerateApiUri extends GenerateURI {
 			stockNamesStr = stockNamesStr + "+" + eachStock;
 		}
 		stockNamesStr = stockNamesStr.substring(1);
-		
-		for (String eachParam : stockParams) {
-			stockParamStr = stockParamStr + eachParam;
-		}
-		finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stockNamesStr + "&f=" + stockParamStr);
+
+		ParamApiList parameters = new ParamApiList();
+		finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stockNamesStr + "&f=" + parameters.getAll());
 		return finalURI;
 	}
 

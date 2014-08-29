@@ -8,13 +8,6 @@ public class TesterClass {
 		GenerateApiUri generateApiUri = new GenerateApiUri();
 		String[] stockNames = {"AAPL", "GOOG", "MSFT"};
 		
-		
-//		Stock stock1 = new Stock 
-		for (ApiParamMap mapper : ApiParamMap.values()){
-			System.out.print(mapper.val + ", ");
-		}
-		System.out.println();
-		
 		generateApiUri.setQueryType(QueryType.API);
 		System.out.println("Tester class.");
 		String stockNamesStr="";
