@@ -526,10 +526,10 @@ UsesEnumType</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1710</x>
-      <y>312</y>
+      <x>1692</x>
+      <y>84</y>
       <w>228</w>
-      <h>54</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>TPackage::FinancialQueryTool
 *Paramlist*
@@ -551,6 +551,9 @@ UsesEnumType</panel_attributes>
 -earningsPerShare String
 -dividendYield String
 -stockName String
+
+--
+
 elementstyle=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
