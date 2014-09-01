@@ -2,9 +2,9 @@ package financialQueryTool;
 
 public class ParamAsk implements ParamListInterface {
 	private String paramName = "Ask";
-	private String paramUlsdCode = "a";
+	private static String paramUlsdCode = "a";
 	private String paramData;
-	
+
 	@Override
 	public String getparamName() {
 		return paramName;
@@ -14,7 +14,7 @@ public class ParamAsk implements ParamListInterface {
 	public String getparamData() {
 		return paramData;
 	}
-
+	
 	@Override
 	public String getparamUlsdCode() {
 		return paramUlsdCode;

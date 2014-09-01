@@ -15,6 +15,7 @@ public class Stock {
 	public String peTtm;
 	public String epsTtm;
 	public String divnYield;
+	public String stockName;
 	
 	public String getPrevClose() {
 		return prevClose;
@@ -100,6 +101,12 @@ public class Stock {
 	public void setDivnYield(String divnYield) {
 		this.divnYield = divnYield;
 	}
+	public String getStockName() {
+		return stockName;
+	}
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
+	}
 	/**
 	 * @param prevClose
 	 * @param open
@@ -119,7 +126,7 @@ public class Stock {
 	public Stock(String prevClose, String open, String ask, String oneYrTarg,
 			String beta, String earnDate, String daysRng, String wk52Rng,
 			String vol, String avgVol, String mktCap, String peTtm,
-			String epsTtm, String divnYield) {
+			String epsTtm, String divnYield, String stockName) {
 
 		this.prevClose = prevClose;
 		this.open = open;
@@ -135,10 +142,14 @@ public class Stock {
 		this.peTtm = peTtm;
 		this.epsTtm = epsTtm;
 		this.divnYield = divnYield;
+		this.stockName = stockName;
 	}
 	@SuppressWarnings("unused")
-	private Stock(){
+	public Stock(){
 		
+	}
+	public Stock(String stockName) {
+		this.stockName = stockName;
 	}
 
 }

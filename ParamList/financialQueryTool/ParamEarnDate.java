@@ -2,7 +2,7 @@ package financialQueryTool;
 
 public class ParamEarnDate implements ParamListInterface {
 	private String paramName = "EarnDate";
-	private String paramUlsdCode = "EarnDate";
+	private String paramUlsdCode = "";//"EarnDate";
 	private String paramData;
 	
 	@Override

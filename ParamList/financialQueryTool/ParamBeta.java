@@ -2,7 +2,7 @@ package financialQueryTool;
 
 public class ParamBeta implements ParamListInterface {
 	private String paramName = "Beta";
-	private String paramUlsdCode = "beta";
+	private String paramUlsdCode = "";
 	private String paramData;
 	
 	@Override

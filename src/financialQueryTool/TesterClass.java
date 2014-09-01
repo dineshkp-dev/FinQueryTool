@@ -1,37 +1,38 @@
 package financialQueryTool;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class TesterClass {
 
 	public static void main(String[] args) {
 		GenerateApiUri generateApiUri = new GenerateApiUri();
-		String[] stockNames = {"AAPL", "GOOG", "MSFT"};
+		String[] stockSym = {"AAPL", "GOOG", "MSFT"};
 		
 		generateApiUri.setQueryType(QueryType.API);
 		System.out.println("Tester class.");
 		String stockNamesStr="";
 
-		for (String stocks : stockNames) {
+		for (String stocks : stockSym) {
 			stockNamesStr = stockNamesStr + ", " + stocks;
 		}
 		
 		System.out.println("Stockname: " + stockNamesStr);
 		
-		generateApiUri.setStockNames(stockNames);
-		//generateApiUri.setStockParameters(stockParams);
+		ArrayList<Stock> stock = new ArrayList<Stock>();
+		System.out.println("Creating Stock ArrayList");
+		GenerateStockList.getStockList(stockSym);
+/*		for (String eachStock : stockNames) {
+			stock.add(new Stock(eachStock));
+			System.out.println("Added " + eachStock);
+		}*/
+		System.out.println(stock.size());
 		try {
-			System.out.println(generateApiUri.getURI());
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+			System.out.println(generateApiUri.getURI(stock));
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		
-		ParamListInterface paramOpen = new ParamOpen();
-		
-		paramOpen.setparamData("1234");
-		System.out.println(paramOpen.getparamName() + paramOpen.getparamUlsdCode() + paramOpen.getparamData());
-		
-		
 	}
 
 }
