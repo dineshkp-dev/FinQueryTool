@@ -33,6 +33,7 @@ public class ParseInputXml {
 		String reqParams = "";
 		String tempFileLoc = "";
 		String outputFileLoc = "";
+		String queryType = "";
 
 		File inputXmlFile = new File(inputXmlLoc.toFile(), "");
 		System.out.println(inputXmlFile.getAbsolutePath().toString());
@@ -50,16 +51,19 @@ public class ParseInputXml {
 					Element eElement = (Element) nNode;
 					reqSymbols = eElement.getElementsByTagName("RequiredStockSymbols").item(0).getTextContent();
 					reqParams = eElement.getElementsByTagName("RequiredParameters").item(0).getTextContent();
+					
 					System.out.println("RequiredStockSymbols : " + reqSymbols);
 					System.out.println("RequiredParameters : " + reqParams);
 					tempFileLoc = eElement.getElementsByTagName("TempFile").item(0).getTextContent();
 					outputFileLoc = eElement.getElementsByTagName("OutputFile").item(0).getTextContent();
+					queryType = eElement.getElementsByTagName("QueryType").item(0).getTextContent();
 					System.out.println("TempFile Location : " + tempFileLoc);
 					System.out.println("OutputFile : " + outputFileLoc);
 					parsedInputs.put("RequiredStockSymbols", reqSymbols);
 					parsedInputs.put("reqParams", reqParams);
 					parsedInputs.put("tempFileLoc", tempFileLoc);
 					parsedInputs.put("outputFileLoc", outputFileLoc);
+					parsedInputs.put("queryType", queryType);
 				}
 			}
 		} catch (ParserConfigurationException e) {

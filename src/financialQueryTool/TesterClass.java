@@ -19,16 +19,16 @@ public class TesterClass {
 		
 		System.out.println("Stockname: " + stockNamesStr);
 		
-		ArrayList<Stock> stock = new ArrayList<Stock>();
+		ArrayList<Stock> stockList = new ArrayList<Stock>();
 		System.out.println("Creating Stock ArrayList");
-		GenerateStockList.getStockList(stockSym);
+		stockList = GenerateStockList.getStockList(stockSym);
 /*		for (String eachStock : stockNames) {
 			stock.add(new Stock(eachStock));
 			System.out.println("Added " + eachStock);
 		}*/
-		System.out.println(stock.size());
+		System.out.println(stockList.size());
 		try {
-			System.out.println(generateApiUri.getURI(stock));
+			System.out.println(generateApiUri.getURI(stockList));
 		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

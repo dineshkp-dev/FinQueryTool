@@ -30,6 +30,10 @@ public class GenerateApiUri extends GenerateURI {
 		return finalURI;
 	}
 	
+	public QueryType getQueryType() {
+		return QueryType.API;
+	}
+	
 	public static String getAllURIParams() {
 		String allParameters = "";
 		

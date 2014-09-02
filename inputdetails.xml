@@ -3,6 +3,7 @@
 <UserData>
 	<RequiredStockSymbols>GOOG,AAPL,AMZN,BIDU,MA,NFLX</RequiredStockSymbols>
 	<RequiredParameters>Day's Range,52wk Range,Prev Close,Open,Div &amp; Yield,P/E (ttm),EPS (ttm),Beta,1y Target Est</RequiredParameters>
+	<QueryType>API</QueryType>
 </UserData>
 <FileLocation>
 	<TempFile>koreInfoProject/tempFile.html</TempFile>
