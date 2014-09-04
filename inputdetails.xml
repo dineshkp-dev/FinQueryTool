@@ -6,8 +6,8 @@
 	<QueryType>API</QueryType>
 </UserData>
 <FileLocation>
-	<TempFile>koreInfoProject/tempFile.html</TempFile>
-	<OutputFile>koreInfoProject/stockData.csv</OutputFile>
+	<TempFile>tempFile.html</TempFile>
+	<OutputFile>stockData.csv</OutputFile>
 </FileLocation>
 
 
