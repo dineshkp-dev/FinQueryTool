@@ -107,6 +107,7 @@ public class Stock {
 	public void setStockName(String stockName) {
 		this.stockName = stockName;
 	}
+
 	/**
 	 * @param prevClose
 	 * @param open
@@ -150,6 +151,25 @@ public class Stock {
 	}
 	public Stock(String stockName) {
 		this.stockName = stockName;
+	}
+	
+	public void printDetails(Stock stock) {
+		System.out.println("Printing Stock details for : " + stock.getStockName());
+		System.out.println("Stock Close:" + stock.getPrevClose());
+		System.out.println("Stock Open:"+stock.getOpen());
+		System.out.println("Stock Ask:"+stock.getAsk());
+		System.out.println("Stock One Year Target:"+stock.getOneYrTarg());
+		System.out.println("Stock Beta:"+stock.getBeta());
+		System.out.println("Stock Earn Date:"+stock.getEarnDate());
+		System.out.println("Stock Day's Range:"+stock.getDaysRng());
+		System.out.println("Stock 52-Week Range:"+stock.getWk52Rng());
+		System.out.println("Stock Volume:"+stock.getVol());
+		System.out.println("Stock Average Volume:"+stock.getAvgVol());
+		System.out.println("Stock Market Capitalization:"+stock.getMktCap());
+		System.out.println("Stock P/E Ttm:"+stock.getPeTtm());
+		System.out.println("Stock Earnings per Share Ttm:"+stock.getEpsTtm());
+		System.out.println("Stock Divident Yield:"+stock.getDivnYield());
+//		System.out.println("Stock Stock Name:");
 	}
 
 }
