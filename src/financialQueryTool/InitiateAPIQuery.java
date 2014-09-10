@@ -13,6 +13,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.management.RuntimeErrorException;
+
 public class InitiateAPIQuery implements InitiateQueryInterface{
 
 	public void queryFromApi (URI queryUri, Path outputCsvPath) {
@@ -56,9 +58,13 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		GenerateURI apiUri = new GenerateApiUri();
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
+		boolean truval = true;
 		int bufferSize = 2048;
 		//create the URI for querying.
-
+		if (truval)
+		{
+		throw new RuntimeErrorException(null, "Throw an Error purposely");
+		}
 		try {
 			queryUri = apiUri.getURI(stockList);
 		} catch (URISyntaxException e1) {
@@ -103,6 +109,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
+		
 		try {
 			URL yahooFinApi = new URL(api_url);
 			apiConnection = (HttpURLConnection) yahooFinApi.openConnection();
@@ -174,6 +181,18 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		}
 		return stockList;
 	}
+	
+	public static ParamListInterface[] validParams(){
+		ParamListInterface[] validParams = {
+				new ParamAsk(),
+				new ParamBid(),
+				new ParamAverageVolume(),
+				new ParamDaysRange(),
+				new ParamBid()
+				};
+		return validParams;
+	}
+	
 
 	/**
 	 * Adds all the information from the query result for each stock
@@ -200,21 +219,21 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		ArrayList<String> stockDataList = new ArrayList<String>(Arrays.asList(stockData));
 //		if (stockDataList.)
 		System.out.println("Setting stock data for : " + stock.getStockName());
-		stock.setAsk(stockData[0]);
-		stock.setAvgVol(stockData[1]);
-		stock.setBeta(stockData[2]);
-		stock.setDaysRng(stockData[3]);
-		stock.setDivnYield(stockData[4]);
-		stock.setEarnDate(stockData[5]);
-		stock.setEpsTtm(stockData[6]);
-		stock.setMktCap(stockData[7]);
-		stock.setOneYrTarg(stockData[8]);
-		stock.setOpen(stockData[9]);
-		stock.setPeTtm(stockData[10]);
-		stock.setPrevClose(stockData[11]);
-		stock.setStockName(stockData[12]);
-		stock.setVol(stockData[13]);
-		stock.setWk52Rng(stockData[14]);
+//		stock.ask.setparamData(stockData[0]);
+//		stock.avgVol.setparamData(stockData[1]);
+//		stock.setBeta(stockData[2]);
+//		stock.setDaysRng(stockData[3]);
+//		stock.setDivnYield(stockData[4]);
+//		stock.setEarnDate(stockData[5]);
+//		stock.setEpsTtm(stockData[6]);
+//		stock.setMktCap(stockData[7]);
+//		stock.setOneYrTarg(stockData[8]);
+//		stock.setOpen(stockData[9]);
+//		stock.setPeTtm(stockData[10]);
+//		stock.setPrevClose(stockData[11]);
+//		stock.setStockName(stockData[12]);
+//		stock.setVol(stockData[13]);
+//		stock.setWk52Rng(stockData[14]);
 		return stock;
 	}
 

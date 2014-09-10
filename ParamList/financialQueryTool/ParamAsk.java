@@ -20,8 +20,13 @@ public class ParamAsk implements ParamListInterface {
 		return paramUlsdCode;
 	}
 
-	@Override
+//	@Override
 	public void setparamData(String Data) {
 		this.paramData = Data;
 	}
+	
+/*	public static boolean validApi(){
+		return false;
+		
+	}*/
 }

@@ -21,7 +21,7 @@ public class ParamStockName implements ParamListInterface {
 	}
 
 	@Override
-	public void setparamData(String Data) {
-		this.paramData = Data;
+	public void setparamData(String data) {
+		this.paramData = data;
 	}
 }

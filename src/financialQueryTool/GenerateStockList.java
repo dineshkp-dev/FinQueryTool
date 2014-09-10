@@ -22,9 +22,10 @@ public class GenerateStockList {
 	public static ArrayList<Stock> getStockList(String[] stockSym) {
 		ArrayList<Stock> stockList = new ArrayList<Stock>();
 		for (String eachStockSym : stockSym) {
+			System.out.println("Adding Symbol: " + eachStockSym);
 			stockList.add(new Stock(eachStockSym));
-			System.out.println("Added new Stock Object: " + eachStockSym);
 		}
+		System.out.println("Added new Stock Object: " + stockList.get(3).getStockName());
 		return stockList;
 	}
 
