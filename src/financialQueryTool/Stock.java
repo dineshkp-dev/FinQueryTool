@@ -3,20 +3,6 @@ package financialQueryTool;
 import java.util.ArrayList;
 
 public class Stock {
-//	public ParamListInterface prevClose;
-//	public ParamListInterface open;
-//	public ParamListInterface ask;
-//	public ParamListInterface oneYrTarg;
-//	public ParamListInterface beta;
-//	public ParamListInterface earnDate;
-//	public ParamListInterface wk52Rng;
-//	public ParamListInterface daysRng;
-//	public ParamListInterface vol;
-//	public ParamListInterface avgVol;
-//	public ParamListInterface mktCap;
-//	public ParamListInterface peTtm;
-//	public ParamListInterface epsTtm;
-//	public ParamListInterface divnYield;
 	public ParamAsk stockAsk;
 	public ParamAverageVolume stockAverageVolume;
 	public ParamBeta stockBeta;
@@ -46,90 +32,6 @@ public class Stock {
 		
 	}*/
 	
-	/*public ParamListInterface getPrevClose() {
-		return prevClose;
-	}
-	public void setPrevClose(ParamListInterface prevClose) {
-		this.prevClose = prevClose;
-	}
-	public ParamListInterface getOpen() {
-		return open;
-	}
-	public void setOpen(ParamListInterface open) {
-		this.open = open;
-	}
-	public ParamListInterface getAsk() {
-		return ask;
-	}
-	public void setAsk(ParamListInterface ask) {
-		this.ask = ask;
-	}
-	public ParamListInterface getOneYrTarg() {
-		return oneYrTarg;
-	}
-	public void setOneYrTarg(ParamListInterface oneYrTarg) {
-		this.oneYrTarg = oneYrTarg;
-	}
-	public ParamListInterface getBeta() {
-		return beta;
-	}
-	public void setBeta(ParamListInterface beta) {
-		this.beta = beta;
-	}
-	public ParamListInterface getEarnDate() {
-		return earnDate;
-	}
-	public void setEarnDate(ParamListInterface earnDate) {
-		this.earnDate = earnDate;
-	}
-	public ParamListInterface getDaysRng() {
-		return daysRng;
-	}
-	public void setDaysRng(ParamListInterface daysRng) {
-		this.daysRng = daysRng;
-	}
-	public ParamListInterface getWk52Rng() {
-		return wk52Rng;
-	}
-	public void setWk52Rng(ParamListInterface wk52Rng) {
-		this.wk52Rng = wk52Rng;
-	}
-	public ParamListInterface getVol() {
-		return vol;
-	}
-	public void setVol(ParamListInterface vol) {
-		this.vol = vol;
-	}
-	public ParamListInterface getAvgVol() {
-		return avgVol;
-	}
-	public void setAvgVol(ParamListInterface avgVol) {
-		this.avgVol = avgVol;
-	}
-	public ParamListInterface getMktCap() {
-		return mktCap;
-	}
-	public void setMktCap(ParamListInterface mktCap) {
-		this.mktCap = mktCap;
-	}
-	public ParamListInterface getPeTtm() {
-		return peTtm;
-	}
-	public void setPeTtm(ParamListInterface peTtm) {
-		this.peTtm = peTtm;
-	}
-	public ParamListInterface getEpsTtm() {
-		return epsTtm;
-	}
-	public void setEpsTtm(ParamListInterface epsTtm) {
-		this.epsTtm = epsTtm;
-	}
-	public ParamListInterface getDivnYield() {
-		return divnYield;
-	}
-	public void setDivnYield(ParamListInterface divnYield) {
-		this.divnYield = divnYield;
-	}*/
 	public String getStockName() {
 		return this.stockName.getparamData();
 	}
@@ -203,8 +105,50 @@ public class Stock {
 		System.out.println("Stock Market Capitalization:"+stock.getMktCap());
 		System.out.println("Stock P/E Ttm:"+stock.getPeTtm());
 		System.out.println("Stock Earnings per Share Ttm:"+stock.getEpsTtm());
-		System.out.println("Stock Divident Yield:"+stock.getDivnYield());*/
-//		System.out.println("Stock Stock Name:");
+		System.out.println("Stock Divident Yield:"+stock.getDivnYield());
+		System.out.println("Stock Stock Name:");*/
+	}
+	public ParamAsk getStockAsk() {
+		return stockAsk;
+	}
+	public ParamAverageVolume getStockAverageVolume() {
+		return stockAverageVolume;
+	}
+	public ParamBeta getStockBeta() {
+		return stockBeta;
+	}
+	public ParamBid getStockBid() {
+		return stockBid;
+	}
+	public ParamDaysRange getStockDaysRange() {
+		return stockDaysRange;
+	}
+	public ParamDividendYield getStockDividendYield() {
+		return stockDividendYield;
+	}
+	public ParamEarnDate getStockEarnDate() {
+		return stockEarnDate;
+	}
+	public ParamEarningsPerShare getStockEarningsPerShare() {
+		return stockEarningsPerShare;
+	}
+	public ParamMarketCapitalization getStockMarketCapitalization() {
+		return stockMarketCapitalization;
+	}
+	public ParamOneYearTarget getStockOneYearTarget() {
+		return stockOneYearTarget;
+	}
+	public ParamOpen getStockOpen() {
+		return stockOpen;
+	}
+	public ParamPERatio getStockPERatio() {
+		return stockPERatio;
+	}
+	public ParamPreviousClose getStockPreviousClose() {
+		return stockPreviousClose;
+	}
+	public ParamVolume getStockVolume() {
+		return stockVolume;
 	}
 
 }
