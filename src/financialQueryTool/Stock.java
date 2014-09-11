@@ -16,8 +16,9 @@ public class Stock {
 	public ParamStockName stockName;
 	public ParamPreviousClose stockPreviousClose;
 	public ParamVolume stockVolume;
-	
-/*	
+	public ParamWeekRange stockWeekRange;
+
+	/*	
 	public String getValidParamList(){
 		String validParamList = "";
 		ArrayList<ParamListInterface> paramList = new ArrayList<ParamListInterface>();
@@ -25,11 +26,11 @@ public class Stock {
 		if (parameter.getparamUlsdCode() != "") {
 			paramList.add(parameter);
 		}
-			
+
 		return validParamList;
-		
+
 	}*/
-	
+
 	public String getStockName() {
 		return this.stockName.getparamData();
 	}
@@ -53,58 +54,74 @@ public class Stock {
 	 * @param epsTtm
 	 * @param divnYield
 	 */
-//	public Stock(ParamPreviousClose prevClose, ParamListInterface open, ParamListInterface ask, ParamListInterface oneYrTarg,
-//			ParamListInterface beta, ParamListInterface earnDate, ParamListInterface daysRng, ParamListInterface wk52Rng,
-//			ParamListInterface vol, ParamListInterface avgVol, ParamListInterface mktCap, ParamListInterface peTtm,
-//			ParamListInterface epsTtm, ParamListInterface divnYield, ParamStockName stockName) {
-//
-///*		this.prevClose = prevClose;
-//		this.open = open;
-//		this.ask = ask;
-//		this.oneYrTarg = oneYrTarg;
-//		this.beta = beta;
-//		this.earnDate = earnDate;
-//		this.daysRng = daysRng;
-//		this.wk52Rng = wk52Rng;
-//		this.vol = vol;
-//		this.avgVol = avgVol;
-//		this.mktCap = mktCap;
-//		this.peTtm = peTtm;
-//		this.epsTtm = epsTtm;
-//		this.divnYield = divnYield;*/
-//		this.stockName = stockName;
-//	}
+	//	public Stock(ParamPreviousClose prevClose, ParamListInterface open, ParamListInterface ask, ParamListInterface oneYrTarg,
+	//			ParamListInterface beta, ParamListInterface earnDate, ParamListInterface daysRng, ParamListInterface wk52Rng,
+	//			ParamListInterface vol, ParamListInterface avgVol, ParamListInterface mktCap, ParamListInterface peTtm,
+	//			ParamListInterface epsTtm, ParamListInterface divnYield, ParamStockName stockName) {
+	//
+	///*		this.prevClose = prevClose;
+	//		this.open = open;
+	//		this.ask = ask;
+	//		this.oneYrTarg = oneYrTarg;
+	//		this.beta = beta;
+	//		this.earnDate = earnDate;
+	//		this.daysRng = daysRng;
+	//		this.wk52Rng = wk52Rng;
+	//		this.vol = vol;
+	//		this.avgVol = avgVol;
+	//		this.mktCap = mktCap;
+	//		this.peTtm = peTtm;
+	//		this.epsTtm = epsTtm;
+	//		this.divnYield = divnYield;*/
+	//		this.stockName = stockName;
+	//	}
 	@SuppressWarnings("unused")
 	public Stock(){
-		
+
 	}
 	public Stock(ParamListInterface stockName) {
 		this.stockName = (ParamStockName) stockName;
 	}
-	
+
 	public Stock(String stockSym) {
 		ParamStockName stockName = new ParamStockName();
 		stockName.setparamData(stockSym);
 		this.stockName=stockName;
+		this.stockAsk=new ParamAsk();
+		this.stockAverageVolume=new ParamAverageVolume();
+		this.stockBeta = new ParamBeta();
+		this.stockBid = new ParamBid();
+		this.stockDaysRange = new ParamDaysRange();
+		this.stockDividendYield = new ParamDividendYield();
+		this.stockEarnDate = new ParamEarnDate();
+		this.stockEarningsPerShare = new ParamEarningsPerShare();
+		this.stockMarketCapitalization = new ParamMarketCapitalization();
+		this.stockOneYearTarget = new ParamOneYearTarget();
+		this.stockOpen = new ParamOpen();
+		this.stockPERatio = new ParamPERatio();
+		this.stockPreviousClose = new ParamPreviousClose();
+		this.stockVolume = new ParamVolume();
+		this.stockWeekRange = new ParamWeekRange();
+
 	}
 
-	public void printDetails(Stock stock) {
-		System.out.println("Printing Stock details for : " + stock.getStockName());
-/*		System.out.println("Stock Close:" + stock.getPrevClose());
-		System.out.println("Stock Open:"+stock.getOpen());
-		System.out.println("Stock Ask:"+stock.getAsk());
-		System.out.println("Stock One Year Target:"+stock.getOneYrTarg());
-		System.out.println("Stock Beta:"+stock.getBeta());
-		System.out.println("Stock Earn Date:"+stock.getEarnDate());
-		System.out.println("Stock Day's Range:"+stock.getDaysRng());
-		System.out.println("Stock 52-Week Range:"+stock.getWk52Rng());
-		System.out.println("Stock Volume:"+stock.getVol());
-		System.out.println("Stock Average Volume:"+stock.getAvgVol());
-		System.out.println("Stock Market Capitalization:"+stock.getMktCap());
-		System.out.println("Stock P/E Ttm:"+stock.getPeTtm());
-		System.out.println("Stock Earnings per Share Ttm:"+stock.getEpsTtm());
-		System.out.println("Stock Divident Yield:"+stock.getDivnYield());
-		System.out.println("Stock Stock Name:");*/
+	public void printDetails() {
+		System.out.println("Printing Stock details for : " + this.getStockName());
+		System.out.println("Stock Close:" + this.getStockPreviousCloseStr());
+		System.out.println("Stock Open:"+this.getStockOpenStr());
+		System.out.println("Stock Ask:"+this.getStockAskStr());
+		System.out.println("Stock One Year Target:"+this.getStockOneYearTargetStr());
+		System.out.println("Stock Beta:"+this.getStockBetaStr());
+		System.out.println("Stock Earn Date:"+this.getStockEarnDateStr());
+		System.out.println("Stock Day's Range:"+this.getStockDaysRangeStr());
+		System.out.println("Stock 52-Week Range:"+this.getstockWeekRangeStr());
+		System.out.println("Stock Volume:"+this.getStockVolumeStr());
+		System.out.println("Stock Average Volume:"+this.getStockAverageVolumeStr());
+		System.out.println("Stock Market Capitalization:"+this.getStockMarketCapitalizationStr());
+		System.out.println("Stock P/E Ttm:"+this.getStockPERatioStr());
+		System.out.println("Stock Earnings per Share Ttm:"+this.getStockPERatioStr());
+		System.out.println("Stock Divident Yield:"+this.getStockDividendYieldStr());
+		//		System.out.println("Stock Stock Name:"+this.getStock);
 	}
 	public ParamAsk getStockAsk() {
 		return stockAsk;
@@ -148,12 +165,14 @@ public class Stock {
 	public ParamVolume getStockVolume() {
 		return stockVolume;
 	}
-	
+	public ParamWeekRange getstockWeekRange() {
+		return stockWeekRange;
+	}
 	/*
 	 * Getter methods to return Data as String values for each of the parameters.
 	 * 
 	 */
-	
+
 	public String getStockAskStr() {
 		return stockAsk.getparamData();
 	}
@@ -196,5 +215,9 @@ public class Stock {
 	public String getStockVolumeStr() {
 		return stockVolume.getparamData();
 	}
+	public String getstockWeekRangeStr() {
+		return stockWeekRange.getparamData();
+	}
+
 
 }

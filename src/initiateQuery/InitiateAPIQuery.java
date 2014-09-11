@@ -30,7 +30,9 @@ import financialQueryTool.ParamOpen;
 import financialQueryTool.ParamPERatio;
 import financialQueryTool.ParamPreviousClose;
 import financialQueryTool.ParamStockName;
+import financialQueryTool.ParamStockSym;
 import financialQueryTool.ParamVolume;
+import financialQueryTool.ParamWeekRange;
 import financialQueryTool.Stock;
 import financialQueryTool.WriteToCSV;
 
@@ -72,13 +74,12 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		}
 	}
 	
-	public ArrayList<ParamListInterface> queryParamList () {
+	public static ArrayList<ParamListInterface> queryParamList () {
 		ArrayList<ParamListInterface> applicableQueryParams = new ArrayList<ParamListInterface>();
 		
 		ParamListInterface ask = new ParamAsk(); //a
 		ParamListInterface averageVolume = new ParamAverageVolume(); //a2
 		/*ParamListInterface beta = new ParamBeta();*/
-		
 		ParamListInterface bid = new ParamBid(); //b
 		ParamListInterface daysRange = new ParamDaysRange(); //m
 		ParamListInterface dividendYield = new ParamDividendYield(); //y
@@ -90,7 +91,24 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		ParamListInterface peRatio = new ParamPERatio(); //r
 		ParamListInterface previousClose = new ParamPreviousClose(); //p
 		ParamListInterface stockName = new ParamStockName(); //n
+		/*ParamListInterface stockSym = new ParamStockSym();*/
 		ParamListInterface volume = new ParamVolume(); //v
+		ParamListInterface weekRange = new ParamWeekRange(); //w
+		
+		applicableQueryParams.add(ask);
+		applicableQueryParams.add(averageVolume);
+		applicableQueryParams.add(bid);
+		applicableQueryParams.add(daysRange);
+		applicableQueryParams.add(dividendYield);
+		applicableQueryParams.add(earningsPerShare);
+		applicableQueryParams.add(marketCap);
+		applicableQueryParams.add(oneYearTarget);
+		applicableQueryParams.add(open);
+		applicableQueryParams.add(peRatio);
+		applicableQueryParams.add(previousClose);
+		applicableQueryParams.add(stockName);
+		applicableQueryParams.add(volume);
+		applicableQueryParams.add(weekRange);
 		
 		return applicableQueryParams;
 	}
@@ -100,19 +118,19 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		GenerateURI apiUri = new GenerateApiUri();
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
-		boolean truval = true;
+		ArrayList<ParamListInterface> validParamList = InitiateAPIQuery.queryParamList();
+												boolean truval = true;
 		int bufferSize = 2048;
 		//create the URI for querying.
-		if (truval)
-		{
-		throw new RuntimeErrorException(null, "Throw an Error purposely");
-		}
-		try {
-			queryUri = apiUri.getURI(stockList);
-		} catch (URISyntaxException e1) {
-			e1.printStackTrace();
-		}
 
+		queryUri = apiUri.getURI(stockList, validParamList);
+		
+		System.out.println("Using the URI: \t" + queryUri.toString());
+		//Original value: 	http://finance.yahoo.com/d/quotes.csv?s=GOOG+AAPL+AMZN+BIDU+MA+NFLX&f=aa2bmyej1t8orpnvw
+//		if (truval)
+//		{
+//		throw new RuntimeErrorException(null, "Throw an Error purposely");
+//		}
 		try {
 			apiConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 			//set timeout
@@ -217,26 +235,18 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			//each of the queryResultRow has the following data from the API query:
 			//
 			String[] data = queryResultRow.split(",");
+			System.out.println("Data0" + data[0]);
 			InitiateAPIQuery.addApiStockData(data, stockList.get(count));
 			System.out.println(stockList.get(count).getStockName());
+			stockList.get(count).printDetails();
 			count++;
 		}
 		return stockList;
 	}
 	
-	public static ParamListInterface[] validParams(){
-		ParamListInterface[] validParams = {
-				new ParamAsk(),
-				new ParamBid(),
-				new ParamAverageVolume(),
-				new ParamDaysRange(),
-				new ParamBid()
-				};
-		return validParams;
-	}
-	
 
 	/**
+	 * 581.13,1534680,580.72,"579.11 - 581.74",N/A,19.30,392.9B,N/A,580.36,30.21,583.10,"Google Inc.",172180,"502.80 - 604.83"
 	 * Adds all the information from the query result for each stock
 	 * @param stockData
 	 * @param stock
@@ -257,43 +267,22 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 	 * Volume: 
 	 * W52 Week Range: "502.80 - 604.83"
 	 */
-	public static Stock addApiStockData(String[] stockData, Stock stock) {
-		ArrayList<String> stockDataList = new ArrayList<String>(Arrays.asList(stockData));
-//		if (stockDataList.)
+	public static Stock addApiStockData(String[] data, Stock stock) {
 		System.out.println("Setting stock data for : " + stock.getStockName());
-//		stock.ask.setparamData(stockData[0]);
-//		stock.avgVol.setparamData(stockData[1]);
-//		stock.setBeta(stockData[2]);
-//		stock.setDaysRng(stockData[3]);
-//		stock.setDivnYield(stockData[4]);
-//		stock.setEarnDate(stockData[5]);
-//		stock.setEpsTtm(stockData[6]);
-//		stock.setMktCap(stockData[7]);
-//		stock.setOneYrTarg(stockData[8]);
-//		stock.setOpen(stockData[9]);
-//		stock.setPeTtm(stockData[10]);
-//		stock.setPrevClose(stockData[11]);
-//		stock.setStockName(stockData[12]);
-//		stock.setVol(stockData[13]);
-//		stock.setWk52Rng(stockData[14]);
+		stock.stockAsk.setparamData(data[0]);
+		stock.stockAverageVolume.setparamData(data[1]);
+		stock.stockBid.setparamData(data[2]);
+		stock.stockDaysRange.setparamData(data[3]);
+		stock.stockDividendYield.setparamData(data[4]);
+		stock.stockEarningsPerShare.setparamData(data[5]);
+		stock.stockMarketCapitalization.setparamData(data[6]);
+		stock.stockOneYearTarget.setparamData(data[7]);
+		stock.stockOpen.setparamData(data[8]);
+		stock.stockPERatio.setparamData(data[9]);
+		stock.stockPreviousClose.setparamData(data[10]);
+		stock.stockName.setparamData(data[11]);
+		stock.stockVolume.setparamData(data[12]);
+		stock.stockWeekRange.setparamData(data[13]);
 		return stock;
 	}
-
-	/*	paramList = new ParamAsk();
-		paramList = new ParamAverageVolume();
-		paramList = new ParamBeta();
-		paramList = new ParamBid();
-		paramList = new ParamDaysRange();
-		paramList = new ParamDividendYield();
-		paramList = new ParamEarnDate();
-		paramList = new ParamEarningsPerShare();
-		paramList = new ParamMarketCapitalization();
-		paramList = new ParamOneYearTarget();
-		paramList = new ParamOpen();
-		paramList = new ParamPERatio();
-		paramList = new ParamPreviousClose();
-		paramList = new ParamStockName();
-		paramList = new ParamVolume();
-		paramList = new ParamWeekRange();
-	}*/
 }

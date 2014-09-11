@@ -32,7 +32,11 @@ public abstract class GenerateURI {
 		System.out.println("Generating the URI.");
 		return null;
 	}
-	public URI getURI(ArrayList<Stock> stocks) throws URISyntaxException {
+	public URI getURI(ArrayList<Stock> stocks) {
+		System.out.println("Generating the URI.");
+		return null;
+	}
+	public URI getURI(ArrayList<Stock> stocks, ArrayList<ParamListInterface> applicableQueryParams){
 		System.out.println("Generating the URI.");
 		return null;
 	}

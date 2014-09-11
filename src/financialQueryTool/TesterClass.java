@@ -27,12 +27,7 @@ public class TesterClass {
 			System.out.println("Added " + eachStock);
 		}*/
 		System.out.println(stockList.size());
-		try {
-			System.out.println(generateApiUri.getURI(stockList));
-		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		System.out.println(generateApiUri.getURI(stockList));
 	}
 
 }
