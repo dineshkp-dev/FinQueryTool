@@ -1,5 +1,7 @@
 package financialQueryTool;
 
+import initiateQuery.InitiateQuery;
+
 import java.io.IOException;
 import java.nio.file.FileSystems;
 //import java.jsoup;

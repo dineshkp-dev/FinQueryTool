@@ -1,4 +1,4 @@
-package financialQueryTool;
+package initiateQuery;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +14,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.management.RuntimeErrorException;
+
+import financialQueryTool.GenerateApiUri;
+import financialQueryTool.GenerateURI;
+import financialQueryTool.ParamAsk;
+import financialQueryTool.ParamAverageVolume;
+import financialQueryTool.ParamBid;
+import financialQueryTool.ParamDaysRange;
+import financialQueryTool.ParamDividendYield;
+import financialQueryTool.ParamEarningsPerShare;
+import financialQueryTool.ParamListInterface;
+import financialQueryTool.ParamMarketCapitalization;
+import financialQueryTool.ParamOneYearTarget;
+import financialQueryTool.ParamOpen;
+import financialQueryTool.ParamPERatio;
+import financialQueryTool.ParamPreviousClose;
+import financialQueryTool.ParamStockName;
+import financialQueryTool.ParamVolume;
+import financialQueryTool.Stock;
+import financialQueryTool.WriteToCSV;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
 
@@ -51,6 +70,29 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public ArrayList<ParamListInterface> queryParamList () {
+		ArrayList<ParamListInterface> applicableQueryParams = new ArrayList<ParamListInterface>();
+		
+		ParamListInterface ask = new ParamAsk(); //a
+		ParamListInterface averageVolume = new ParamAverageVolume(); //a2
+		/*ParamListInterface beta = new ParamBeta();*/
+		
+		ParamListInterface bid = new ParamBid(); //b
+		ParamListInterface daysRange = new ParamDaysRange(); //m
+		ParamListInterface dividendYield = new ParamDividendYield(); //y
+		/*ParamListInterface earnDate = new ParamEarnDate();*/
+		ParamListInterface earningsPerShare = new ParamEarningsPerShare(); //e
+		ParamListInterface marketCap = new ParamMarketCapitalization(); //j1
+		ParamListInterface oneYearTarget = new ParamOneYearTarget(); //t8
+		ParamListInterface open = new ParamOpen(); //o
+		ParamListInterface peRatio = new ParamPERatio(); //r
+		ParamListInterface previousClose = new ParamPreviousClose(); //p
+		ParamListInterface stockName = new ParamStockName(); //n
+		ParamListInterface volume = new ParamVolume(); //v
+		
+		return applicableQueryParams;
 	}
 
 	public void queryFromApi (ArrayList<Stock> stockList, Path outputCsvPath) {

@@ -1,7 +1,5 @@
 package financialQueryTool;
 
-import java.util.ArrayList;
-
 public class Stock {
 	public ParamAsk stockAsk;
 	public ParamAverageVolume stockAverageVolume;
@@ -149,6 +147,54 @@ public class Stock {
 	}
 	public ParamVolume getStockVolume() {
 		return stockVolume;
+	}
+	
+	/*
+	 * Getter methods to return Data as String values for each of the parameters.
+	 * 
+	 */
+	
+	public String getStockAskStr() {
+		return stockAsk.getparamData();
+	}
+	public String getStockAverageVolumeStr() {
+		return stockAverageVolume.getparamData();
+	}
+	public String getStockBetaStr() {
+		return stockBeta.getparamData();
+	}
+	public String getStockBidStr() {
+		return stockBid.getparamData();
+	}
+	public String getStockDaysRangeStr() {
+		return stockDaysRange.getparamData();
+	}
+	public String getStockDividendYieldStr() {
+		return stockDividendYield.getparamData();
+	}
+	public String getStockEarnDateStr() {
+		return stockEarnDate.getparamData();
+	}
+	public String getStockEarningsPerShareStr() {
+		return stockEarningsPerShare.getparamData();
+	}
+	public String getStockMarketCapitalizationStr() {
+		return stockMarketCapitalization.getparamData();
+	}
+	public String getStockOneYearTargetStr() {
+		return stockOneYearTarget.getparamData();
+	}
+	public String getStockOpenStr() {
+		return stockOpen.getparamData();
+	}
+	public String getStockPERatioStr() {
+		return stockPERatio.getparamData();
+	}
+	public String getStockPreviousCloseStr() {
+		return stockPreviousClose.getparamData();
+	}
+	public String getStockVolumeStr() {
+		return stockVolume.getparamData();
 	}
 
 }
