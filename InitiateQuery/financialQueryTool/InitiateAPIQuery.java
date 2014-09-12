@@ -1,4 +1,4 @@
-package initiateQuery;
+package financialQueryTool;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,7 +1,5 @@
 package financialQueryTool;
 
-import initiateQuery.InitiateAPIQuery;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.FileSystems;

@@ -1,4 +1,4 @@
-package initiateQuery;
+package financialQueryTool;
 
 import java.net.URI;
 
