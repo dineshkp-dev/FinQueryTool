@@ -107,20 +107,20 @@ public class Stock {
 
 	public void printDetails() {
 		System.out.println("Printing Stock details for : " + this.getStockName());
-		System.out.println("Stock Close:" + this.getStockPreviousCloseStr());
-		System.out.println("Stock Open:"+this.getStockOpenStr());
-		System.out.println("Stock Ask:"+this.getStockAskStr());
-		System.out.println("Stock One Year Target:"+this.getStockOneYearTargetStr());
-		System.out.println("Stock Beta:"+this.getStockBetaStr());
-		System.out.println("Stock Earn Date:"+this.getStockEarnDateStr());
-		System.out.println("Stock Day's Range:"+this.getStockDaysRangeStr());
-		System.out.println("Stock 52-Week Range:"+this.getstockWeekRangeStr());
-		System.out.println("Stock Volume:"+this.getStockVolumeStr());
-		System.out.println("Stock Average Volume:"+this.getStockAverageVolumeStr());
-		System.out.println("Stock Market Capitalization:"+this.getStockMarketCapitalizationStr());
-		System.out.println("Stock P/E Ttm:"+this.getStockPERatioStr());
-		System.out.println("Stock Earnings per Share Ttm:"+this.getStockPERatioStr());
-		System.out.println("Stock Divident Yield:"+this.getStockDividendYieldStr());
+		System.out.println("\tStock Close:" + this.getStockPreviousCloseStr());
+		System.out.println("\tStock Open:"+this.getStockOpenStr());
+		System.out.println("\tStock Ask:"+this.getStockAskStr());
+		System.out.println("\tStock One Year Target:"+this.getStockOneYearTargetStr());
+		System.out.println("\tStock Beta:"+this.getStockBetaStr());
+		System.out.println("\tStock Earn Date:"+this.getStockEarnDateStr());
+		System.out.println("\tStock Day's Range:"+this.getStockDaysRangeStr());
+		System.out.println("\tStock 52-Week Range:"+this.getstockWeekRangeStr());
+		System.out.println("\tStock Volume:"+this.getStockVolumeStr());
+		System.out.println("\tStock Average Volume:"+this.getStockAverageVolumeStr());
+		System.out.println("\tStock Market Capitalization:"+this.getStockMarketCapitalizationStr());
+		System.out.println("\tStock P/E Ttm:"+this.getStockPERatioStr());
+		System.out.println("\tStock Earnings per Share Ttm:"+this.getStockPERatioStr());
+		System.out.println("\tStock Divident Yield:"+this.getStockDividendYieldStr());
 		//		System.out.println("Stock Stock Name:"+this.getStock);
 	}
 	public ParamAsk getStockAsk() {

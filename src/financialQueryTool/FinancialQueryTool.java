@@ -18,6 +18,7 @@ public class FinancialQueryTool {
 
 	public static void main(String[] args) {
 		FinancialQueryTool finQuery = new FinancialQueryTool();
+		CheckJava.JavaVersion();
 		finQuery.go();
 	}
 
@@ -27,19 +28,20 @@ public class FinancialQueryTool {
 		System.out.println("Parsing input file");
 		//call to parse input file
 		InputData inputData = ParseInputXml.parseInputData(inputXmlLoc);
-		InitiateAPIQuery initateQuery;
+		InitiateQueryInterface initateQuery;
 
 
 		System.out.println("Stocks obtained: " + inputData.getRequiredStockSymbols());
 		stockList = GenerateStockList.getStockList(inputData.getRequiredStockSymbols());
-		System.out.println(stockList.get(0).getStockName());
 		System.out.println("Query Type requested by User is: " + inputData.getQueryType().toString());
 		switch (inputData.getQueryType()) {
 		case API : System.out.println("Query type is API!!!");
 			initateQuery = new InitiateAPIQuery();
-			initateQuery.queryFromApi(stockList, inputData.getOutputFile());
+			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
 		break;
 		case HISTORICAL : System.out.println("Query type is HISTORICAL!!!");
+			initateQuery = new InitiateHistoricalQuery();
+			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
 		break;
 		case WEB : System.out.println("Query type is WEB!!!");
 		break;

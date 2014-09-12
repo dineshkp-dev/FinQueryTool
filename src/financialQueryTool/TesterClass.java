@@ -1,6 +1,5 @@
 package financialQueryTool;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class TesterClass {
@@ -15,6 +14,17 @@ public class TesterClass {
 
 		for (String stocks : stockSym) {
 			stockNamesStr = stockNamesStr + ", " + stocks;
+		}
+		
+		String testingStr = "Hello,there,what,is,this,\"this is one,  value \".csv";
+		
+		System.out.println(testingStr);
+		
+		String[] arr = testingStr.split(",(?! )");
+		testingStr = testingStr.replaceAll("\\....", ".htm");
+		System.out.println(testingStr);
+		for (String data : arr ) {
+			System.out.println(data);
 		}
 		
 		System.out.println("Stockname: " + stockNamesStr);

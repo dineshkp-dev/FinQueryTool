@@ -32,7 +32,7 @@ public class ParseInputXml {
 				inputData.setRequiredStockSymbols(element.getElementsByTagName("RequiredStockSymbols").item(0).getTextContent());
 				inputData.setTempFile(FileSystems.getDefault().getPath(element.getElementsByTagName("TempFile").item(0).getTextContent()).toAbsolutePath());
 				inputData.setOutputFile(FileSystems.getDefault().getPath(element.getElementsByTagName("OutputFile").item(0).getTextContent()).toAbsolutePath());
-				inputData.setQueryType(QueryType.valueOf(element.getElementsByTagName("QueryType").item(0).getTextContent()));
+				inputData.setQueryType(QueryType.valueOf(element.getElementsByTagName("QueryType").item(0).getTextContent().toUpperCase()));
 			}
 		}
 		return inputData;

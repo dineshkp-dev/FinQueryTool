@@ -25,7 +25,6 @@ public class GenerateStockList {
 			System.out.println("Adding Symbol: " + eachStockSym);
 			stockList.add(new Stock(eachStockSym));
 		}
-		System.out.println("Added new Stock Object: " + stockList.get(3).getStockName());
 		return stockList;
 	}
 

@@ -42,6 +42,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
 		int bufferSize = 2048;
+		boolean captureStream = true;
 		try {
 			apiConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 			//set timeout
@@ -50,7 +51,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			//			Path path = FileSystems.getDefault().getPath("output_newApi.csv");
 
 
-			WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize);
+			WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize, captureStream);
 			if (WriteToCSV.fileExistsCheck(outputCsvPath)){	
 				System.out.println("Successfully written to file");
 			}
@@ -58,10 +59,8 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 				System.out.println("Error during CSV writing.");
 			}
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
@@ -113,31 +112,27 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		return applicableQueryParams;
 	}
 
-	public void queryFromApi (ArrayList<Stock> stockList, Path outputCsvPath) {
+	public void initiateQuery (ArrayList<Stock> stockList, Path outputCsvPath) {
 		URI queryUri = null;
 		GenerateURI apiUri = new GenerateApiUri();
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
 		ArrayList<ParamListInterface> validParamList = InitiateAPIQuery.queryParamList();
-												boolean truval = true;
 		int bufferSize = 2048;
+		boolean captureStream = true;
+		
 		//create the URI for querying.
-
 		queryUri = apiUri.getURI(stockList, validParamList);
 		
 		System.out.println("Using the URI: \t" + queryUri.toString());
 		//Original value: 	http://finance.yahoo.com/d/quotes.csv?s=GOOG+AAPL+AMZN+BIDU+MA+NFLX&f=aa2bmyej1t8orpnvw
-//		if (truval)
-//		{
-//		throw new RuntimeErrorException(null, "Throw an Error purposely");
-//		}
 		try {
 			apiConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 			//set timeout
 			connectionStream = apiConnection.getInputStream();
 			System.out.println(apiConnection.getContentType());
 
-			String queryResult = WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize);
+			String queryResult = WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize, captureStream);
 			setStockDatafrmStr(stockList, queryResult);
 			/*			String stock1 = queryResult.split("\n")[0];
 			System.out.println("Stock1 data: " + stock1);*/
@@ -161,14 +156,15 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			}
 		}
 	}
-
-	public static String queryFromApi (String stockSymbol) {
+	@Override
+	public String initiateQuery (String stockSymbol) {
 
 		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=AAPL+GOOG+MSFT&f=nab";
 		String queriedData = null;
 
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
+		boolean captureStream = true;
 		
 		try {
 			URL yahooFinApi = new URL(api_url);
@@ -179,7 +175,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			Path path = FileSystems.getDefault().getPath("output_newApi.csv");
 			int bufferSize = 2048;
 
-			WriteToCSV.WriteDataToCSV(path, connectionStream, bufferSize);
+			WriteToCSV.WriteDataToCSV(path, connectionStream, bufferSize, captureStream);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -196,46 +192,32 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 
 	@Override
 	public void printURI() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void printStock() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public URI getURI() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public URI setURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String initiateQuery() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<Stock> setStockDatafrmStr(ArrayList<Stock> stockList, String queryResult) {
 		System.out.println("Setting the query result to each Stock Symbol.\t" + this.getClass());
-		//		ArrayList<String> queryResultarr = new ArrayList<String>();
-		String[] queryResultarr = queryResult.split("\n");
+		String[] queryResultarr = queryResult.trim().split("\n");
 		System.out.println("Number of returned items: " + queryResultarr.length);
 		int count =0;
 		for (String queryResultRow : queryResultarr) {
-			System.out.println("Row"+count+" Value: " + queryResultRow );
 			//each of the queryResultRow has the following data from the API query:
-			//
-			String[] data = queryResultRow.split(",");
-			System.out.println("Data0" + data[0]);
+			//N/A,4238940,N/A,"75.41 - 76.448",0.51,2.766,87.566B,88.90,76.32,27.71,76.65,"Mastercard Incorp",4673567,"64.744 - 84.748"
+			String[] data = queryResultRow.split(",(?! )");
 			InitiateAPIQuery.addApiStockData(data, stockList.get(count));
 			System.out.println(stockList.get(count).getStockName());
 			stockList.get(count).printDetails();
@@ -282,7 +264,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		stock.stockPreviousClose.setparamData(data[10]);
 		stock.stockName.setparamData(data[11]);
 		stock.stockVolume.setparamData(data[12]);
-		stock.stockWeekRange.setparamData(data[13]);
+		stock.stockWeekRange.setparamData(data[13].trim());
 		return stock;
 	}
 }
