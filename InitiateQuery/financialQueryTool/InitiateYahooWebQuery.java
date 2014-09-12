@@ -38,7 +38,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 
 	@Override
 	public void initiateQuery(ArrayList<Stock> stockList, Path outputFile) {
-
+		
 	}
 
 }

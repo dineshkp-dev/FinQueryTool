@@ -48,8 +48,6 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			//set timeout
 			connectionStream = apiConnection.getInputStream();
 			System.out.println(apiConnection.getContentType());
-			//			Path path = FileSystems.getDefault().getPath("output_newApi.csv");
-
 
 			WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize, captureStream);
 			if (WriteToCSV.fileExistsCheck(outputCsvPath)){	
@@ -134,8 +132,6 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 
 			String queryResult = WriteToCSV.WriteDataToCSV(outputCsvPath, connectionStream, bufferSize, captureStream);
 			setStockDatafrmStr(stockList, queryResult);
-			/*			String stock1 = queryResult.split("\n")[0];
-			System.out.println("Stock1 data: " + stock1);*/
 			if (WriteToCSV.fileExistsCheck(outputCsvPath)){	
 				System.out.println("Successfully written to file");
 			}

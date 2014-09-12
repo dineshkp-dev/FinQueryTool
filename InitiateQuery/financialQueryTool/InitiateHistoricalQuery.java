@@ -56,16 +56,9 @@ public class InitiateHistoricalQuery implements InitiateQueryInterface {
 				apiConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 				connectionStream = apiConnection.getInputStream();
 				System.out.println(apiConnection.getContentType());
-//				if (outputFile.toString().contains(".csv")){
-//					outputFile = FileSystems.getDefault().getPath(outputFile.toString().replace(".csv", "_"+stock.getStockName()+".csv"));
-//				}
-//				else
-//				{
-					outputFile = FileSystems.getDefault().getPath(outputFile.toString().replaceAll("\\....$", "_"+stock.getStockName()+".csv"));	
-//				}
+				outputFile = FileSystems.getDefault().getPath(outputFile.toString().replaceAll("\\....$", "_"+stock.getStockName()+".csv"));	
 				System.out.println("File Path updated: " + outputFile.toAbsolutePath());
 				String queryResult = WriteToCSV.WriteAppendedDataToCSV(outputFile, connectionStream, bufferSize, captureStream, stock);
-				//				queryResult = appendStockName(queryResult, stock);
 				if (WriteToCSV.fileExistsCheck(outputFile)){	
 					System.out.println("Successfully written to file");
 				}
