@@ -34,7 +34,7 @@ public class InitiateQuery {
 		String inputLine;
 		String queriedXML = "";
 		String query_URL = "http://finance.yahoo.com/q;_ylt=AmqI70JwGoQRGTnHFJQ3aNyiuYdG;_ylu=X3oDMTBxdGVyNzJxBHNlYwNVSCAzIERlc2t0b3AgU2VhcmNoIDEx;_ylg=X3oDMTBsdWsyY2FpBGxhbmcDZW4tVVMEcHQDMgR0ZXN0Aw--;_ylv=3;_ylc=X1MDMjE0MjQ3ODk0OARfcgMyBGZyA3VoM19maW5hbmNlX3dlYl9ncwRmcjIDc2EtZ3AEZ3ByaWQDBG5fZ3BzAzEwBG9yaWdpbgNmaW5hbmNlLnlhaG9vLmNvbQRwb3MDMQRwcXN0cgMEcXVlcnkDR09PRywEc2FjAzEEc2FvAzE-?p=http%3A%2F%2Ffinance.yahoo.com%2Fq%3Fs%3D" + stockSymbol + "%26ql%3D0&type=2button&uhb=uhb2&fr=uh3_finance_vert_gs&s=" + stockSymbol;
-
+	//	http://finance.yahoo.com/q;_ylt=AmqI70JwGoQRGTnHFJQ3aNyiuYdG;_ylu=X3oDMTBxdGVyNzJxBHNlYwNVSCAzIERlc2t0b3AgU2VhcmNoIDEx;_ylg=X3oDMTBsdWsyY2FpBGxhbmcDZW4tVVMEcHQDMgR0ZXN0Aw--;_ylv=3;_ylc=X1MDMjE0MjQ3ODk0OARfcgMyBGZyA3VoM19maW5hbmNlX3dlYl9ncwRmcjIDc2EtZ3AEZ3ByaWQDBG5fZ3BzAzEwBG9yaWdpbgNmaW5hbmNlLnlhaG9vLmNvbQRwb3MDMQRwcXN0cgMEcXVlcnkDR09PRywEc2FjAzEEc2FvAzE-?p=http%3A%2F%2Ffinance.yahoo.com%2Fq%3Fs%3DAMD%26ql%3D0&type=2button&uhb=uhb2&fr=uh3_finance_vert_gs&s=AMD"
 		try {
 			URL yahooFinData = new URL(query_URL);
 			HttpURLConnection connection = (HttpURLConnection) yahooFinData.openConnection();

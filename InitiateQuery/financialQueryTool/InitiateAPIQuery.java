@@ -74,38 +74,23 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 	public static ArrayList<ParamListInterface> queryParamList () {
 		ArrayList<ParamListInterface> applicableQueryParams = new ArrayList<ParamListInterface>();
 		
-		ParamListInterface ask = new ParamAsk(); //a
-		ParamListInterface averageVolume = new ParamAverageVolume(); //a2
-		/*ParamListInterface beta = new ParamBeta();*/
-		ParamListInterface bid = new ParamBid(); //b
-		ParamListInterface daysRange = new ParamDaysRange(); //m
-		ParamListInterface dividendYield = new ParamDividendYield(); //y
-		/*ParamListInterface earnDate = new ParamEarnDate();*/
-		ParamListInterface earningsPerShare = new ParamEarningsPerShare(); //e
-		ParamListInterface marketCap = new ParamMarketCapitalization(); //j1
-		ParamListInterface oneYearTarget = new ParamOneYearTarget(); //t8
-		ParamListInterface open = new ParamOpen(); //o
-		ParamListInterface peRatio = new ParamPERatio(); //r
-		ParamListInterface previousClose = new ParamPreviousClose(); //p
-		ParamListInterface stockName = new ParamStockName(); //n
-		/*ParamListInterface stockSym = new ParamStockSym();*/
-		ParamListInterface volume = new ParamVolume(); //v
-		ParamListInterface weekRange = new ParamWeekRange(); //w
-		
-		applicableQueryParams.add(ask);
-		applicableQueryParams.add(averageVolume);
-		applicableQueryParams.add(bid);
-		applicableQueryParams.add(daysRange);
-		applicableQueryParams.add(dividendYield);
-		applicableQueryParams.add(earningsPerShare);
-		applicableQueryParams.add(marketCap);
-		applicableQueryParams.add(oneYearTarget);
-		applicableQueryParams.add(open);
-		applicableQueryParams.add(peRatio);
-		applicableQueryParams.add(previousClose);
-		applicableQueryParams.add(stockName);
-		applicableQueryParams.add(volume);
-		applicableQueryParams.add(weekRange);
+		applicableQueryParams.add(new ParamAsk());//a
+		applicableQueryParams.add(new ParamAverageVolume());
+		/*applicableQueryParams.add(new ParamBeta());*/
+		applicableQueryParams.add(new ParamBid());//b
+		applicableQueryParams.add(new ParamDaysRange());//m
+		applicableQueryParams.add(new ParamDividendYield());//y
+		/*applicableQueryParams.add(new ParamEarnDate());*/
+		applicableQueryParams.add(new ParamEarningsPerShare());//e
+		applicableQueryParams.add(new ParamMarketCapitalization());//j1
+		applicableQueryParams.add(new ParamOneYearTarget());//t8
+		applicableQueryParams.add(new ParamOpen());//o
+		applicableQueryParams.add(new ParamPERatio());//r
+		applicableQueryParams.add(new ParamPreviousClose());//p
+		applicableQueryParams.add(new ParamStockName());//n
+		/*applicableQueryParams.add(new ParamStockSym());*/
+		applicableQueryParams.add(new ParamVolume());//v
+		applicableQueryParams.add(new ParamWeekRange());//w
 		
 		return applicableQueryParams;
 	}
@@ -155,7 +140,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 	@Override
 	public String initiateQuery (String stockSymbol) {
 
-		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=AAPL+GOOG+MSFT&f=nab";
+		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + "&f=aa2bmyej1t8orpnvw";
 		String queriedData = null;
 
 		HttpURLConnection apiConnection = null;
@@ -262,5 +247,11 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		stock.stockVolume.setparamData(data[12]);
 		stock.stockWeekRange.setparamData(data[13].trim());
 		return stock;
+	}
+
+	@Override
+	public void initiateQuery(ArrayList<Stock> stockList) {
+		// TODO Auto-generated method stub
+		
 	}
 }

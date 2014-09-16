@@ -3,7 +3,7 @@
 <UserData>
 	<RequiredStockSymbols>GOOG</RequiredStockSymbols> <!-- ,AAPL,AMZN,BIDU,MA,NFLX</RequiredStockSymbols> -->
 	<RequiredParameters>Day's Range,52wk Range,Prev Close,Open,Div &amp; Yield,P/E (ttm),EPS (ttm),Beta,1y Target Est</RequiredParameters>
-	<QueryType>Historical</QueryType>
+	<QueryType>WEBYAHOO</QueryType> <!-- api/historical/WEBYAHOO -->
 </UserData>
 <FileLocation>
 	<TempFile>tempFile.html</TempFile>

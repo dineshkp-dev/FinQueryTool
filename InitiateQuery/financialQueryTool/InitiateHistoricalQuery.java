@@ -87,5 +87,11 @@ public class InitiateHistoricalQuery implements InitiateQueryInterface {
 		return queryResult;
 	}
 
+	@Override
+	public void initiateQuery(ArrayList<Stock> stockList) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

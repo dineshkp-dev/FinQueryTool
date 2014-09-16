@@ -9,5 +9,5 @@ package financialQueryTool;
  * Web, Api, HistoricalApi
  */
 public enum QueryType {
-	WEB, API, HISTORICAL;
+	WEBYAHOO, API, HISTORICAL;
 }
