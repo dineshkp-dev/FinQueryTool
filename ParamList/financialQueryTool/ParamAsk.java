@@ -3,11 +3,16 @@ package financialQueryTool;
 public class ParamAsk implements ParamListInterface {
 	private String paramName = "Ask";
 	private static String paramUlsdCode = "a";
+	private static String paramYahooTabName = "Ask:";
 	private String paramData;
 
 	@Override
 	public String getparamName() {
 		return paramName;
+	}
+	@Override
+	public static String getParamYahooTabName() {
+		return paramYahooTabName;
 	}
 
 	@Override

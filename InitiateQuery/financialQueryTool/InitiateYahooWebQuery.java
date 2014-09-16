@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InitiateYahooWebQuery implements InitiateQueryInterface {
 
@@ -51,44 +54,33 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		URI queryUri = null;
 		int timeout = 5*1000;
 		GenerateURI yahooWebUri = new GenerateYahooWebQueryUri();
-//		ArrayList<ParamListInterface> validParamList = InitiateYahooWebQuery.queryParamListInterfaces();
+		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
+		ParseHTML parsehtml = new ParseHTML();
+		Map<String, String> mappedData = new HashMap<String, String>();
+		
 		for (Stock stock : stockList) {
 			queryUri = yahooWebUri.getURI(stock);
 			System.out.println("URI: " + queryUri.toString());
-			HttpURLConnection httpConnection = null;
-			InputStreamReader connectionStream = null;
-			BufferedReader incomingData = null;
 			
-			String inputLine = "";
 			String queriedHTML = "";
-			try {
-				httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
-				httpConnection.setConnectTimeout(timeout);
-				connectionStream = new InputStreamReader(httpConnection.getInputStream());
-				incomingData = new BufferedReader(connectionStream);
-				System.out.println(httpConnection.getContentType());
-				
-				while (((inputLine = incomingData.readLine()) != null)) {
-					System.out.println("\t"+inputLine);
-					queriedHTML = queriedHTML + inputLine;
-				}
-				
-				 
-
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-			finally {
 				try {
-					incomingData.close();
-					connectionStream.close();
-//					httpConnection.
+					HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
+					httpConnection.setConnectTimeout(timeout);
+					queriedHTML = queryYahooPage.queryHTML(httpConnection);
+					mappedData = parsehtml.searchFoVal(queriedHTML);
+					System.out.println(mappedData.keySet().toString());
+					System.out.println(mappedData.values().toString());
+					
+/* 					 [Day's Range:, P/E (ttm):, 52wk Range:, Div & Yield:, Volume:, Prev Close:, Ask:, Open:, Avg Vol (3m):, 1y Target Est:, Next Earnings Date:, EPS (ttm):, Beta:, Market Cap:, Bid:]
+					 [568.21 - 574.95, 30.03, 502.80 - 604.83, N/A (N/A), 1,596,224, 575.62, 581.91 x 100, 573.43, 1,544,670, N/A, N/A, 19.09, 1.159, 387.64B, 569.00 x 100]
+					 */			
+					} catch (MalformedURLException e) {
+					e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+//				System.out.println(queriedHTML);
 				
-			}
 		}
 	}
 
