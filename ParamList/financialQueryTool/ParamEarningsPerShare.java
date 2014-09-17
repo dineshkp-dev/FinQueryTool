@@ -4,7 +4,11 @@ public class ParamEarningsPerShare implements ParamListInterface {
 	private String paramName = "EarningsPerShare";
 	private String paramUlsdCode = "e";
 	private String paramData;
-	
+	private static String paramYahooTabName = "EPS (ttm):";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

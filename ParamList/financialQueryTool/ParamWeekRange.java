@@ -4,7 +4,11 @@ public class ParamWeekRange implements ParamListInterface {
 	private String paramName = "Week52Range";
 	private String paramUlsdCode = "w";
 	private String paramData;
-	
+	private static String paramYahooTabName = "52wk Range:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

@@ -1,9 +1,6 @@
 package financialQueryTool;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -57,33 +54,63 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
 		ParseHTML parsehtml = new ParseHTML();
 		Map<String, String> mappedData = new HashMap<String, String>();
-		
+		ParamListInterface queryParam = null;
+
 		for (Stock stock : stockList) {
 			queryUri = yahooWebUri.getURI(stock);
 			System.out.println("URI: " + queryUri.toString());
-			
+
 			String queriedHTML = "";
-				try {
-					HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
-					httpConnection.setConnectTimeout(timeout);
-					queriedHTML = queryYahooPage.queryHTML(httpConnection);
-					mappedData = parsehtml.searchFoVal(queriedHTML);
-					System.out.println(mappedData.keySet().toString());
-					System.out.println(mappedData.values().toString());
-					
-/* 					 [Day's Range:, P/E (ttm):, 52wk Range:, Div & Yield:, Volume:, Prev Close:, Ask:, Open:, Avg Vol (3m):, 1y Target Est:, Next Earnings Date:, EPS (ttm):, Beta:, Market Cap:, Bid:]
-					 [568.21 - 574.95, 30.03, 502.80 - 604.83, N/A (N/A), 1,596,224, 575.62, 581.91 x 100, 573.43, 1,544,670, N/A, N/A, 19.09, 1.159, 387.64B, 569.00 x 100]
-					 */			
-					} catch (MalformedURLException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-//				System.out.println(queriedHTML);
-				
+			try {
+				HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
+				httpConnection.setConnectTimeout(timeout);
+				queriedHTML = queryYahooPage.queryHTML(httpConnection);
+				mappedData = parsehtml.searchFoVal(queriedHTML);
+				System.out.println(mappedData.keySet().toString());
+				System.out.println("Setting the Stock's Parameters from Web Query.");
+				stock = InitiateYahooWebQuery.setStockParams(stock, mappedData);
+				stock.printDetails();
+
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
+	/**
+	 * The method sets the values from the Map 'mappedData' to the parameters of the stock Object
+	 * The Parameters are extracted from the Map using the 'Param'x Class's 'getParamYahooTabName' which corresponds to 
+	 * the table name in the Yahoo Finance Website.
+	 * @param stock
+	 * @param mappedData
+	 * @return stock Stock after all the necessary Parameters' data have been updated
+	 */
+	public static Stock setStockParams (Stock stock, Map<String, String> mappedData) {
+		
+		stock.stockPreviousClose.setparamData(mappedData.get(new ParamPreviousClose().getParamYahooTabName()));
+		stock.stockOpen.setparamData(mappedData.get(new ParamOpen().getParamYahooTabName()));
+		stock.stockBid.setparamData(mappedData.get(new ParamBid().getParamYahooTabName()));
+		stock.stockAsk.setparamData(mappedData.get(new ParamAsk().getParamYahooTabName()));
+		stock.stockOneYearTarget.setparamData(mappedData.get(new ParamOneYearTarget().getParamYahooTabName()));
+		stock.stockBeta.setparamData(mappedData.get(new ParamBeta().getParamYahooTabName()));
+		stock.stockEarnDate.setparamData(mappedData.get(new ParamEarnDate().getParamYahooTabName()));
+		stock.stockDaysRange.setparamData(mappedData.get(new ParamDaysRange().getParamYahooTabName()));
+		stock.stockWeekRange.setparamData(mappedData.get(new ParamWeekRange().getParamYahooTabName()));
+		stock.stockVolume.setparamData(mappedData.get(new ParamVolume().getParamYahooTabName()));
+		stock.stockAverageVolume.setparamData(mappedData.get(new ParamAverageVolume().getParamYahooTabName()));
+		stock.stockMarketCapitalization.setparamData(mappedData.get(new ParamMarketCapitalization().getParamYahooTabName()));
+		stock.stockPERatio.setparamData(mappedData.get(new ParamPERatio().getParamYahooTabName()));
+		stock.stockEarningsPerShare.setparamData(mappedData.get(new ParamEarningsPerShare().getParamYahooTabName()));
+		stock.stockDividendYield.setparamData(mappedData.get(new ParamDividendYield().getParamYahooTabName()));
+
+		return stock;
+	}
+	/**
+	 * The method identifies all the valid parameters which can be queried for this class
+	 * @return applicableQueryParams ArrayList<ParamListInterface> the list of all the applicable parameters for which valid data should be available from query
+	 */
 	public static ArrayList<ParamListInterface> queryParamListInterfaces () {
 		ArrayList<ParamListInterface> applicableQueryParams = new ArrayList<ParamListInterface> ();
 

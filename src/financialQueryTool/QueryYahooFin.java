@@ -62,7 +62,7 @@ public class QueryYahooFin {
 				 * works in OFFLINE-MODE
 				 */
 				try {
-					stockData = parsetempHtml.readFromFile(tempHtmlLoc); // read and parse the temp html file on local directory
+					stockData = parsetempHtml.readFromYahooFile(tempHtmlLoc); // read and parse the temp html file on local directory
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

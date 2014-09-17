@@ -4,7 +4,11 @@ public class ParamDaysRange implements ParamListInterface {
 	private String paramName = "DaysRange";
 	private String paramUlsdCode = "m";
 	private String paramData;
-	
+	private static String paramYahooTabName = "Day's Range:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

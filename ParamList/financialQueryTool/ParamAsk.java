@@ -10,8 +10,9 @@ public class ParamAsk implements ParamListInterface {
 	public String getparamName() {
 		return paramName;
 	}
+	
 	@Override
-	public static String getParamYahooTabName() {
+	public String getParamYahooTabName() {
 		return paramYahooTabName;
 	}
 

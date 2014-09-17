@@ -4,7 +4,11 @@ public class ParamPERatio implements ParamListInterface {
 	private String paramName = "PERatio";
 	private String paramUlsdCode = "r";
 	private String paramData;
-	
+	private static String paramYahooTabName = "P/E (ttm):";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

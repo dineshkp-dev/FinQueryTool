@@ -4,7 +4,11 @@ public class ParamDividendYield implements ParamListInterface {
 	private String paramName = "DividendYield";
 	private String paramUlsdCode = "y";
 	private String paramData;
-	
+	private static String paramYahooTabName = "Div & Yield:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

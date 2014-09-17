@@ -27,28 +27,30 @@ import org.jsoup.select.Elements;
 public class ParseHTML {
 
 	/**
-	 * Creates a HTML Document from the String input containing HTML page.
+	 * Creates a HTML Doc from the 'String xmlValue' and extracts the required data from the doc file
+	 * Uses Jsoup for HTML Parsing (treated as an xml)
 	 * 
 	 * @param xmlValue String input containing the HTML page
 	 * @return mappedData Map of all the required Headers vs Data
 	 */
-	public Map<String, String> searchFoVal(String xmlValue) { //Path variable is only in Java SE 1.7
+	public Map<String, String> searchFoVal(String xmlValue) {
 		Map<String, String> mappedData = new HashMap<String, String>();
 		Document doc =Jsoup.parse(xmlValue);
-		mappedData = extractReqdData(doc);
+		mappedData = extractReqdDatafrmYahooWebsite(doc);
 		return mappedData;
 	}
 
 	/**
 	 * Parse the HTML Document to create a map of required Headers vs Data
-	 * 
+	 * Works on finance.yahoo.com website only
 	 * @param doc Document (Jsoup) HTML file format
 	 * @return mappedData Map of all the required Headers vs Data
 	 */
-	public static Map<String, String> extractReqdData (Document doc) {
+	public static Map<String, String> extractReqdDatafrmYahooWebsite (Document doc) {
 		Map<String, String> mappedData = new HashMap<String, String>();
 
 		System.out.println("*********************");
+		System.out.println("Extracting the required data from page: ParseHTML.extractReqdDatafrmYahooWebsite");
 		System.out.println("Document title is: "+doc.title());
 		Elements tableElement = doc.getElementsByClass("yfi_quote_summary").select("tr"); //This is the Content that we are interested in.
 		for (Element eachTableElement : tableElement) { //stepping through each element of the table
@@ -64,11 +66,11 @@ public class ParseHTML {
 
 	/**
 	 * Creates a HTML Document by reading from a HTML file on the disk.
-	 * 
+	 * Works on finance.yahoo.com website only
 	 * @param fileName Path which points to the HTML file on the disk. 
 	 * @return mappedData Map of all the required Headers vs Data
 	 */
-	public Map<String, String> readFromFile(Path fileName) {
+	public Map<String, String> readFromYahooFile(Path fileName) {
 
 		System.out.println("Reading from the file: " + fileName.toAbsolutePath());
 		String lines="";
@@ -84,7 +86,7 @@ public class ParseHTML {
 			e.printStackTrace();
 		}
 		Document doc = Jsoup.parse(xmlVal);
-		mappedData = extractReqdData(doc);
+		mappedData = extractReqdDatafrmYahooWebsite(doc);
 		return mappedData;
 	}
 }

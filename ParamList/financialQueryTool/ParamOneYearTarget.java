@@ -4,7 +4,11 @@ public class ParamOneYearTarget implements ParamListInterface {
 	private String paramName = "OneYearTarget";
 	private String paramUlsdCode = "t8";
 	private String paramData;
-	
+	private static String paramYahooTabName = "1y Target Est:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

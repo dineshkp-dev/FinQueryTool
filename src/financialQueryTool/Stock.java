@@ -54,29 +54,7 @@ public class Stock {
 	 * @param epsTtm
 	 * @param divnYield
 	 */
-	//	public Stock(ParamPreviousClose prevClose, ParamListInterface open, ParamListInterface ask, ParamListInterface oneYrTarg,
-	//			ParamListInterface beta, ParamListInterface earnDate, ParamListInterface daysRng, ParamListInterface wk52Rng,
-	//			ParamListInterface vol, ParamListInterface avgVol, ParamListInterface mktCap, ParamListInterface peTtm,
-	//			ParamListInterface epsTtm, ParamListInterface divnYield, ParamStockName stockName) {
-	//
-	///*		this.prevClose = prevClose;
-	//		this.open = open;
-	//		this.ask = ask;
-	//		this.oneYrTarg = oneYrTarg;
-	//		this.beta = beta;
-	//		this.earnDate = earnDate;
-	//		this.daysRng = daysRng;
-	//		this.wk52Rng = wk52Rng;
-	//		this.vol = vol;
-	//		this.avgVol = avgVol;
-	//		this.mktCap = mktCap;
-	//		this.peTtm = peTtm;
-	//		this.epsTtm = epsTtm;
-	//		this.divnYield = divnYield;*/
-	//		this.stockName = stockName;
-	//	}
-	@SuppressWarnings("unused")
-	public Stock(){
+	private Stock(){
 
 	}
 	public Stock(ParamListInterface stockName) {

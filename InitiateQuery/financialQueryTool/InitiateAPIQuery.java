@@ -2,39 +2,13 @@ package financialQueryTool;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.management.RuntimeErrorException;
-
-import financialQueryTool.GenerateApiUri;
-import financialQueryTool.GenerateURI;
-import financialQueryTool.ParamAsk;
-import financialQueryTool.ParamAverageVolume;
-import financialQueryTool.ParamBid;
-import financialQueryTool.ParamDaysRange;
-import financialQueryTool.ParamDividendYield;
-import financialQueryTool.ParamEarningsPerShare;
-import financialQueryTool.ParamListInterface;
-import financialQueryTool.ParamMarketCapitalization;
-import financialQueryTool.ParamOneYearTarget;
-import financialQueryTool.ParamOpen;
-import financialQueryTool.ParamPERatio;
-import financialQueryTool.ParamPreviousClose;
-import financialQueryTool.ParamStockName;
-import financialQueryTool.ParamStockSym;
-import financialQueryTool.ParamVolume;
-import financialQueryTool.ParamWeekRange;
-import financialQueryTool.Stock;
-import financialQueryTool.WriteToCSV;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
 

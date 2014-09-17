@@ -4,7 +4,11 @@ public class ParamStockSym implements ParamListInterface {
 	private String paramName = "StockSymbol";
 	private static String paramUlsdCode = "";
 	private String paramData;
-
+	private static String paramYahooTabName = "";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

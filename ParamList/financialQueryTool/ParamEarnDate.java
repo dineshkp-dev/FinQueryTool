@@ -4,7 +4,11 @@ public class ParamEarnDate implements ParamListInterface {
 	private String paramName = "EarnDate";
 	private String paramUlsdCode = "";//"EarnDate";
 	private String paramData;
-	
+	private static String paramYahooTabName = "Earnings Date:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

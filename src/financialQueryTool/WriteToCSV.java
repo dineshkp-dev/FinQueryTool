@@ -2,24 +2,17 @@ package financialQueryTool;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-
-import javax.rmi.CORBA.Util;
-
-import org.w3c.dom.CharacterData;
 
 public class WriteToCSV {
 	private WriteToCSV() {}
@@ -64,7 +57,6 @@ public class WriteToCSV {
 	 * @return writeSuccess boolean is set to true if file is successfully created
 	 * @throws IOException
 	 */
-	@SuppressWarnings("null")
 	public static String WriteDataToCSV( Path csvFilePath, InputStream connectionStream, int bufferSize, boolean captureStream ) throws IOException {
 		int byteRead, byteWritten=0;
 		OutputStream outputStream = null;
@@ -103,7 +95,6 @@ public class WriteToCSV {
 	 * @return writeSuccess boolean is set to true if file is successfully created
 	 * @throws IOException
 	 */
-	@SuppressWarnings("null")
 	public static String WriteAppendedDataToCSV( Path csvFilePath, InputStream connectionStream, int bufferSize, boolean captureStream, Stock stock ) throws IOException {
 		int byteRead, byteWritten=0;
 		OutputStream outputStream = null;

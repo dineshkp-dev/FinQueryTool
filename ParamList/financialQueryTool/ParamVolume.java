@@ -4,7 +4,11 @@ public class ParamVolume implements ParamListInterface {
 	private String paramName = "Volume";
 	private String paramUlsdCode = "v";
 	private String paramData;
-	
+	private static String paramYahooTabName = "Volume:";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;

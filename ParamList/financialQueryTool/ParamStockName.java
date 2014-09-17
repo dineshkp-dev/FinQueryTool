@@ -4,7 +4,11 @@ public class ParamStockName implements ParamListInterface {
 	private String paramName = "StockName";
 	private String paramUlsdCode = "n";
 	private String paramData;
-	
+	private static String paramYahooTabName = "";
+	@Override
+	public String getParamYahooTabName() {
+		return paramYahooTabName;
+	}
 	@Override
 	public String getparamName() {
 		return paramName;
