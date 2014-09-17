@@ -30,4 +30,16 @@ public class ParamAverageVolume implements ParamListInterface {
 	public String getParamYahooTabName() {
 		return paramYahooTabName;
 	}
+
+	@Override
+	public String getQueryCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setQueryCode(String queryCode) {
+		// TODO Auto-generated method stub
+		
+	}
 }

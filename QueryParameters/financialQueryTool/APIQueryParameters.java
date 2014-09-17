@@ -2,7 +2,7 @@ package financialQueryTool;
 
 import java.util.ArrayList;
 
-public abstract class APIQueryParameters {
+public class APIQueryParameters {
 	private static String ParamAskVal = "a";
 	private static String ParamAverageVolumeVal = "a2";
 	private static String ParamBidVal = "b";
