@@ -45,41 +45,20 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		}
 	}
 	
-	public static ArrayList<ParamListInterface> queryParamList () {
-		ArrayList<ParamListInterface> applicableQueryParams = new ArrayList<ParamListInterface>();
-		
-		applicableQueryParams.add(new ParamAsk());//a
-		applicableQueryParams.add(new ParamAverageVolume());
-		/*applicableQueryParams.add(new ParamBeta());*/
-		applicableQueryParams.add(new ParamBid());//b
-		applicableQueryParams.add(new ParamDaysRange());//m
-		applicableQueryParams.add(new ParamDividendYield());//y
-		/*applicableQueryParams.add(new ParamEarnDate());*/
-		applicableQueryParams.add(new ParamEarningsPerShare());//e
-		applicableQueryParams.add(new ParamMarketCapitalization());//j1
-		applicableQueryParams.add(new ParamOneYearTarget());//t8
-		applicableQueryParams.add(new ParamOpen());//o
-		applicableQueryParams.add(new ParamPERatio());//r
-		applicableQueryParams.add(new ParamPreviousClose());//p
-		applicableQueryParams.add(new ParamStockName());//n
-		/*applicableQueryParams.add(new ParamStockSym());*/
-		applicableQueryParams.add(new ParamVolume());//v
-		applicableQueryParams.add(new ParamWeekRange());//w
-		
-		return applicableQueryParams;
-	}
+
 
 	public void initiateQuery (ArrayList<Stock> stockList, Path outputCsvPath) {
 		URI queryUri = null;
 		GenerateURI apiUri = new GenerateApiUri();
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
-		ArrayList<ParamListInterface> validParamList = InitiateAPIQuery.queryParamList();
+		ArrayList<ParamListInterface> validParamList = APIQueryParameters.queryParamList();
 		int bufferSize = 2048;
 		boolean captureStream = true;
 		
 		//create the URI for querying.
-		queryUri = apiUri.getURI(stockList, validParamList);
+//		queryUri = apiUri.getURI(stockList, validParamList);
+		queryUri = apiUri.getURI(stockList);
 		
 		System.out.println("Using the URI: \t" + queryUri.toString());
 		//Original value: 	http://finance.yahoo.com/d/quotes.csv?s=GOOG+AAPL+AMZN+BIDU+MA+NFLX&f=aa2bmyej1t8orpnvw
@@ -114,7 +93,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 	@Override
 	public String initiateQuery (String stockSymbol) {
 
-		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + "&f=aa2bmyej1t8orpnvw";
+		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + "&f=" + APIQueryParameters.getAllQueryValues();
 		String queriedData = null;
 
 		HttpURLConnection apiConnection = null;

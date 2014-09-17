@@ -4,6 +4,15 @@ public class ParamAsk implements ParamListInterface {
 	private String paramName = "Ask";
 	private static String paramUlsdCode = "a";
 	private static String paramYahooTabName = "Ask:";
+	private String queryCode;
+	public String getQueryCode() {
+		return queryCode;
+	}
+
+	public void setQueryCode(String queryCode) {
+		this.queryCode = queryCode;
+	}
+
 	private String paramData;
 
 	@Override

@@ -24,7 +24,7 @@ public class GenerateApiUri extends GenerateURI {
 		}
 		stockNamesStr = stockNamesStr.substring(1);
 		try {
-			finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stockNamesStr + "&f=" + GenerateApiUri.getAllURIParams());
+			finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stockNamesStr + "&f=" + APIQueryParameters.getAllQueryValues());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -43,15 +43,16 @@ public class GenerateApiUri extends GenerateURI {
 		try {
 		for (Stock eachStock : stocks){
 			stockNamesStr = stockNamesStr + "+" + eachStock.getStockName();
+			
 		}
 		//stockNameStr = +AMD+GOOG+YAHOO
 		stockNamesStr = stockNamesStr.substring(1);
 		//stockNameStr = AMD+GOOG+YAHOO
-		System.out.println(" Size of : applicableQueryParams.size(): " + applicableQueryParams.size());
 		for (ParamListInterface parameter : applicableQueryParams) {
 			System.out.println("Parameter name: " + parameter.getparamName());
 			validParams = (validParams + parameter.getparamUlsdCode().toString());
 		}
+		validParams = APIQueryParameters.getAllQueryValues();
 
 			finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stockNamesStr + "&f=" + validParams);
 		} catch (URISyntaxException e) {
@@ -59,44 +60,5 @@ public class GenerateApiUri extends GenerateURI {
 		}
 		
 		return finalURI;
-	}
-	
-	public static String getAllURIParams() {
-		String allParameters = "";
-		
-		ParamListInterface paramList = new ParamAsk();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamAverageVolume();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamBeta();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamBid();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamDaysRange();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamDividendYield();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamEarnDate();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamEarningsPerShare();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamMarketCapitalization();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamOneYearTarget();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamOpen();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamPERatio();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamPreviousClose();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamStockName();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamVolume();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		paramList = new ParamWeekRange();
-		allParameters = allParameters+paramList.getparamUlsdCode();
-		
-		return allParameters;
 	}
 }
