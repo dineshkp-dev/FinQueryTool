@@ -78,7 +78,53 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 			}
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see financialQueryTool.InitiateQueryInterface#initiateQuery(java.util.ArrayList, java.lang.String, java.nio.file.Path)
+	 */
+	@Override
+	public void initiateQuery(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
+		URI queryUri = null;
+		int timeout = 5*1000;
+		GenerateURI yahooWebUri = new GenerateYahooWebQueryUri();
+		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
+		ParseHTML parsehtml = new ParseHTML();
+		Map<String, String> mappedData = new HashMap<String, String>();
+		ParamListInterface queryParam = null;
 
+		for (Stock stock : stockList) {
+			queryUri = yahooWebUri.getURI(stock);
+			System.out.println("URI: " + queryUri.toString());
+
+			String queriedHTML = "";
+			try {
+				HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
+				httpConnection.setConnectTimeout(timeout);
+				queriedHTML = queryYahooPage.queryHTML(httpConnection);
+				mappedData = parsehtml.searchFoVal(queriedHTML);
+				System.out.println(mappedData.keySet().toString());
+				System.out.println("Setting the Stock's Parameters from Web Query.");
+				stock = InitiateYahooWebQuery.setStockParams(stock, mappedData);
+				stock.printDetails();
+				
+
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		printRequireDataOnly(stockList, requiredParameters);
+	}
+	
+	public static void printRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters) {
+		for (Stock stock : stockList) {
+			System.out.println("Stock Name:" + stock.getStockName());
+//			for (String requiredParam : requiredParameters) {
+				stock.getRequiredParamData(requiredParameters);
+//			}
+		}
+	}
 	/**
 	 * The method sets the values from the Map 'mappedData' to the parameters of the stock Object
 	 * The Parameters are extracted from the Map using the 'Param'x Class's 'getParamYahooTabName' which corresponds to 

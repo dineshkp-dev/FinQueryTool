@@ -86,6 +86,15 @@ public class WriteToCSV {
 		return output;
 	}
 	
+	public static boolean writeStringToCsv () {
+		boolean success = false;
+		
+		return success;
+		
+		
+	}
+	
+	
 	/**
 	 * This method writes the data from an InputStream (possibly linked to a HTTPUrlConnection)
 	 * 

@@ -1,22 +1,25 @@
 package financialQueryTool;
 
+import javax.management.RuntimeErrorException;
+
 public class Stock {
-	public ParamAsk stockAsk;
-	public ParamAverageVolume stockAverageVolume;
-	public ParamBeta stockBeta;
-	public ParamBid stockBid;
-	public ParamDaysRange stockDaysRange;
-	public ParamDividendYield stockDividendYield;
-	public ParamEarnDate stockEarnDate;
-	public ParamEarningsPerShare stockEarningsPerShare;
-	public ParamMarketCapitalization stockMarketCapitalization;
-	public ParamOneYearTarget stockOneYearTarget;
-	public ParamOpen stockOpen;
-	public ParamPERatio stockPERatio;
-	public ParamStockName stockName;
-	public ParamPreviousClose stockPreviousClose;
-	public ParamVolume stockVolume;
-	public ParamWeekRange stockWeekRange;
+	protected ParamAsk stockAsk;
+	protected ParamAverageVolume stockAverageVolume;
+	protected ParamBeta stockBeta;
+	protected ParamBid stockBid;
+	protected ParamDaysRange stockDaysRange;
+	protected ParamDividendYield stockDividendYield;
+	protected ParamEarnDate stockEarnDate;
+	protected ParamEarningsPerShare stockEarningsPerShare;
+	protected ParamMarketCapitalization stockMarketCapitalization;
+	protected ParamOneYearTarget stockOneYearTarget;
+	protected ParamOpen stockOpen;
+	protected ParamPERatio stockPERatio;
+	protected ParamStockName stockName;
+	protected ParamStockSym stockSym;
+	protected ParamPreviousClose stockPreviousClose;
+	protected ParamVolume stockVolume;
+	protected ParamWeekRange stockWeekRange;
 
 	/*	
 	public String getValidParamList(){
@@ -31,12 +34,7 @@ public class Stock {
 
 	}*/
 
-	public String getStockName() {
-		return this.stockName.getparamData();
-	}
-	public void setStockName(ParamListInterface stockName) {
-		this.stockName = (ParamStockName) stockName;
-	}
+
 
 	/**
 	 * @param prevClose
@@ -101,6 +99,70 @@ public class Stock {
 		System.out.println("\tStock Divident Yield:"+this.getStockDividendYieldStr());
 		//		System.out.println("Stock Stock Name:"+this.getStock);
 	}
+
+	public String getRequiredParamData(String[] requiredParameters)  {
+		String requiredParametersStr = "";
+
+		for (String requiredParam : requiredParameters) {
+			if (requiredParam.equalsIgnoreCase(this.stockAsk.getparamName())) {
+				System.out.println("Stock Ask data: " + this.getStockAskStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockAverageVolume.getparamName())) {
+				System.out.println("Stock " + this.stockAverageVolume.getparamName() + " data: " + this.getStockAverageVolumeStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockBeta.getparamName())) {
+				System.out.println("Stock " + this.stockBeta.getparamName() + " data: " + this.getStockBetaStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockBid.getparamName())) {
+				System.out.println("Stock " + this.stockBid.getparamName()+ " data: " + this.getStockBidStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockDaysRange.getparamName())) {
+				System.out.println("Stock " + this.stockDaysRange.getparamName() + " data: " + this.getStockDaysRangeStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockDividendYield.getparamName())) {
+				System.out.println("Stock "+ this.stockDividendYield.getparamName() + " data: " + this.getStockDividendYieldStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockEarnDate.getparamName())) {
+				System.out.println("Stock " + this.stockEarnDate.getparamName() + " data: " + this.getStockEarnDateStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockEarningsPerShare.getparamName())) {
+				System.out.println("Stock " + this.stockEarningsPerShare.getparamName() + " data: " + this.getStockEarningsPerShareStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockMarketCapitalization.getparamName())) {
+				System.out.println("Stock " + this.stockMarketCapitalization.getparamName() + " data: " + this.getStockMarketCapitalizationStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockOneYearTarget.getparamName())) {
+				System.out.println("Stock " +this.stockOneYearTarget.getparamName() + " data: " + this.getStockOneYearTargetStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockOpen.getparamName())) {
+				System.out.println("Stock " + this.stockOpen.getparamName()+ "  data: " + this.getStockOpenStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockPERatio.getparamName())) {
+				System.out.println("Stock " + this.stockPERatio.getparamName()+ "  data: " + this.getStockPERatioStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockPreviousClose.getparamName())) {
+				System.out.println("Stock " + this.stockPreviousClose.getparamName()+ "  data: " + this.getStockPreviousCloseStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockName.getparamName())) {
+				System.out.println("Stock " + this.stockName.getparamName()+ "  data: " + this.getStockName());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockSym.getparamName())) {
+				System.out.println("Stock " + this.stockSym.getparamName()+ "  data: " + this.getStockSymStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockVolume.getparamName())) {
+				System.out.println("Stock " + this.stockVolume.getparamName()+ "  data: " + this.getStockVolumeStr());
+			}
+			else if (requiredParam.equalsIgnoreCase(this.stockWeekRange.getparamName())) {
+				System.out.println("Stock " + this.stockWeekRange.getparamName()+ "  data: " + this.getstockWeekRangeStr());
+			}
+			else {
+				throw new RuntimeErrorException(null, "Invalid parameter passed for Query Request. \n" + requiredParam);
+			}
+
+		}
+		return requiredParametersStr;
+	}
+	
 	public ParamAsk getStockAsk() {
 		return stockAsk;
 	}
@@ -139,6 +201,9 @@ public class Stock {
 	}
 	public ParamPreviousClose getStockPreviousClose() {
 		return stockPreviousClose;
+	}
+	public ParamStockSym getStockSym() {
+		return stockSym;
 	}
 	public ParamVolume getStockVolume() {
 		return stockVolume;
@@ -196,6 +261,18 @@ public class Stock {
 	public String getstockWeekRangeStr() {
 		return stockWeekRange.getparamData();
 	}
+	public String getStockName() {
+		return this.stockName.getparamData();
+	}
+	public String getStockNameStr() {
+		return this.stockName.getparamData();
+	}
+	public void setStockName(ParamListInterface stockName) {
+		this.stockName = (ParamStockName) stockName;
+	}
 
+	public String getStockSymStr() {
+		return this.stockSym.getparamData();
+	}
 
 }

@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
 
+	/**
+	 * @param queryUri
+	 * @param outputCsvPath
+	 */
 	public void queryFromApi (URI queryUri, Path outputCsvPath) {
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
@@ -204,6 +208,15 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 
 	@Override
 	public void initiateQuery(ArrayList<Stock> stockList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void initiateQuery(ArrayList<Stock> stockList,
+			String[] requiredParameters, Path outputFile) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -44,7 +44,7 @@ public class FinancialQueryTool {
 		break;
 		case WEBYAHOO : System.out.println("Query type is WEB!!!");
 			initateQuery = new InitiateYahooWebQuery();
-			initateQuery.initiateQuery(stockList);
+			initateQuery.initiateQuery(stockList, inputData.getRequiredParameters(),inputData.getOutputFile());
 		break;
 		default : System.out.println("Unknown query type detected" + FinancialQueryTool.class);
 		break;

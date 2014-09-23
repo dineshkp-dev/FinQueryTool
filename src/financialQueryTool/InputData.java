@@ -21,7 +21,7 @@ import java.nio.file.Path;
  */
 public class InputData {
 	private String requiredStockSymbols;
-	private String requiredParameters;
+	private String[] requiredParameters;
 	private QueryType queryType;
 	private Path tempFile;
 	private Path outputFile;
@@ -41,7 +41,7 @@ public class InputData {
 	public String getRequiredStockSymbols() {
 		return requiredStockSymbols;
 	}
-	public String getRequiredParameters() {
+	public String[] getRequiredParameters() {
 		return requiredParameters;
 	}
 	public QueryType getQueryType() {
@@ -50,7 +50,7 @@ public class InputData {
 	public void setRequiredStockSymbols(String requiredStockSymbols) {
 		this.requiredStockSymbols = requiredStockSymbols;
 	}
-	public void setRequiredParameters(String requiredParameters) {
+	public void setRequiredParameters(String[] requiredParameters) {
 		this.requiredParameters = requiredParameters;
 	}
 	public void setQueryType(QueryType queryType) {

@@ -93,5 +93,12 @@ public class InitiateHistoricalQuery implements InitiateQueryInterface {
 		
 	}
 
+	@Override
+	public void initiateQuery(ArrayList<Stock> stockList,
+			String[] requiredParameters, Path outputFile) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

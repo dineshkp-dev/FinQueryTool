@@ -28,7 +28,7 @@ public class ParseInputXml {
 			Node nNode = nListUserData.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element element = (Element) nNode;
-				inputData.setRequiredParameters(element.getElementsByTagName("RequiredParameters").item(0).getTextContent());
+				inputData.setRequiredParameters((element.getElementsByTagName("RequiredParameters").item(0).getTextContent()).toString().split(","));
 				inputData.setRequiredStockSymbols(element.getElementsByTagName("RequiredStockSymbols").item(0).getTextContent());
 				inputData.setTempFile(FileSystems.getDefault().getPath(element.getElementsByTagName("TempFile").item(0).getTextContent()).toAbsolutePath());
 				inputData.setOutputFile(FileSystems.getDefault().getPath(element.getElementsByTagName("OutputFile").item(0).getTextContent()).toAbsolutePath());
