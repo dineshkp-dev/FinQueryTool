@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamWeekRange implements ParamListInterface {
 	private String paramName = "Week52Range";
 	private String paramUlsdCode = "w";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "52wk Range:";
 	@Override
 	public String getParamYahooTabName() {

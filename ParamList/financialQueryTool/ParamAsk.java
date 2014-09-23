@@ -13,7 +13,7 @@ public class ParamAsk implements ParamListInterface {
 		this.queryCode = queryCode;
 	}
 
-	private String paramData;
+	private String paramData="N/A";
 
 	@Override
 	public String getparamName() {

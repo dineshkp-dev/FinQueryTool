@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamDividendYield implements ParamListInterface {
 	private String paramName = "DividendYield";
 	private String paramUlsdCode = "y";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Div & Yield:";
 	@Override
 	public String getParamYahooTabName() {

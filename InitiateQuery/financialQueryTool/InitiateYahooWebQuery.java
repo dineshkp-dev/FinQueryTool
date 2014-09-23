@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 			}
 		}
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see financialQueryTool.InitiateQueryInterface#initiateQuery(java.util.ArrayList, java.lang.String, java.nio.file.Path)
 	 */
@@ -106,7 +107,6 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 				System.out.println("Setting the Stock's Parameters from Web Query.");
 				stock = InitiateYahooWebQuery.setStockParams(stock, mappedData);
 				stock.printDetails();
-				
 
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
@@ -114,15 +114,29 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 				e.printStackTrace();
 			}
 		}
-		printRequireDataOnly(stockList, requiredParameters);
+		printRequireDataOnly(stockList, requiredParameters, outputFileLocation);
 	}
-	
-	public static void printRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters) {
-		for (Stock stock : stockList) {
-			System.out.println("Stock Name:" + stock.getStockName());
-//			for (String requiredParam : requiredParameters) {
-				stock.getRequiredParamData(requiredParameters);
-//			}
+
+	public static void printRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
+		Map<String, String> requiredDataList = new HashMap<String, String>();
+		Stock stock = null;
+		ArrayList<String> finalData = new ArrayList<String>();
+		try {
+			for (int i =0; i<stockList.size(); i++) {
+				stock = stockList.get(i);
+				System.out.println("Stock Name:" + stock.getStockName());
+				requiredDataList = stock.getRequiredParamData(requiredParameters);
+				if (i == 0) {
+					finalData.add(i, "StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
+					System.out.println("StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
+				}
+				finalData.add(i, (stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", "")));
+					System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
+			}
+			Collections.reverse(finalData);
+			WriteToCSV.WriteDataToCSV(outputFileLocation, finalData);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	/**
@@ -134,7 +148,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 	 * @return stock Stock after all the necessary Parameters' data have been updated
 	 */
 	public static Stock setStockParams (Stock stock, Map<String, String> mappedData) {
-		
+
 		stock.stockPreviousClose.setparamData(mappedData.get(new ParamPreviousClose().getParamYahooTabName()));
 		stock.stockOpen.setparamData(mappedData.get(new ParamOpen().getParamYahooTabName()));
 		stock.stockBid.setparamData(mappedData.get(new ParamBid().getParamYahooTabName()));

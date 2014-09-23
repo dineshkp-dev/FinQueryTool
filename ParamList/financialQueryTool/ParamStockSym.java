@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamStockSym implements ParamListInterface {
 	private String paramName = "StockSymbol";
 	private static String paramUlsdCode = "";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "";
 	@Override
 	public String getParamYahooTabName() {

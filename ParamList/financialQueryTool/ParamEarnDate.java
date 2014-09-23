@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamEarnDate implements ParamListInterface {
 	private String paramName = "EarnDate";
 	private String paramUlsdCode = "";//"EarnDate";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Earnings Date:";
 	@Override
 	public String getParamYahooTabName() {

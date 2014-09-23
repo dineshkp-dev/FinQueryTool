@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamOneYearTarget implements ParamListInterface {
 	private String paramName = "OneYearTarget";
 	private String paramUlsdCode = "t8";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "1y Target Est:";
 	@Override
 	public String getParamYahooTabName() {

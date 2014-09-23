@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamDaysRange implements ParamListInterface {
 	private String paramName = "DaysRange";
 	private String paramUlsdCode = "m";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Day's Range:";
 	@Override
 	public String getParamYahooTabName() {

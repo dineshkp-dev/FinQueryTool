@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamVolume implements ParamListInterface {
 	private String paramName = "Volume";
 	private String paramUlsdCode = "v";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Volume:";
 	@Override
 	public String getParamYahooTabName() {

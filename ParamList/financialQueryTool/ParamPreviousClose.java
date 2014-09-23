@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamPreviousClose implements ParamListInterface {
 	private String paramName = "PreviousClose";
 	private String paramUlsdCode = "p";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Prev Close:";
 	@Override
 	public String getParamYahooTabName() {

@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamOpen implements ParamListInterface {
 	private String paramName = "Open";
 	private String paramUlsdCode = "o";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Open:";
 	@Override
 	public String getParamYahooTabName() {

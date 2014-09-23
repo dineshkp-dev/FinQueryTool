@@ -17,6 +17,10 @@ public class TesterClass {
 		}
 		
 		String testingStr = "Hello,there,what,is,this,\"this is one,  value \".csv";
+		String testingStr2 = "GOOG[AverageVolume, Ask] GOOG[1,516,460, 583.50 x 100]";
+		
+		System.out.println(testingStr2.replaceAll("\\[|\\]", ""));
+		System.out.println(testingStr2.replaceAll("xxx", ""));
 		
 		System.out.println(testingStr);
 		

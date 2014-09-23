@@ -3,7 +3,7 @@ package financialQueryTool;
 public class ParamAverageVolume implements ParamListInterface {
 	private String paramName = "AverageVolume";
 	private String paramUlsdCode = "a2";
-	private String paramData;
+	private String paramData="N/A";
 	private static String paramYahooTabName = "Avg Vol (3m):";
 	
 	@Override
