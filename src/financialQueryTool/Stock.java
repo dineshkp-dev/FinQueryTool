@@ -172,7 +172,7 @@ public class Stock {
 		}
 		return requiredParametersData;
 	}
-	
+
 	public ParamAsk getStockAsk() {
 		return stockAsk;
 	}
@@ -239,13 +239,22 @@ public class Stock {
 		return stockBid.getparamData().replaceAll(",", "");
 	}
 	public String getStockDaysRangeStr() {
-		return stockDaysRange.getparamData().replaceAll(",", "");
+		if (stockDaysRange.getparamData().length() != 0) {
+			return stockDaysRange.getparamData().replaceAll(",", "");
+		}
+		return stockDaysRange.getparamData();
 	}
 	public String getStockDividendYieldStr() {
-		return stockDividendYield.getparamData().replaceAll(",", "");
+		if (stockDividendYield.getparamData().length() != 0) {
+			return stockDividendYield.getparamData().replaceAll(",", "");
+		}
+		return stockDividendYield.getparamData();
 	}
 	public String getStockEarnDateStr() {
-		return stockEarnDate.getparamData().replaceAll(",", "");
+		if (!stockEarnDate.getparamData().isEmpty()) {
+			return stockEarnDate.getparamData().replaceAll(",", "");
+		}
+		return stockEarnDate.getparamData();
 	}
 	public String getStockEarningsPerShareStr() {
 		return stockEarningsPerShare.getparamData().replaceAll(",", "");
@@ -280,7 +289,7 @@ public class Stock {
 	public String getStockSymStr() {
 		return this.stockSym.getparamData().replaceAll(",", "");
 	}
-	
+
 	public void setStockName(ParamListInterface stockName) {
 		this.stockName = (ParamStockName) stockName;
 	}

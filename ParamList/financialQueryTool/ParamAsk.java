@@ -27,7 +27,7 @@ public class ParamAsk implements ParamListInterface {
 
 	@Override
 	public String getparamData() {
-		return paramData;
+		return this.paramData;
 	}
 	
 	@Override

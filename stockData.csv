@@ -196,3 +196,6 @@ GOOG,AverageVolume, Ask
 StockName,AverageVolume, Ask
 AAPL,52,709,400, 102.72 x 3600
 GOOG,1,516,460, 582.43 x 100
+StockName,AverageVolume, Ask
+AAPL,53346700, 98.66 x 900
+GOOG,1507980, 576.57 x 100

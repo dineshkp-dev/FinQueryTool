@@ -131,7 +131,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 					System.out.println("StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
 				}
 				finalData.add(i, (stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", "")));
-					System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
+				System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
 			}
 			Collections.reverse(finalData);
 			WriteToCSV.WriteDataToCSV(outputFileLocation, finalData);
@@ -148,14 +148,17 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 	 * @return stock Stock after all the necessary Parameters' data have been updated
 	 */
 	public static Stock setStockParams (Stock stock, Map<String, String> mappedData) {
-
-		stock.stockPreviousClose.setparamData(mappedData.get(new ParamPreviousClose().getParamYahooTabName()));
+		if (stock.stockPreviousClose.getParamYahooTabName().equals(mappedData.get(new ParamPreviousClose().getParamYahooTabName()))){
+			stock.stockPreviousClose.setparamData(mappedData.get(new ParamPreviousClose().getParamYahooTabName()));
+		}
 		stock.stockOpen.setparamData(mappedData.get(new ParamOpen().getParamYahooTabName()));
 		stock.stockBid.setparamData(mappedData.get(new ParamBid().getParamYahooTabName()));
 		stock.stockAsk.setparamData(mappedData.get(new ParamAsk().getParamYahooTabName()));
 		stock.stockOneYearTarget.setparamData(mappedData.get(new ParamOneYearTarget().getParamYahooTabName()));
 		stock.stockBeta.setparamData(mappedData.get(new ParamBeta().getParamYahooTabName()));
-		stock.stockEarnDate.setparamData(mappedData.get(new ParamEarnDate().getParamYahooTabName()));
+		if (stock.stockEarnDate.getParamYahooTabName().equals(mappedData.get(new ParamEarnDate().getParamYahooTabName()))) {
+			stock.stockEarnDate.setparamData(mappedData.get(new ParamEarnDate().getParamYahooTabName()));
+		}
 		stock.stockDaysRange.setparamData(mappedData.get(new ParamDaysRange().getParamYahooTabName()));
 		stock.stockWeekRange.setparamData(mappedData.get(new ParamWeekRange().getParamYahooTabName()));
 		stock.stockVolume.setparamData(mappedData.get(new ParamVolume().getParamYahooTabName()));
