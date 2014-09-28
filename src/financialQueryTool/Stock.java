@@ -57,6 +57,7 @@ public class Stock {
 		this.stockSym=stockSymbol;
 		this.stockName=stockName;
 		this.stockAsk=new ParamAsk();
+		//this.stockAsk.set
 		this.stockAverageVolume=new ParamAverageVolume();
 		this.stockBeta = new ParamBeta();
 		this.stockBid = new ParamBid();

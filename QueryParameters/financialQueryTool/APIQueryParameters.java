@@ -2,12 +2,14 @@ package financialQueryTool;
 
 import java.util.ArrayList;
 
-public class APIQueryParameters {
+public class APIQueryParameters implements queryParamInterface{
 	private static String ParamAskVal = "a";
 	private static String ParamAverageVolumeVal = "a2";
 	private static String ParamBidVal = "b";
+	private static String ParamBetaVal = "";// NA
 	private static String ParamDaysRangeVal = "m";
 	private static String ParamDividendYieldVal = "y";
+	private static String ParamEarnDateVal = ""; //NA
 	private static String ParamEarningsPerShareVal = "e";
 	private static String ParamMarketCapitalizationVal = "j1";
 	private static String ParamOneYearTargetVal = "t8";
@@ -15,6 +17,7 @@ public class APIQueryParameters {
 	private static String ParamPERatioVal = "r";
 	private static String ParamPreviousCloseVal = "p";
 	private static String ParamStockNameVal = "n";
+	private static String ParamStockSymVal = ""; //NA
 	private static String ParamVolumeVal = "v";
 	private static String ParamWeekRangeVal = "w";
 
@@ -41,56 +44,85 @@ public class APIQueryParameters {
 
 		return applicableQueryParams;
 	}
-	public static String getParamAskVal() {
+	@Override
+	public  String getParamAskVal() {
 		return ParamAskVal;
 	}
-	public static String getParamAverageVolumeVal() {
+	@Override
+	public  String getParamAverageVolumeVal() {
 		return ParamAverageVolumeVal;
 	}
-	public static String getParamBidVal() {
+	@Override
+	public  String getParamBidVal() {
 		return ParamBidVal;
 	}
-	public static String getParamDaysRangeVal() {
+	@Override
+	public  String getParamDaysRangeVal() {
 		return ParamDaysRangeVal;
 	}
-	public static String getParamDividendYieldVal() {
+	@Override
+	public  String getParamDividendYieldVal() {
 		return ParamDividendYieldVal;
 	}
-	public static String getParamEarningsPerShareVal() {
+	@Override
+	public  String getParamEarningsPerShareVal() {
 		return ParamEarningsPerShareVal;
 	}
-	public static String getParamMarketCapitalizationVal() {
+	@Override
+	public  String getParamMarketCapitalizationVal() {
 		return ParamMarketCapitalizationVal;
 	}
-	public static String getParamOneYearTargetVal() {
+	@Override
+	public  String getParamOneYearTargetVal() {
 		return ParamOneYearTargetVal;
 	}
-	public static String getParamOpenVal() {
+	@Override
+	public  String getParamOpenVal() {
 		return ParamOpenVal;
 	}
-	public static String getParamPERatioVal() {
+	@Override
+	public  String getParamPERatioVal() {
 		return ParamPERatioVal;
 	}
-	public static String getParamPreviousCloseVal() {
+	@Override
+	public  String getParamPreviousCloseVal() {
 		return ParamPreviousCloseVal;
 	}
-	public static String getParamStockNameVal() {
+	@Override
+	public  String getParamStockNameVal() {
 		return ParamStockNameVal;
 	}
-	public static String getParamVolumeVal() {
+	@Override
+	public String getParamVolumeVal() {
 		return ParamVolumeVal;
 	}
-	public static String getParamWeekRangeVal() {
+	@Override
+	public  String getParamWeekRangeVal() {
 		return ParamWeekRangeVal;
 	}
+	@Override
+	public String getParamEarnDateVal() {
+		return ParamEarnDateVal;
+	}
+	@Override
+	public String getParamStockSymVal() {
+		return ParamStockSymVal;
+	}
+	@Override
+	public String getParamBetaVal() {
+		return ParamBetaVal;
+	}
 
-	public static String getAllQueryValues() {
+	/*	public static String getAllQueryValues() {
 		String queryParams = "";
 		System.out.println("Generating string for all applicable Query Values for API.");
 		queryParams = getParamAskVal() + getParamAverageVolumeVal() + getParamBidVal() + getParamDaysRangeVal() + getParamDividendYieldVal() + getParamEarningsPerShareVal()
 				+ getParamMarketCapitalizationVal() + getParamOneYearTargetVal() + getParamOpenVal() + getParamPERatioVal() + getParamPreviousCloseVal() + getParamStockNameVal()
 				+ getParamVolumeVal() + getParamWeekRangeVal();
 		return queryParams;
-	}
+	}*/
+
+
+
 
 }
