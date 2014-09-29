@@ -17,18 +17,8 @@ public class ParamAverageVolume implements ParamListInterface {
 	}
 
 	@Override
-	public String getparamUlsdCode() {
-		return paramUlsdCode;
-	}
-
-	@Override
 	public void setparamData(String Data) {
 		this.paramData = Data;
-	}
-
-	@Override
-	public String getParamYahooTabName() {
-		return paramYahooTabName;
 	}
 
 	@Override

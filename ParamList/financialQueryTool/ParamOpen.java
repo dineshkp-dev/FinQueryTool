@@ -5,10 +5,6 @@ public class ParamOpen implements ParamListInterface {
 	private String paramUlsdCode = "o";
 	private String paramData="N/A";
 	private static String paramYahooTabName = "Open:";
-	@Override
-	public String getParamYahooTabName() {
-		return paramYahooTabName;
-	}
 	
 	@Override
 	public String getparamName() {
@@ -18,11 +14,6 @@ public class ParamOpen implements ParamListInterface {
 	@Override
 	public String getparamData() {
 		return paramData;
-	}
-
-	@Override
-	public String getparamUlsdCode() {
-		return paramUlsdCode;
 	}
 
 	@Override

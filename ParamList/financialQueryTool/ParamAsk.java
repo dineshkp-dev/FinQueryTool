@@ -19,22 +19,12 @@ public class ParamAsk implements ParamListInterface {
 	public String getparamName() {
 		return paramName;
 	}
-	
-	@Override
-	public String getParamYahooTabName() {
-		return paramYahooTabName;
-	}
 
 	@Override
 	public String getparamData() {
 		return this.paramData;
 	}
 	
-	@Override
-	public String getparamUlsdCode() {
-		return paramUlsdCode;
-	}
-
 //	@Override
 	public void setparamData(String Data) {
 		this.paramData = Data;

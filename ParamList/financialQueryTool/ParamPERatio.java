@@ -6,10 +6,6 @@ public class ParamPERatio implements ParamListInterface {
 	private String paramData="N/A";
 	private static String paramYahooTabName = "P/E (ttm):";
 	@Override
-	public String getParamYahooTabName() {
-		return paramYahooTabName;
-	}
-	@Override
 	public String getparamName() {
 		return paramName;
 	}
@@ -17,11 +13,6 @@ public class ParamPERatio implements ParamListInterface {
 	@Override
 	public String getparamData() {
 		return paramData;
-	}
-
-	@Override
-	public String getparamUlsdCode() {
-		return paramUlsdCode;
 	}
 
 	@Override

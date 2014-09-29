@@ -6,10 +6,6 @@ public class ParamDividendYield implements ParamListInterface {
 	private String paramData="N/A";
 	private static String paramYahooTabName = "Div & Yield:";
 	@Override
-	public String getParamYahooTabName() {
-		return paramYahooTabName;
-	}
-	@Override
 	public String getparamName() {
 		return paramName;
 	}
@@ -19,10 +15,6 @@ public class ParamDividendYield implements ParamListInterface {
 		return paramData;
 	}
 
-	@Override
-	public String getparamUlsdCode() {
-		return paramUlsdCode;
-	}
 
 	@Override
 	public void setparamData(String Data) {
