@@ -126,9 +126,17 @@ GIT TAG:
 		- creates a tag in the local repository
 	$ git push origin --tags
 		- pushes the tags to the git repository
+		
+GIT CONFLICT RESOLUTION:
+	- Conflicts can arise when the online repository has changes to a file that has been modified and committed locally.
+	- When a conflict arises, the GIT program adds a block to the file that identifies the current/local change (HEAD) vs the change in the repository (identified by the checksum name)
+	- The conflict has to be resolved using a text editor to specify which of the changes needs to kept or if both has to be removed and a new change has to be made.
+	- After resolving the conflict, the file has to be added using the following command
+		$ git add fileThatHadConflict.txt
 More info:
 	- youtube: GitHub Training & Guides
 	- Free book: 'Pro Git' : http://git-scm.com/book
 	-  Link: http://teach.github.com
 	-  Link: http://help.github.com
+	- Conflict Resolution: https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line
 
