@@ -36,7 +36,8 @@ public class FinancialQueryTool {
 		switch (inputData.getQueryType()) {
 		case API : System.out.println("Query type is API!!!");
 			initateQuery = new InitiateAPIQuery();
-			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
+//			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
+			initateQuery.initiateQuery(stockList, inputData.getRequiredParameters(), inputData.getOutputFile());
 		break;
 		case HISTORICAL : System.out.println("Query type is HISTORICAL!!!");
 			initateQuery = new InitiateHistoricalQuery();

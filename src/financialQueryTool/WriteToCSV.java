@@ -53,7 +53,7 @@ public class WriteToCSV {
 	}
 
 	/**
-	 * This method writes the data from an InputStream (possibly linked to a HTTPUrlConnection)
+	 * This method writes the data from an InputStream (ususally linked to a HTTPUrlConnection)
 	 * 
 	 * @param csvFilePath Path location to csv file
 	 * @param connectionStream InputStream data

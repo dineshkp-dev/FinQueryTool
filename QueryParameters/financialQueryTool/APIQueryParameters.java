@@ -137,15 +137,48 @@ public class APIQueryParameters implements QueryParamInterface{
 		return null;
 	}
 
-	/*	public static String getAllQueryValues() {
-		String queryParams = "";
-		System.out.println("Generating string for all applicable Query Values for API.");
-		queryParams = getParamAskVal() + getParamAverageVolumeVal() + getParamBidVal() + getParamDaysRangeVal() + getParamDividendYieldVal() + getParamEarningsPerShareVal()
-				+ getParamMarketCapitalizationVal() + getParamOneYearTargetVal() + getParamOpenVal() + getParamPERatioVal() + getParamPreviousCloseVal() + getParamStockNameVal()
-				+ getParamVolumeVal() + getParamWeekRangeVal();
-		return queryParams;
-	}*/
+	/**
+	 * 581.13,1534680,580.72,"579.11 - 581.74",N/A,19.30,392.9B,N/A,580.36,30.21,583.10,"Google Inc.",172180,"502.80 - 604.83"
+	 * Adds all the information from the query result for each stock
+	 * @param stockData
+	 * @param stock
+	 * @return
+	 * Row0 Value: 
+	 * ask:587.80,
+	 * volume:1548080,
+	 * beta:582.80,
+	 * daysrange: "581.95 - 586.55",
+	 * divnyield: N/A,
+	 * Earndate:19.30,
+	 * EpsTTM: 396.4B,
+	 * MktCap: N/A,
+	 * One year target: 583.95,
+	 * Open: 30.15,581.98,
+	 * PeTTM: "Google Inc.",
+	 * Prevclose: 1629518,
+	 * Volume: 
+	 * W52 Week Range: "502.80 - 604.83"
+	 */
+	public static Stock addApiStockData(String[] data, Stock stock) {
+		System.out.println("Setting stock data for : " + stock.getStockName());
+		stock.stockAsk.setparamData(data[0]);
+		stock.stockAverageVolume.setparamData(data[1]);
+		stock.stockBid.setparamData(data[2]);
+		stock.stockDaysRange.setparamData(data[3]);
+		stock.stockDividendYield.setparamData(data[4]);
+		stock.stockEarningsPerShare.setparamData(data[5]);
+		stock.stockMarketCapitalization.setparamData(data[6]);
+		stock.stockOneYearTarget.setparamData(data[7]);
+		stock.stockOpen.setparamData(data[8]);
+		stock.stockPERatio.setparamData(data[9]);
+		stock.stockPreviousClose.setparamData(data[10]);
+		stock.stockName.setparamData(data[11]);
+		stock.stockVolume.setparamData(data[12]);
+		stock.stockWeekRange.setparamData(data[13].trim());
+		return stock;
+	}
 
+	
 
 
 

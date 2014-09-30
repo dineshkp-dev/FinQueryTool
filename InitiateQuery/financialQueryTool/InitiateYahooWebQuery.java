@@ -139,6 +139,12 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		Collections.reverse(finalData);
 	}
 
+	/**
+	 * @param stockList
+	 * @param requiredParameters
+	 * @param outputFileLocation
+	 * @return
+	 */
 	public static ArrayList<String> getRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
 		Map<String, String> requiredDataList = new HashMap<String, String>();
 		Stock stock = null;
