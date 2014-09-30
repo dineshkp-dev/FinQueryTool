@@ -19,5 +19,10 @@ public interface queryParamInterface {
 	public  String getParamStockSymVal();
 	public  String getParamVolumeVal();
 	public  String getParamWeekRangeVal();
-
+	
+	public String getAllQueryParams();
+	public String getApplicableQueryParams();
+	
+	public String[] getAllQueryParamsArray();
+	public String[] getApplicableQueryParamsArray();
 }
