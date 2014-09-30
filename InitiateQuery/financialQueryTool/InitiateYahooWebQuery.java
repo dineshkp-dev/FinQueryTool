@@ -55,7 +55,6 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
 		ParseHTML parsehtml = new ParseHTML();
 		Map<String, String> mappedData = new HashMap<String, String>();
-		ParamListInterface queryParam = null;
 
 		for (Stock stock : stockList) {
 			queryUri = yahooWebUri.getURI(stock);
@@ -91,13 +90,17 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
 		ParseHTML parsehtml = new ParseHTML();
 		Map<String, String> mappedData = new HashMap<String, String>();
-		ParamListInterface queryParam = null;
+		QueryParamInterface paramCodeValues = new YahooWebQueryParameters();
+		ArrayList<String> userRequestedData = new ArrayList<String>();
 
 		for (Stock stock : stockList) {
+			String queriedHTML = "";
 			queryUri = yahooWebUri.getURI(stock);
 			System.out.println("URI: " + queryUri.toString());
+			//Ensure that all the Query Codes are set for each Stock
+			//The query codes will be used to identify the <key, value> pair from the Map mappedData <String, String>()
+			Stock.setAllParamsQueryCode(stock, paramCodeValues);
 
-			String queriedHTML = "";
 			try {
 				HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 				httpConnection.setConnectTimeout(timeout);
@@ -114,30 +117,45 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 				e.printStackTrace();
 			}
 		}
-		printRequireDataOnly(stockList, requiredParameters, outputFileLocation);
+		userRequestedData = getRequireDataOnly(stockList, requiredParameters, outputFileLocation);
+		WriteToCSV.WriteDataToCSV(outputFileLocation, userRequestedData);
 	}
 
 	public static void printRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
 		Map<String, String> requiredDataList = new HashMap<String, String>();
 		Stock stock = null;
 		ArrayList<String> finalData = new ArrayList<String>();
-		try {
-			for (int i =0; i<stockList.size(); i++) {
-				stock = stockList.get(i);
-				System.out.println("Stock Name:" + stock.getStockName());
-				requiredDataList = stock.getRequiredParamData(requiredParameters);
-				if (i == 0) {
-					finalData.add(i, "StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
-					System.out.println("StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
-				}
-				finalData.add(i, (stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", "")));
-				System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
+		for (int i =0; i<stockList.size(); i++) {
+			stock = stockList.get(i);
+			System.out.println("Stock Name:" + stock.getStockName());
+			requiredDataList = stock.getRequiredParamData(requiredParameters);
+			if (i == 0) {
+				finalData.add(i, "StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
+				System.out.println("StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
 			}
-			Collections.reverse(finalData);
-			WriteToCSV.WriteDataToCSV(outputFileLocation, finalData);
-		} catch (IOException e) {
-			e.printStackTrace();
+			finalData.add(i, (stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", "")));
+			System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
 		}
+		Collections.reverse(finalData);
+	}
+
+	public static ArrayList<String> getRequireDataOnly(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
+		Map<String, String> requiredDataList = new HashMap<String, String>();
+		Stock stock = null;
+		ArrayList<String> finalData = new ArrayList<String>();
+		for (int i =0; i<stockList.size(); i++) {
+			stock = stockList.get(i);
+			System.out.println("Stock Name:" + stock.getStockName());
+			requiredDataList = stock.getRequiredParamData(requiredParameters);
+			if (i == 0) {
+				finalData.add(i, "StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
+				System.out.println("StockName" + ","+ requiredDataList.keySet().toString().replaceAll("\\[|\\]", ""));
+			}
+			finalData.add(i, (stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", "")));
+			System.out.println(stock.getStockName() + ","+ requiredDataList.values().toString().replaceAll("\\[|\\]", ""));
+		}
+		Collections.reverse(finalData);
+		return finalData;
 	}
 	/**
 	 * The method sets the values from the Map 'mappedData' to the parameters of the stock Object
@@ -148,6 +166,53 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 	 * @return stock Stock after all the necessary Parameters' data have been updated
 	 */
 	public static Stock setStockParams (Stock stock, Map<String, String> mappedData) {
+		if (mappedData.containsKey(stock.getStockAsk().getQueryCode())){
+			stock.getStockAsk().setparamData(mappedData.get(stock.getStockAsk().getQueryCode()));
+		}
+		System.out.println("Looking for Average data now...");
+
+		System.out.println("Average data in Stock class: " + stock.getStockAverageVolume().getQueryCode());
+		if (mappedData.containsKey(stock.getStockAverageVolume().getQueryCode())){
+			stock.getStockAverageVolume().setparamData(mappedData.get(stock.getStockAverageVolume().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockBeta().getQueryCode())) {
+			stock.getStockBeta().setparamData(mappedData.get(stock.getStockBeta().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockBid().getQueryCode())) {
+			stock.getStockBid().setQueryCode(mappedData.get(stock.getStockBid().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockDaysRange().getQueryCode())) {
+			stock.getStockDaysRange().setparamData(mappedData.get(stock.getStockDaysRange().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockDividendYield().getQueryCode())){
+			stock.getStockDividendYield().setparamData(mappedData.get(stock.getStockDividendYield().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockEarnDate().getQueryCode())) {
+			stock.getStockEarnDate().setparamData(mappedData.get(stock.getStockEarnDate().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockEarningsPerShare().getQueryCode())) {
+			stock.getStockEarningsPerShare().setparamData(mappedData.get(stock.getStockEarningsPerShare().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockMarketCapitalization().getQueryCode())) {
+			stock.getStockMarketCapitalization().setparamData(mappedData.get(stock.getStockMarketCapitalization().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockOneYearTarget().getQueryCode())) {
+			stock.getStockOneYearTarget().setparamData(mappedData.get(stock.getStockOneYearTarget().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockOpen().getQueryCode())) {
+			stock.getStockOpen().setparamData(mappedData.get(stock.getStockOpen().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockPERatio().getQueryCode())) {
+			stock.getStockPERatio().setparamData(mappedData.get(stock.getStockPERatio().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockPreviousClose().getQueryCode())) {
+			stock.getStockPreviousClose().setparamData(mappedData.get(stock.getStockPreviousClose().getQueryCode()));
+		}
+		if (mappedData.containsKey(stock.getStockVolume().getQueryCode())) {
+			stock.getStockVolume().setparamData(mappedData.get(stock.getStockVolume().getQueryCode()));
+		}
+
+		/*
 		if (stock.stockPreviousClose.getParamYahooTabName().equals(mappedData.get(new ParamPreviousClose().getParamYahooTabName()))){
 			stock.stockPreviousClose.setparamData(mappedData.get(new ParamPreviousClose().getParamYahooTabName()));
 		}
@@ -166,7 +231,53 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		stock.stockMarketCapitalization.setparamData(mappedData.get(new ParamMarketCapitalization().getParamYahooTabName()));
 		stock.stockPERatio.setparamData(mappedData.get(new ParamPERatio().getParamYahooTabName()));
 		stock.stockEarningsPerShare.setparamData(mappedData.get(new ParamEarningsPerShare().getParamYahooTabName()));
-		stock.stockDividendYield.setparamData(mappedData.get(new ParamDividendYield().getParamYahooTabName()));
+		stock.stockDividendYield.setparamData(mappedData.get(new ParamDividendYield().getParamYahooTabName()));*/
+
+		/*		
+		if (stock.stockAsk.getQueryCode().equals(mappedData.get(stock.stockAsk.getQueryCode()))) {
+			stock.stockAsk.setparamData(mappedData.get(stock.stockAsk.getQueryCode()));
+		}
+		if (stock.getStockAverageVolume().getQueryCode().equals(mappedData.get(stock.getStockAverageVolume().getQueryCode()))){
+			stock.getStockAverageVolume().setparamData(mappedData.get(stock.getStockAverageVolume().getQueryCode()));
+
+		}
+		if (stock.getStockBeta().getQueryCode().equals(mappedData.get(stock.getStockBeta().getQueryCode()))) {
+			stock.getStockBeta().setparamData(mappedData.get(stock.getStockBeta().getQueryCode()));
+		}
+		if (stock.getStockBid().getQueryCode().equals(mappedData.get(stock.getStockBid().getQueryCode()))) {
+
+		}
+		if (stock.getStockDaysRange().getQueryCode().equals(mappedData.get(stock.getStockDaysRange().getQueryCode()))) {
+
+		}
+		if (stock.getStockDividendYield().getQueryCode().equals(mappedData.get(stock.getStockDividendYield().getQueryCode()))){
+
+		}
+		if (stock.getStockEarnDate().getQueryCode().equals(mappedData.get(stock.getStockEarnDate().getQueryCode()))) {
+
+		}
+		if (stock.getStockEarningsPerShare().getQueryCode().equals(mappedData.get(stock.getStockEarningsPerShare().getQueryCode()))) {
+
+		}
+		if (stock.getStockMarketCapitalization().getQueryCode().equals(mappedData.get(stock.getStockMarketCapitalization().getQueryCode()))) {
+
+		}
+		if (stock.getStockOneYearTarget().getQueryCode().equals(mappedData.get(stock.getStockOneYearTarget().getQueryCode()))) {
+
+		}
+		if (stock.getStockOpen().getQueryCode().equals(mappedData.get(stock.getStockOpen().getQueryCode()))) {
+
+		}
+		if (stock.getStockPERatio().getQueryCode().equals(mappedData.get(stock.getStockPERatio().getQueryCode()))) {
+
+		}
+		if (stock.getStockPreviousClose().getQueryCode().equals(mappedData.get(stock.getStockPreviousClose().getQueryCode()))) {
+
+		}
+		if (stock.getStockVolume().getQueryCode().equals(mappedData.get(stock.getStockVolume().getQueryCode()))) {
+
+		}*/
+
 
 		return stock;
 	}

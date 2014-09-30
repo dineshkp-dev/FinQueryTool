@@ -2,9 +2,8 @@ package financialQueryTool;
 
 public class ParamBeta implements ParamListInterface {
 	private String paramName = "Beta";
-	private String paramUlsdCode = "";
 	private String paramData="N/A";
-	private static String paramYahooTabName = "Beta:";
+	private String queryCode;
 	
 	@Override
 	public String getparamName() {
@@ -23,13 +22,12 @@ public class ParamBeta implements ParamListInterface {
 
 	@Override
 	public String getQueryCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.queryCode;
 	}
 
 	@Override
 	public void setQueryCode(String queryCode) {
-		// TODO Auto-generated method stub
+		this.queryCode =queryCode;
 		
 	}
 }

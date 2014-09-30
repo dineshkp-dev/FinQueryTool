@@ -2,9 +2,8 @@ package financialQueryTool;
 
 public class ParamAverageVolume implements ParamListInterface {
 	private String paramName = "AverageVolume";
-	private String paramUlsdCode = "a2";
 	private String paramData="N/A";
-	private static String paramYahooTabName = "Avg Vol (3m):";
+	private String queryCode;
 	
 	@Override
 	public String getparamName() {
@@ -23,13 +22,12 @@ public class ParamAverageVolume implements ParamListInterface {
 
 	@Override
 	public String getQueryCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.queryCode;
 	}
 
 	@Override
 	public void setQueryCode(String queryCode) {
-		// TODO Auto-generated method stub
+		this.queryCode =queryCode;
 		
 	}
 }

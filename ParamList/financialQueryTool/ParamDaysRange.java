@@ -2,9 +2,9 @@ package financialQueryTool;
 
 public class ParamDaysRange implements ParamListInterface {
 	private String paramName = "DaysRange";
-	private String paramUlsdCode = "m";
 	private String paramData="N/A";
-	private static String paramYahooTabName = "Day's Range:";
+	private String queryCode;
+	
 	@Override
 	public String getparamName() {
 		return paramName;
@@ -21,12 +21,12 @@ public class ParamDaysRange implements ParamListInterface {
 	}
 	@Override
 	public String getQueryCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.queryCode;
 	}
+
 	@Override
 	public void setQueryCode(String queryCode) {
-		// TODO Auto-generated method stub
+		this.queryCode =queryCode;
 		
 	}
 }

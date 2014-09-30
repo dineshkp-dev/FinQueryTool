@@ -2,9 +2,9 @@ package financialQueryTool;
 
 public class ParamStockSym implements ParamListInterface {
 	private String paramName = "StockSymbol";
-	private static String paramUlsdCode = "";
 	private String paramData="N/A";
-	private static String paramYahooTabName = "";
+	private String queryCode;
+	
 	@Override
 	public String getparamName() {
 		return paramName;
@@ -15,23 +15,18 @@ public class ParamStockSym implements ParamListInterface {
 		return paramData;
 	}
 
-//	@Override
+	@Override
 	public void setparamData(String Data) {
 		this.paramData = Data;
 	}
 	@Override
 	public String getQueryCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.queryCode;
 	}
+
 	@Override
 	public void setQueryCode(String queryCode) {
-		// TODO Auto-generated method stub
+		this.queryCode =queryCode;
 		
 	}
-	
-/*	public static boolean validApi(){
-		return false;
-		
-	}*/
 }

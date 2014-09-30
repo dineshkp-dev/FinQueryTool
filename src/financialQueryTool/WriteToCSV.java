@@ -27,7 +27,7 @@ public class WriteToCSV {
 	 * @return boolean value, showing success/fail.
 	 * @throws IOException 
 	 */
-	public static boolean WriteDataToCSV( Path csvFilePath, ArrayList<String> finalData ) throws IOException {
+	public static boolean WriteDataToCSV( Path csvFilePath, ArrayList<String> finalData ) {
 		OpenOption[] options = {StandardOpenOption.CREATE, StandardOpenOption.APPEND};
 		String writeInto = "";
 		BufferedWriter writer = null;
@@ -42,7 +42,11 @@ public class WriteToCSV {
 			e.printStackTrace();
 		}
 		finally {
-			writer.close();
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 

@@ -2,8 +2,7 @@ package financialQueryTool;
 
 public class ParamAsk implements ParamListInterface {
 	private String paramName = "Ask";
-	private static String paramUlsdCode = "a";
-	private static String paramYahooTabName = "Ask:";
+	private String paramData="N/A";
 	private String queryCode;
 	public String getQueryCode() {
 		return queryCode;
@@ -12,8 +11,6 @@ public class ParamAsk implements ParamListInterface {
 	public void setQueryCode(String queryCode) {
 		this.queryCode = queryCode;
 	}
-
-	private String paramData="N/A";
 
 	@Override
 	public String getparamName() {
@@ -30,8 +27,4 @@ public class ParamAsk implements ParamListInterface {
 		this.paramData = Data;
 	}
 	
-/*	public static boolean validApi(){
-		return false;
-		
-	}*/
 }

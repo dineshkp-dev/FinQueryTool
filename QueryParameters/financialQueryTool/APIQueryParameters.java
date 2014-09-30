@@ -2,7 +2,7 @@ package financialQueryTool;
 
 import java.util.ArrayList;
 
-public class APIQueryParameters implements queryParamInterface{
+public class APIQueryParameters implements QueryParamInterface{
 	private static String ParamAskVal = "a";
 	private static String ParamAverageVolumeVal = "a2";
 	private static String ParamBidVal = "b";
@@ -111,6 +111,30 @@ public class APIQueryParameters implements queryParamInterface{
 	@Override
 	public String getParamBetaVal() {
 		return ParamBetaVal;
+	}
+	@Override
+	public String getAllQueryParams() {
+		String queryParams = "";
+		System.out.println("Generating string for all applicable Query Values for API.");
+		queryParams = getParamAskVal() + getParamAverageVolumeVal() + getParamBidVal() + getParamDaysRangeVal() + getParamDividendYieldVal() + getParamEarningsPerShareVal()
+				+ getParamMarketCapitalizationVal() + getParamOneYearTargetVal() + getParamOpenVal() + getParamPERatioVal() + getParamPreviousCloseVal() + getParamStockNameVal()
+				+ getParamVolumeVal() + getParamWeekRangeVal();
+		return queryParams;
+	}
+	@Override
+	public String getApplicableQueryParams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String[] getAllQueryParamsArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String[] getApplicableQueryParamsArray() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*	public static String getAllQueryValues() {

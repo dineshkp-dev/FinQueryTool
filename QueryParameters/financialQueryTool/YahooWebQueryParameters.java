@@ -8,7 +8,7 @@ package financialQueryTool;
  * EPS (ttm):	0.11,Div & Yield:	N/A (N/A)
  */
 
-public class YahooWebQueryParameters implements queryParamInterface {
+public class YahooWebQueryParameters implements QueryParamInterface {
 	private static String ParamAskVal = "Ask:";
 	private static String ParamAverageVolumeVal = "Avg Vol (3m):";
 	private static String ParamBetaVal = "Beta:";
@@ -94,5 +94,25 @@ public class YahooWebQueryParameters implements queryParamInterface {
 	@Override
 	public String getParamWeekRangeVal() {
 		return ParamWeekRangeVal;
+	}
+	@Override
+	public String getAllQueryParams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getApplicableQueryParams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String[] getAllQueryParamsArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String[] getApplicableQueryParamsArray() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -94,39 +94,6 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			}
 		}
 	}
-	@Override
-	public String initiateQuery (String stockSymbol) {
-
-		String api_url = "http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + "&f=" + APIQueryParameters.getAllQueryValues();
-		String queriedData = null;
-
-		HttpURLConnection apiConnection = null;
-		InputStream connectionStream = null;
-		boolean captureStream = true;
-		
-		try {
-			URL yahooFinApi = new URL(api_url);
-			apiConnection = (HttpURLConnection) yahooFinApi.openConnection();
-			//set timeout
-			connectionStream = apiConnection.getInputStream();
-			System.out.println(apiConnection.getContentType());
-			Path path = FileSystems.getDefault().getPath("output_newApi.csv");
-			int bufferSize = 2048;
-
-			WriteToCSV.WriteDataToCSV(path, connectionStream, bufferSize, captureStream);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				apiConnection.disconnect();
-				connectionStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return queriedData;
-	}
 
 	@Override
 	public void printURI() {
@@ -219,5 +186,13 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			String[] requiredParameters, Path outputFile) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	@Override
+	public String initiateQuery(String stockSymbol) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

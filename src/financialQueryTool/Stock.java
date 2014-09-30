@@ -1,6 +1,5 @@
 package financialQueryTool;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,13 +41,47 @@ public class Stock {
 	 * @param divnYield
 	 */
 	private Stock(){
-
 	}
 	public Stock(ParamListInterface stockName) {
 		this.stockName = (ParamStockName) stockName;
 		this.stockSym = (ParamStockSym) stockName;
 	}
+	
+	
+	
+	/**
+	 * This method sets the query code to the stock object. The query code depends on the query type and set based on the values 
+	 * implementing the 'QueryParamInterface'
+	 * @param stock
+	 * @param paramCodeValues
+	 */
+	public static void setAllParamsQueryCode (Stock stock, QueryParamInterface paramCodeValues) {
+		System.out.println("Setting the Parameter's Query Code.");
+		
+		stock.getStockAsk().setQueryCode(paramCodeValues.getParamAskVal());
+		stock.getStockAverageVolume().setQueryCode(paramCodeValues.getParamAverageVolumeVal());
+		stock.getStockBeta().setQueryCode(paramCodeValues.getParamBetaVal());
+		stock.getStockBid().setQueryCode(paramCodeValues.getParamBidVal());
+		stock.getStockDaysRange().setQueryCode(paramCodeValues.getParamDaysRangeVal());
+		stock.getStockDividendYield().setQueryCode(paramCodeValues.getParamDividendYieldVal());
+		stock.getStockEarnDate().setQueryCode(paramCodeValues.getParamEarnDateVal());
+		stock.getStockEarningsPerShare().setQueryCode(paramCodeValues.getParamEarningsPerShareVal());
+		stock.getStockMarketCapitalization().setQueryCode(paramCodeValues.getParamMarketCapitalizationVal());
+		stock.getStockOneYearTarget().setQueryCode(paramCodeValues.getParamOneYearTargetVal());
+		stock.getStockOpen().setQueryCode(paramCodeValues.getParamOpenVal());
+		stock.getStockPERatio().setQueryCode(paramCodeValues.getParamPERatioVal());
+		stock.getStockPreviousClose().setQueryCode(paramCodeValues.getParamPreviousCloseVal());
+		stock.getStockVolume().setQueryCode(paramCodeValues.getParamVolumeVal());
+		stock.getstockWeekRange().setQueryCode(paramCodeValues.getParamWeekRangeVal());
+		
+	}
 
+	
+	/**
+	 * Main constructor which creates the stock object and initializes the Parameters like 'ParamAsk','ParamBid' etc
+	 * by creating new instances of these Parameters.
+	 * @param stockSym
+	 */
 	public Stock(String stockSym) {
 		ParamStockName stockName = new ParamStockName();
 		stockName.setparamData(stockSym);
@@ -57,7 +90,6 @@ public class Stock {
 		this.stockSym=stockSymbol;
 		this.stockName=stockName;
 		this.stockAsk=new ParamAsk();
-		//this.stockAsk.set
 		this.stockAverageVolume=new ParamAverageVolume();
 		this.stockBeta = new ParamBeta();
 		this.stockBid = new ParamBid();
@@ -72,7 +104,6 @@ public class Stock {
 		this.stockPreviousClose = new ParamPreviousClose();
 		this.stockVolume = new ParamVolume();
 		this.stockWeekRange = new ParamWeekRange();
-
 	}
 
 	public void printDetails() {
@@ -84,7 +115,7 @@ public class Stock {
 		System.out.println("\tStock Beta:"+this.getStockBetaStr());
 		System.out.println("\tStock Earn Date:"+this.getStockEarnDateStr());
 		System.out.println("\tStock Day's Range:"+this.getStockDaysRangeStr());
-		System.out.println("\tStock 52-Week Range:"+this.getstockWeekRangeStr());
+		System.out.println("\tStock 52-Week Range:"+this.getStockWeekRangeStr());
 		System.out.println("\tStock Volume:"+this.getStockVolumeStr());
 		System.out.println("\tStock Average Volume:"+this.getStockAverageVolumeStr());
 		System.out.println("\tStock Market Capitalization:"+this.getStockMarketCapitalizationStr());
@@ -163,8 +194,8 @@ public class Stock {
 				requiredParametersData.put(this.stockVolume.getparamName(), this.getStockVolumeStr());
 			}
 			else if (requiredParam.equalsIgnoreCase(this.stockWeekRange.getparamName())) {
-				System.out.println("Stock " + this.stockWeekRange.getparamName()+ "  data: " + this.getstockWeekRangeStr());
-				requiredParametersData.put(this.stockWeekRange.getparamName(), this.getstockWeekRangeStr());
+				System.out.println("Stock " + this.stockWeekRange.getparamName()+ "  data: " + this.getStockWeekRangeStr());
+				requiredParametersData.put(this.stockWeekRange.getparamName(), this.getStockWeekRangeStr());
 			}
 			else {
 				throw new RuntimeErrorException(null, "Invalid parameter passed for Query Request. \n" + requiredParam);
@@ -278,7 +309,7 @@ public class Stock {
 	public String getStockVolumeStr() {
 		return stockVolume.getparamData().replaceAll(",", "");
 	}
-	public String getstockWeekRangeStr() {
+	public String getStockWeekRangeStr() {
 		return stockWeekRange.getparamData().replaceAll(",", "");
 	}
 	public String getStockName() {
