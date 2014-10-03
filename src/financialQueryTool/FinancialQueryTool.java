@@ -4,6 +4,10 @@ import financialQueryTool.initiateQueryPkg.InitiateAPIQuery;
 import financialQueryTool.initiateQueryPkg.InitiateHistoricalQuery;
 import financialQueryTool.initiateQueryPkg.InitiateQueryInterface;
 import financialQueryTool.initiateQueryPkg.InitiateYahooWebQuery;
+import financialQueryTool.parseInputOutputPkg.InputData;
+import financialQueryTool.parseInputOutputPkg.ParseInputXml;
+import financialQueryTool.stockPkg.GenerateStockList;
+import financialQueryTool.stockPkg.Stock;
 
 import java.net.URI;
 import java.nio.file.FileSystems;
@@ -32,8 +36,7 @@ public class FinancialQueryTool {
 		System.out.println("Parsing input file");
 		//call to parse input file
 		InputData userData = ParseInputXml.parseInputData(inputXmlLoc);
-		InitiateQueryInterface initateQuery;
-
+		InitiateQueryInterface initateQuery;// Try to use abstract Factory Design to create new objects
 
 		System.out.println("Stocks obtained: " + userData.getRequiredStockSymbols());
 		stockList = GenerateStockList.getStockList(userData.getRequiredStockSymbols());

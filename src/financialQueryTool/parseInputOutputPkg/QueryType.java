@@ -1,7 +1,7 @@
 /**
  * 
  */
-package financialQueryTool;
+package financialQueryTool.parseInputOutputPkg;
 
 /**
  * @author dineshkp

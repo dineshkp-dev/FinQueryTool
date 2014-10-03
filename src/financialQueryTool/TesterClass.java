@@ -3,6 +3,9 @@ package financialQueryTool;
 import java.util.ArrayList;
 
 import financialQueryTool.generateURIPkg.GenerateApiUri;
+import financialQueryTool.parseInputOutputPkg.QueryType;
+import financialQueryTool.stockPkg.GenerateStockList;
+import financialQueryTool.stockPkg.Stock;
 
 public class TesterClass {
 

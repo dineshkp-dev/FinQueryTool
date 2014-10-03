@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.parseInputOutputPkg;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;

@@ -2,7 +2,6 @@ package financialQueryTool.queryParametersPkg;
 
 import java.util.ArrayList;
 
-import financialQueryTool.Stock;
 import financialQueryTool.parametersPkg.ParamAsk;
 import financialQueryTool.parametersPkg.ParamAverageVolume;
 import financialQueryTool.parametersPkg.ParamBid;
@@ -18,6 +17,7 @@ import financialQueryTool.parametersPkg.ParamPreviousClose;
 import financialQueryTool.parametersPkg.ParamStockName;
 import financialQueryTool.parametersPkg.ParamVolume;
 import financialQueryTool.parametersPkg.ParamWeekRange;
+import financialQueryTool.stockPkg.Stock;
 
 public class APIQueryParameters implements QueryParamInterface{
 	private static String ParamAskVal = "a";

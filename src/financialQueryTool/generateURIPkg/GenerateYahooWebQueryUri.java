@@ -4,8 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import financialQueryTool.Stock;
 import financialQueryTool.parametersPkg.ParamListInterface;
+import financialQueryTool.stockPkg.Stock;
 
 public class GenerateYahooWebQueryUri extends GenerateURI {
 	

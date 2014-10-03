@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.stockPkg;
 
 import java.util.ArrayList;
 

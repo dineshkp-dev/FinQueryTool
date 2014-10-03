@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.stockPkg;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class Stock {
 	protected ParamStockSym stockSym;
 	protected ParamPreviousClose stockPreviousClose;
 	protected ParamVolume stockVolume;
-	private ParamWeekRange stockWeekRange;
+	protected ParamWeekRange stockWeekRange;
 
 	/**
 	 * @param prevClose

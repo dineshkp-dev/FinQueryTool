@@ -9,9 +9,9 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-import financialQueryTool.Stock;
-import financialQueryTool.WriteToCSV;
 import financialQueryTool.generateURIPkg.GenerateHistoricalUri;
+import financialQueryTool.parseInputOutputPkg.WriteToCSV;
+import financialQueryTool.stockPkg.Stock;
 
 public class InitiateHistoricalQuery implements InitiateQueryInterface {
 

@@ -2,7 +2,7 @@ package financialQueryTool.generateURIPkg;
 
 import java.net.URI;
 
-import financialQueryTool.Stock;
+import financialQueryTool.stockPkg.Stock;
 
 public class GenerateHistoricalUri extends GenerateURI {
 

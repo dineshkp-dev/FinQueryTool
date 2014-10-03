@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.parseInputOutputPkg;
 
 import java.io.File;
 import java.io.IOException;

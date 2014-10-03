@@ -10,8 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import financialQueryTool.Stock;
-import financialQueryTool.WriteToCSV;
 import financialQueryTool.generateURIPkg.GenerateURI;
 import financialQueryTool.generateURIPkg.GenerateYahooWebQueryUri;
 import financialQueryTool.htmlOperationsPkg.ParseHTML;
@@ -32,8 +30,10 @@ import financialQueryTool.parametersPkg.ParamPERatio;
 import financialQueryTool.parametersPkg.ParamPreviousClose;
 import financialQueryTool.parametersPkg.ParamVolume;
 import financialQueryTool.parametersPkg.ParamWeekRange;
+import financialQueryTool.parseInputOutputPkg.WriteToCSV;
 import financialQueryTool.queryParametersPkg.QueryParamInterface;
 import financialQueryTool.queryParametersPkg.YahooWebQueryParameters;
+import financialQueryTool.stockPkg.Stock;
 
 public class InitiateYahooWebQuery implements InitiateQueryInterface {
 
@@ -86,7 +86,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 		QueryParamInterface paramCodeValues = new YahooWebQueryParameters();
 		ArrayList<String> userRequestedData = new ArrayList<String>();
 
-		for (Stock stock : stockList) {
+		for (Stock stock : stockList) { //Use Threads to simultaneaouly query for Stock information.
 			String queriedHTML = "";
 			queryUri = yahooWebUri.getURI(stock);
 			System.out.println("URI: " + queryUri.toString());

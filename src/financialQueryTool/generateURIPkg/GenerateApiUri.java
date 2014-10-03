@@ -4,10 +4,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import financialQueryTool.QueryType;
-import financialQueryTool.Stock;
+import financialQueryTool.parseInputOutputPkg.QueryType;
 import financialQueryTool.queryParametersPkg.APIQueryParameters;
 import financialQueryTool.queryParametersPkg.QueryParamInterface;
+import financialQueryTool.stockPkg.Stock;
 /*
  * "http://finance.yahoo.com/d/quotes.csv?s=AAPL+GOOG+MSFT&f=nab"
  * */

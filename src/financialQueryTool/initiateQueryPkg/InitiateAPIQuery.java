@@ -12,12 +12,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import financialQueryTool.Stock;
-import financialQueryTool.WriteToCSV;
 import financialQueryTool.generateURIPkg.GenerateApiUri;
 import financialQueryTool.generateURIPkg.GenerateURI;
 import financialQueryTool.parametersPkg.ParamListInterface;
+import financialQueryTool.parseInputOutputPkg.WriteToCSV;
 import financialQueryTool.queryParametersPkg.APIQueryParameters;
+import financialQueryTool.stockPkg.Stock;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
 

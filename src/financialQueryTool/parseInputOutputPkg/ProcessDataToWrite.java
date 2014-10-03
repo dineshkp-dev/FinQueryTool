@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.parseInputOutputPkg;
 
 import java.util.ArrayList;
 import java.util.Map;

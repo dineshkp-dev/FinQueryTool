@@ -4,9 +4,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import financialQueryTool.QueryType;
-import financialQueryTool.Stock;
 import financialQueryTool.parametersPkg.ParamListInterface;
+import financialQueryTool.parseInputOutputPkg.QueryType;
+import financialQueryTool.stockPkg.Stock;
 
 public abstract class GenerateURI {
 	public ArrayList<Stock> stocks;

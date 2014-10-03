@@ -1,4 +1,4 @@
-package financialQueryTool;
+package financialQueryTool.parseInputOutputPkg;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -13,6 +13,8 @@ import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+
+import financialQueryTool.stockPkg.Stock;
 
 public class WriteToCSV {
 	private WriteToCSV() {}
