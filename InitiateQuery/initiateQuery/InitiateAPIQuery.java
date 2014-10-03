@@ -1,4 +1,4 @@
-package financialQueryTool;
+package initiateQuery;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -16,6 +16,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import financialQueryTool.APIQueryParameters;
+import financialQueryTool.GenerateApiUri;
+import financialQueryTool.GenerateURI;
+import financialQueryTool.ParamListInterface;
+import financialQueryTool.Stock;
+import financialQueryTool.WriteToCSV;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
 
@@ -196,23 +203,6 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		}
 		return stockList;
 	}
-
-	@Override
-	public void initiateQuery(ArrayList<Stock> stockList) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	//
-	//	@Override
-	//	public void initiateQuery(ArrayList<Stock> stockList,
-	//			String[] requiredParameters, Path outputFile) {
-	//		// TODO Auto-generated method stub
-	//
-	//	}
-
-
 
 	@Override
 	public String initiateQuery(String stockSymbol) {

@@ -1,4 +1,4 @@
-package financialQueryTool;
+package initiateQuery;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -9,6 +9,31 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import financialQueryTool.GenerateURI;
+import financialQueryTool.GenerateYahooWebQueryUri;
+import financialQueryTool.ParamAsk;
+import financialQueryTool.ParamAverageVolume;
+import financialQueryTool.ParamBeta;
+import financialQueryTool.ParamBid;
+import financialQueryTool.ParamDaysRange;
+import financialQueryTool.ParamDividendYield;
+import financialQueryTool.ParamEarnDate;
+import financialQueryTool.ParamEarningsPerShare;
+import financialQueryTool.ParamListInterface;
+import financialQueryTool.ParamMarketCapitalization;
+import financialQueryTool.ParamOneYearTarget;
+import financialQueryTool.ParamOpen;
+import financialQueryTool.ParamPERatio;
+import financialQueryTool.ParamPreviousClose;
+import financialQueryTool.ParamVolume;
+import financialQueryTool.ParamWeekRange;
+import financialQueryTool.ParseHTML;
+import financialQueryTool.QueryHtmlPage;
+import financialQueryTool.QueryParamInterface;
+import financialQueryTool.Stock;
+import financialQueryTool.WriteToCSV;
+import financialQueryTool.YahooWebQueryParameters;
 
 public class InitiateYahooWebQuery implements InitiateQueryInterface {
 
@@ -45,38 +70,6 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 	@Override
 	public void initiateQuery(ArrayList<Stock> stockList, Path outputFile) {
 		System.out.println("An output path is not required for Web queries.");
-	}
-
-	@Override
-	public void initiateQuery(ArrayList<Stock> stockList) {
-		URI queryUri = null;
-		int timeout = 5*1000;
-		GenerateURI yahooWebUri = new GenerateYahooWebQueryUri();
-		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
-		ParseHTML parsehtml = new ParseHTML();
-		Map<String, String> mappedData = new HashMap<String, String>();
-
-		for (Stock stock : stockList) {
-			queryUri = yahooWebUri.getURI(stock);
-			System.out.println("URI: " + queryUri.toString());
-
-			String queriedHTML = "";
-			try {
-				HttpURLConnection httpConnection = (HttpURLConnection) queryUri.toURL().openConnection();
-				httpConnection.setConnectTimeout(timeout);
-				queriedHTML = queryYahooPage.queryHTML(httpConnection);
-				mappedData = parsehtml.searchFoVal(queriedHTML);
-				System.out.println(mappedData.keySet().toString());
-				System.out.println("Setting the Stock's Parameters from Web Query.");
-				stock = InitiateYahooWebQuery.setStockParams(stock, mappedData);
-				stock.printDetails();
-
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/* (non-Javadoc)

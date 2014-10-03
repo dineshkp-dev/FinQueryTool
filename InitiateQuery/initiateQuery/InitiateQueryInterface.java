@@ -1,8 +1,10 @@
-package financialQueryTool;
+package initiateQuery;
 
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
+
+import financialQueryTool.Stock;
 
 public interface InitiateQueryInterface {
 	public void printURI();
@@ -12,6 +14,6 @@ public interface InitiateQueryInterface {
 	public String initiateQuery(String stockSymbol);
 	public void initiateQuery(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFile);
 	public void initiateQuery(ArrayList<Stock> stockList, Path outputFile);
-	public void initiateQuery(ArrayList<Stock> stockList);
+//	public void initiateQuery(ArrayList<Stock> stockList);
 	//public static ArrayList<ParamListInterface> queryParamList();
 }

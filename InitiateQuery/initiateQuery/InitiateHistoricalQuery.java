@@ -1,4 +1,4 @@
-package financialQueryTool;
+package initiateQuery;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +8,10 @@ import java.net.URI;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
+
+import financialQueryTool.GenerateHistoricalUri;
+import financialQueryTool.Stock;
+import financialQueryTool.WriteToCSV;
 
 public class InitiateHistoricalQuery implements InitiateQueryInterface {
 
@@ -85,12 +89,6 @@ public class InitiateHistoricalQuery implements InitiateQueryInterface {
 		}
 		System.out.println("query result: "  + queryResultList[5]);
 		return queryResult;
-	}
-
-	@Override
-	public void initiateQuery(ArrayList<Stock> stockList) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
