@@ -4,7 +4,7 @@
 	<RequiredStockSymbols>GOOG,AAPL</RequiredStockSymbols> <!-- ,AAPL,AMZN,BIDU,MA,NFLX</RequiredStockSymbols> -->
 	<!-- <RequiredParameters>Day's Range,52wk Range,Prev Close,Open,Div &amp; Yield,P/E (ttm),EPS (ttm),Beta,1y Target Est</RequiredParameters> -->
 	<RequiredParameters>Ask,AverageVolume</RequiredParameters> <!-- obtained from the 'ParamList' classes eg. ParamAsk.getparamName() -->
-	<QueryType>webyahoo</QueryType> <!-- api/historical/WEBYAHOO -->
+	<QueryType>api</QueryType> <!-- api/historical/WEBYAHOO -->
 </UserData>
 <FileLocation>
 	<TempFile>tempFile.html</TempFile>

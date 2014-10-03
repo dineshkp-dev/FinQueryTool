@@ -5,6 +5,26 @@ import java.util.Map;
 
 import javax.management.RuntimeErrorException;
 
+import financialQueryTool.parametersPkg.ParamAsk;
+import financialQueryTool.parametersPkg.ParamAverageVolume;
+import financialQueryTool.parametersPkg.ParamBeta;
+import financialQueryTool.parametersPkg.ParamBid;
+import financialQueryTool.parametersPkg.ParamDaysRange;
+import financialQueryTool.parametersPkg.ParamDividendYield;
+import financialQueryTool.parametersPkg.ParamEarnDate;
+import financialQueryTool.parametersPkg.ParamEarningsPerShare;
+import financialQueryTool.parametersPkg.ParamListInterface;
+import financialQueryTool.parametersPkg.ParamMarketCapitalization;
+import financialQueryTool.parametersPkg.ParamOneYearTarget;
+import financialQueryTool.parametersPkg.ParamOpen;
+import financialQueryTool.parametersPkg.ParamPERatio;
+import financialQueryTool.parametersPkg.ParamPreviousClose;
+import financialQueryTool.parametersPkg.ParamStockName;
+import financialQueryTool.parametersPkg.ParamStockSym;
+import financialQueryTool.parametersPkg.ParamVolume;
+import financialQueryTool.parametersPkg.ParamWeekRange;
+import financialQueryTool.queryParametersPkg.QueryParamInterface;
+
 public class Stock {
 	protected ParamAsk stockAsk;
 	protected ParamAverageVolume stockAverageVolume;
@@ -18,11 +38,11 @@ public class Stock {
 	protected ParamOneYearTarget stockOneYearTarget;
 	protected ParamOpen stockOpen;
 	protected ParamPERatio stockPERatio;
-	protected ParamStockName stockName;
+	private ParamStockName stockName;
 	protected ParamStockSym stockSym;
 	protected ParamPreviousClose stockPreviousClose;
 	protected ParamVolume stockVolume;
-	protected ParamWeekRange stockWeekRange;
+	private ParamWeekRange stockWeekRange;
 
 	/**
 	 * @param prevClose
@@ -43,7 +63,7 @@ public class Stock {
 	private Stock(){
 	}
 	public Stock(ParamListInterface stockName) {
-		this.stockName = (ParamStockName) stockName;
+		this.setStockName((ParamStockName) stockName);
 		this.stockSym = (ParamStockSym) stockName;
 	}
 	
@@ -88,7 +108,7 @@ public class Stock {
 		ParamStockSym stockSymbol = new ParamStockSym();
 		stockSymbol.setparamData(stockSym);
 		this.stockSym=stockSymbol;
-		this.stockName=stockName;
+		this.setStockName(stockName);
 		this.stockAsk=new ParamAsk();
 		this.stockAverageVolume=new ParamAverageVolume();
 		this.stockBeta = new ParamBeta();
@@ -103,7 +123,7 @@ public class Stock {
 		this.stockPERatio = new ParamPERatio();
 		this.stockPreviousClose = new ParamPreviousClose();
 		this.stockVolume = new ParamVolume();
-		this.stockWeekRange = new ParamWeekRange();
+		this.setStockWeekRange(new ParamWeekRange());
 	}
 
 	public void printDetails() {
@@ -181,9 +201,9 @@ public class Stock {
 				System.out.println("Stock " + this.stockPreviousClose.getparamName()+ "  data: " + this.getStockPreviousCloseStr());
 				requiredParametersData.put(this.stockPreviousClose.getparamName(), this.getStockPreviousCloseStr());
 			}
-			else if (requiredParam.equalsIgnoreCase(this.stockName.getparamName())) {
-				System.out.println("Stock " + this.stockName.getparamName()+ "  data: " + this.getStockName());
-				requiredParametersData.put(this.stockName.getparamName(), this.getStockName());
+			else if (requiredParam.equalsIgnoreCase(this.getStockNameParam().getparamName())) {
+				System.out.println("Stock " + this.getStockNameParam().getparamName()+ "  data: " + this.getStockName());
+				requiredParametersData.put(this.getStockNameParam().getparamName(), this.getStockName());
 			}
 			else if (requiredParam.equalsIgnoreCase(this.stockSym.getparamName())) {
 				System.out.println("Stock " + this.stockSym.getparamName() + "  data: " + this.getStockSymStr());
@@ -193,9 +213,9 @@ public class Stock {
 				System.out.println("Stock " + this.stockVolume.getparamName()+ "  data: " + this.getStockVolumeStr());
 				requiredParametersData.put(this.stockVolume.getparamName(), this.getStockVolumeStr());
 			}
-			else if (requiredParam.equalsIgnoreCase(this.stockWeekRange.getparamName())) {
-				System.out.println("Stock " + this.stockWeekRange.getparamName()+ "  data: " + this.getStockWeekRangeStr());
-				requiredParametersData.put(this.stockWeekRange.getparamName(), this.getStockWeekRangeStr());
+			else if (requiredParam.equalsIgnoreCase(this.getStockWeekRange().getparamName())) {
+				System.out.println("Stock " + this.getStockWeekRange().getparamName()+ "  data: " + this.getStockWeekRangeStr());
+				requiredParametersData.put(this.getStockWeekRange().getparamName(), this.getStockWeekRangeStr());
 			}
 			else {
 				throw new RuntimeErrorException(null, "Invalid parameter passed for Query Request. \n" + requiredParam);
@@ -251,7 +271,7 @@ public class Stock {
 		return stockVolume;
 	}
 	public ParamWeekRange getstockWeekRange() {
-		return stockWeekRange;
+		return getStockWeekRange();
 	}
 	/*
 	 * Getter methods to return Data as String values for each of the parameters.
@@ -310,13 +330,13 @@ public class Stock {
 		return stockVolume.getparamData().replaceAll(",", "");
 	}
 	public String getStockWeekRangeStr() {
-		return stockWeekRange.getparamData().replaceAll(",", "");
+		return getStockWeekRange().getparamData().replaceAll(",", "");
 	}
 	public String getStockName() {
-		return this.stockName.getparamData().replaceAll(",", "");
+		return this.getStockNameParam().getparamData().replaceAll(",", "");
 	}
 	public String getStockNameStr() {
-		return this.stockName.getparamData().replaceAll(",", "");
+		return this.getStockNameParam().getparamData().replaceAll(",", "");
 	}
 	public String getStockSymStr() {
 		return this.stockSym.getparamData().replaceAll(",", "");
@@ -324,5 +344,17 @@ public class Stock {
 
 	public void setStockName(ParamListInterface stockName) {
 		this.stockName = (ParamStockName) stockName;
+	}
+	public ParamStockName getStockNameParam() {
+		return stockName;
+	}
+	public void setStockName(ParamStockName stockName) {
+		this.stockName = stockName;
+	}
+	public ParamWeekRange getStockWeekRange() {
+		return stockWeekRange;
+	}
+	public void setStockWeekRange(ParamWeekRange stockWeekRange) {
+		this.stockWeekRange = stockWeekRange;
 	}
 }

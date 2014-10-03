@@ -239,3 +239,9 @@ StockName,AverageVolume, Ask
 StockName,AverageVolume, Ask
 AAPL,54575400, 100.74 x 400
 GOOG,1487780, 576.20 x 100
+StockName,AverageVolume, Ask
+AAPL,54763700, 99.28 x 1000
+GOOG,1494440, 570.20 x 1500
+StockName,AverageVolume, Ask
+"Apple Inc.",54763700, 99.28
+"Google Inc.",1494440, 570.20

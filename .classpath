@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="ParamList"/>
 	<classpathentry kind="src" path="GenerateURIString"/>
 	<classpathentry kind="src" path="InitiateQuery"/>
 	<classpathentry kind="src" path="HTMLPageOperations"/>

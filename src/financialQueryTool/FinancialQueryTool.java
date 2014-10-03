@@ -1,9 +1,9 @@
 package financialQueryTool;
 
-import initiateQuery.InitiateAPIQuery;
-import initiateQuery.InitiateHistoricalQuery;
-import initiateQuery.InitiateQueryInterface;
-import initiateQuery.InitiateYahooWebQuery;
+import financialQueryTool.initiateQueryPkg.InitiateAPIQuery;
+import financialQueryTool.initiateQueryPkg.InitiateHistoricalQuery;
+import financialQueryTool.initiateQueryPkg.InitiateQueryInterface;
+import financialQueryTool.initiateQueryPkg.InitiateYahooWebQuery;
 
 import java.net.URI;
 import java.nio.file.FileSystems;
