@@ -38,7 +38,7 @@ public class Stock {
 	protected ParamOneYearTarget stockOneYearTarget;
 	protected ParamOpen stockOpen;
 	protected ParamPERatio stockPERatio;
-	private ParamStockName stockName;
+	protected ParamStockName stockName;
 	protected ParamStockSym stockSym;
 	protected ParamPreviousClose stockPreviousClose;
 	protected ParamVolume stockVolume;

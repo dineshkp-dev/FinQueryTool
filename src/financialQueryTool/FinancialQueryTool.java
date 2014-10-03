@@ -31,26 +31,26 @@ public class FinancialQueryTool {
 		System.out.println("....");
 		System.out.println("Parsing input file");
 		//call to parse input file
-		InputData inputData = ParseInputXml.parseInputData(inputXmlLoc);
+		InputData userData = ParseInputXml.parseInputData(inputXmlLoc);
 		InitiateQueryInterface initateQuery;
 
 
-		System.out.println("Stocks obtained: " + inputData.getRequiredStockSymbols());
-		stockList = GenerateStockList.getStockList(inputData.getRequiredStockSymbols());
-		System.out.println("Query Type requested by User is: " + inputData.getQueryType().toString());
-		switch (inputData.getQueryType()) {
+		System.out.println("Stocks obtained: " + userData.getRequiredStockSymbols());
+		stockList = GenerateStockList.getStockList(userData.getRequiredStockSymbols());
+		System.out.println("Query Type requested by User is: " + userData.getQueryType().toString());
+		switch (userData.getQueryType()) {
 		case API : System.out.println("Query type is API!!!");
 			initateQuery = new InitiateAPIQuery();
 //			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
-			initateQuery.initiateQuery(stockList, inputData.getRequiredParameters(), inputData.getOutputFile());
+			initateQuery.initiateQuery(stockList, userData.getRequiredParameters(), userData.getOutputFile());
 		break;
 		case HISTORICAL : System.out.println("Query type is HISTORICAL!!!");
 			initateQuery = new InitiateHistoricalQuery();
-			initateQuery.initiateQuery(stockList, inputData.getOutputFile());
+			initateQuery.initiateQuery(stockList, userData.getOutputFile());
 		break;
 		case WEBYAHOO : System.out.println("Query type is WEB!!!");
 			initateQuery = new InitiateYahooWebQuery();
-			initateQuery.initiateQuery(stockList, inputData.getRequiredParameters(),inputData.getOutputFile());
+			initateQuery.initiateQuery(stockList, userData.getRequiredParameters(),userData.getOutputFile());
 		break;
 		default : System.out.println("Unknown query type detected" + FinancialQueryTool.class);
 		break;

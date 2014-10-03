@@ -1,16 +1,11 @@
 package financialQueryTool.initiateQueryPkg;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,14 +58,13 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		}
 	}
 
-
-	//	String[] requiredParameters, Path outputFileLocation
 	public void initiateQuery (ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
 		URI queryUri = null;
 		GenerateURI apiUri = new GenerateApiUri();
 		HttpURLConnection apiConnection = null;
 		InputStream connectionStream = null;
 		ArrayList<ParamListInterface> validParamList = APIQueryParameters.queryParamList();
+		int timeout = 5 * 1000; //timeout for HTTP connection, in ms
 		int bufferSize = 2048;
 		boolean captureStream = true;
 
@@ -78,7 +72,6 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		ArrayList<String> userRequestedData = new ArrayList<String>();
 
 		//create the URI for querying.
-		//		queryUri = apiUri.getURI(stockList, validParamList);
 		queryUri = apiUri.getURI(stockList);
 
 		System.out.println("Using the URI: \t" + queryUri.toString());
@@ -86,6 +79,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		try {
 			apiConnection = (HttpURLConnection) queryUri.toURL().openConnection();
 			//set timeout
+			apiConnection.setConnectTimeout(timeout);
 			connectionStream = apiConnection.getInputStream();
 			System.out.println(apiConnection.getContentType());
 

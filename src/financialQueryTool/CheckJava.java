@@ -19,7 +19,7 @@ public class CheckJava {
 		Integer sysJavaMajRev = Integer.parseInt(sysJava.split("\\.")[1].toString());
 		if (sysJavaMajRev < 7) {
 			System.out.println("Please use version 7 or above for this program.");
-			throw new RuntimeException ("jre version error.");
+			throw new RuntimeException ("jre version incompatibility exception.");
 		}
 	}
 }

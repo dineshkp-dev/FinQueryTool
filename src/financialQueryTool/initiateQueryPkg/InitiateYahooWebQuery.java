@@ -78,7 +78,7 @@ public class InitiateYahooWebQuery implements InitiateQueryInterface {
 	@Override
 	public void initiateQuery(ArrayList<Stock> stockList, String[] requiredParameters, Path outputFileLocation) {
 		URI queryUri = null;
-		int timeout = 5*1000;
+		int timeout = 5*1000; //timeout for HTTP connection, in ms
 		GenerateURI yahooWebUri = new GenerateYahooWebQueryUri();
 		QueryHtmlPage queryYahooPage = new QueryHtmlPage();
 		ParseHTML parsehtml = new ParseHTML();

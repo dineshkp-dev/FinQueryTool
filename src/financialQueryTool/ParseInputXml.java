@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 public class ParseInputXml {
 
 	public static InputData parseInputData(Path inpuPathXmlLoc) {
-		InputData inputData = new InputData();
+		InputData userData = new InputData();
 		NodeList nListUserData = ParseInputXml.getInputNodeList(inpuPathXmlLoc);
 
 
@@ -26,14 +26,14 @@ public class ParseInputXml {
 			Node nNode = nListUserData.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element element = (Element) nNode;
-				inputData.setRequiredParameters((element.getElementsByTagName("RequiredParameters").item(0).getTextContent()).toString().split(","));
-				inputData.setRequiredStockSymbols(element.getElementsByTagName("RequiredStockSymbols").item(0).getTextContent());
-				inputData.setTempFile(FileSystems.getDefault().getPath(element.getElementsByTagName("TempFile").item(0).getTextContent()).toAbsolutePath());
-				inputData.setOutputFile(FileSystems.getDefault().getPath(element.getElementsByTagName("OutputFile").item(0).getTextContent()).toAbsolutePath());
-				inputData.setQueryType(QueryType.valueOf(element.getElementsByTagName("QueryType").item(0).getTextContent().toUpperCase()));
+				userData.setRequiredParameters((element.getElementsByTagName("RequiredParameters").item(0).getTextContent()).toString().split(","));
+				userData.setRequiredStockSymbols(element.getElementsByTagName("RequiredStockSymbols").item(0).getTextContent());
+				userData.setTempFile(FileSystems.getDefault().getPath(element.getElementsByTagName("TempFile").item(0).getTextContent()).toAbsolutePath());
+				userData.setOutputFile(FileSystems.getDefault().getPath(element.getElementsByTagName("OutputFile").item(0).getTextContent()).toAbsolutePath());
+				userData.setQueryType(QueryType.valueOf(element.getElementsByTagName("QueryType").item(0).getTextContent().toUpperCase()));
 			}
 		}
-		return inputData;
+		return userData;
 	}
 
 	/**
@@ -62,5 +62,4 @@ public class ParseInputXml {
 		}
 		return nListUserData;
 	}
-
 }
