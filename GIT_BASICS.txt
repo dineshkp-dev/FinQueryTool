@@ -123,10 +123,13 @@ GIT RENAME/MOVE FILE:
 		$ git status
 GIT TAG:
 	$git tag -a v1.0.rc1 -m "trial tag"
-		- creates a tag in the local repository
+		- creates an unsigned, annotated tag in the local repository
+		- tag is based on the committed changes.
+	$git tag -s v1.0 -m "Release version 1.0 for Financial Query tool"
+		- creates a GPG signed (using email address's key) tag in the local repository
+		- tag is based on the committed changes in the local repository.
 	$ git push origin --tags
 		- pushes the tags to the git repository
-		
 GIT CONFLICT RESOLUTION:
 	- Conflicts can arise when the online repository has changes to a file that has been modified and committed locally.
 		- the conflict will be notified during a git pull operation (after local changes have been committed)
@@ -134,6 +137,17 @@ GIT CONFLICT RESOLUTION:
 	- The conflict has to be resolved using a text editor to specify which of the changes needs to kept or if both has to be removed and a new change has to be made.
 	- After resolving the conflict, the file has to be added using the following command
 		$ git add fileThatHadConflict.txt
+GIT STASH:
+	- can be used as a temporary location to store changes, without committing
+	- the stash 'stack' is available for all the branches in the local repository
+	$ git stash
+		- saves the local un-committed edits to a temporary 'stash' stack.
+		- the un-committed changes are removed from the local repository
+		- stashes are available 
+	$ git stash list
+	: stash@{0}: WIP on master: 4579345 refactor the directories
+		- shows the list of stashes
+
 More info:
 	- youtube: GitHub Training & Guides
 	- Free book: 'Pro Git' : http://git-scm.com/book
