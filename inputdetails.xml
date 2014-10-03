@@ -8,7 +8,7 @@
 </UserData>
 <FileLocation>
 	<TempFile>tempFile.html</TempFile>
-	<OutputFile>stockData.csv</OutputFile>
+	<OutputFile>outputDir/stockData.csv</OutputFile>
 </FileLocation>
 
 
