@@ -1,0 +1,6 @@
+ECHO OFF
+ECHO "STARTING THE FINANCIAL QUERY TOOL"
+java -jar build\FinancialQueryToolBuild\FinancialQueryTool-1.0.jar %1
+ECHO "EXECUTION FINISHED"
+PAUSE
+ECHO ON
