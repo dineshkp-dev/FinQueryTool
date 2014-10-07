@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+//http://www.gradle.org/docs/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management
+
+libsDirName = "FinancialQueryToolBuild" //Name for the release Directory
+//libsDir = "release"
+archivesBaseName = "FinancialQueryTool" //Name for the final '.jar' file
+
+//create a single Jar with all dependencies
+task makeJarFile(type: Jar) { 
+/* 	Custom task 'makeJarFile' which is used to create a 'jar' file output
+	This custom task can be seen under 'Other tasks' when executing the below command:
+	$ gradle tasks
+*/
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        	'Implementation-Version': version,
+        	'Main-Class': 'main.java.FinancialQueryTool'
+    }
+    
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+//Get dependencies from Maven central repository
+repositories {
+//   flatDir {
+//       dirs 'dependency'
+//   }
+//    mavenCentral()
+}
+ 
+//Project dependencies
+dependencies {
+	//compile name 'jsoup-1.7.3.jar'
+	compile fileTree(dir: 'libs', include: ['jsoup-1.7.3.jar'])
+}
