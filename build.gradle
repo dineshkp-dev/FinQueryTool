@@ -6,9 +6,14 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 //http://www.gradle.org/docs/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management
 
+println "Root Directory at: ${getRootDir().toString()}"
+println ""
+
 libsDirName = "FinancialQueryToolBuild" //Name for the release Directory
 //libsDir = "release"
 archivesBaseName = "FinancialQueryTool" //Name for the final '.jar' file
+ext.repostioryPath = "${projectDir}/dependency/libs/"
+ext.additionalPath = "${projectDir}/libs/"
 
 //create a single Jar with all dependencies
 task makeJarFile(type: Jar) { 
@@ -17,7 +22,7 @@ task makeJarFile(type: Jar) {
 	$ gradle tasks
 */
 	manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        attributes 'Implementation-Title': 'Build and Test Financial Query Tool',  
         	'Implementation-Version': version,
         	'Main-Class': 'main.java.FinancialQueryTool'
     }
@@ -26,16 +31,20 @@ task makeJarFile(type: Jar) {
     with jar
 }
 
-//Get dependencies from Maven central repository
+//Get dependencies from repository
 repositories {
-//   flatDir {
-//       dirs 'dependency'
-//   }
+   //To add local repositories, declare them as a variable (at the top), and declare the locations as 'dirs'
+   flatDir{dirs repostioryPath}
+   flatDir{dirs additionalPath}
 //    mavenCentral()
 }
- 
+
+for (ArtifactRepository repo : repositories) {
+	println "${repo.getDirs().toString()}"
+}
 //Project dependencies
 dependencies {
-	//compile name 'jsoup-1.7.3.jar'
-	compile fileTree(dir: 'libs', include: ['jsoup-1.7.3.jar'])
+	compile 'Jsoup:jsoup-1.7.3'
+	//compile fileTree(dir: 'libs', include: ['jsoup-1.7.3.jar'])
+	//compile jSoup
 }
