@@ -29,7 +29,8 @@ public class FinancialQueryTool {
 
 	public static void main(String[] args) {
 		FinancialQueryTool finQuery = new FinancialQueryTool();
-		CheckJava.JavaVersion();
+		CheckJava checkJava = new CheckJava();
+		checkJava.JavaVersion();
 		finQuery.go(args);
 	}
 
