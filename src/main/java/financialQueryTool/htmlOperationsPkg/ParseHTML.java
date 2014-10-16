@@ -48,9 +48,9 @@ public class ParseHTML {
 		System.out.println("Document title is: "+doc.title());
 		Elements tableElement = doc.getElementsByClass("yfi_quote_summary").select("tr"); //This is the Content that we are interested in.
 		for (Element eachTableElement : tableElement) { //stepping through each element of the table
-			//			System.out.println(eachTableElement.select("th").text());  //Enable for DEBUG, this prints the table headers
+//						System.out.println(eachTableElement.select("th").text());  //Enable for DEBUG, this prints the table headers
 			mappedData.put(eachTableElement.select("th").text(), eachTableElement.select("td").text());
-			//			System.out.println(eachTableElement.select("td").text()); //Enable for DEBUG, this prints the table data
+//						System.out.println(eachTableElement.select("td").text()); //Enable for DEBUG, this prints the table data
 		}
 		System.out.println("*********************");
 
