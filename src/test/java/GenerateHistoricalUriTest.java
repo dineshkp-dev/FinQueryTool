@@ -1,25 +1,23 @@
 package test.java;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import main.java.financialQueryTool.generateURIPkg.GenerateApiUri;
+import main.java.financialQueryTool.generateURIPkg.GenerateHistoricalUri;
 import main.java.financialQueryTool.generateURIPkg.GenerateURI;
+import main.java.financialQueryTool.generateURIPkg.GenerateYahooWebQueryUri;
 import main.java.financialQueryTool.parseInputOutputPkg.QueryType;
-import main.java.financialQueryTool.queryParametersPkg.APIQueryParameters;
 import main.java.financialQueryTool.queryParametersPkg.QueryParamInterface;
+import main.java.financialQueryTool.queryParametersPkg.YahooWebQueryParameters;
 import main.java.financialQueryTool.stockPkg.Stock;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class GenerateApiUriTest {
-
+public class GenerateHistoricalUriTest {
 	private GenerateURI generateURI;
 	private ArrayList<Stock> stockList;
 	private ArrayList<Stock> emptyStockList;
@@ -36,36 +34,33 @@ public class GenerateApiUriTest {
 		stockList = new ArrayList<Stock>();
 		stockList.add(stocka);
 		stockList.add(stockb);
-		generateURI = new GenerateApiUri();
-		getAllParams = new APIQueryParameters();
+		generateURI = new GenerateHistoricalUri();
+		getAllParams = new YahooWebQueryParameters();
 	}
 
 	@Test
 	public void testGetQueryType() {
-		assertNotNull(generateURI.getQueryType());
-		assertEquals(QueryType.API , generateURI.getQueryType());
+		assertEquals("Wrong Query type detected.", QueryType.HISTORICAL, generateURI.getQueryType());
 	}
 
-	@Test
-	public void testGetURIArrayListOfStock() throws URISyntaxException {
-		assertEquals(new URI("http://finance.yahoo.com/d/quotes.csv?s=stockA+stockB&f="+getAllParams.getAllQueryParams()),generateURI.getURI(stockList));
+	@Test(expected=RuntimeException.class)
+	public void testGetURI() {
+		generateURI.getURI();
 	}
-
 	@Test(expected=RuntimeException.class)
 	public void testGetURIArrayListOfStockNoStockList() throws URISyntaxException {
 		generateURI.getURI(emptyStockList);
 	}
-
 	@Test(expected=RuntimeException.class)
-	public void testGetURI() throws RuntimeException {
-		generateURI.getURI();
+	public void testGetURIArrayListOfStock() {
+		generateURI.getURI(stockList);
 	}
+
 	@Test
-	public void testGetURIvalidStock() throws RuntimeException, URISyntaxException {
-		generateURI.getURI(stocka);
-		assertEquals("The expected URI was not generated",new URI("http://finance.yahoo.com/d/quotes.csv?s=stockA&f="+getAllParams.getAllQueryParams()) , generateURI.getURI(stocka));
+	public void testGetURIvalidStock() throws URISyntaxException {
+		assertEquals("The URI generated is not valid", new URI("http://ichart.finance.yahoo.com/table.csv?s=stockA&c=1962"), generateURI.getURI(stocka));
 	}
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void testGetURIArrayListOfStock100() {
 		for (int i=0; i<100;i++) {
 			stockList.add(new Stock("stock"+i));

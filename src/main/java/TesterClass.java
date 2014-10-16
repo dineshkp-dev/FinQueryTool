@@ -19,7 +19,7 @@ public class TesterClass {
 		
 		System.out.println("printing args: " + args[0]);
 		
-		generateApiUri.setQueryType(QueryType.API);
+//		generateApiUri.setQueryType(QueryType.API);
 		System.out.println("Tester class.");
 		String stockNamesStr="";
 		

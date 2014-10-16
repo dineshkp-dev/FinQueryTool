@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import main.java.financialQueryTool.parseInputOutputPkg.QueryType;
 import main.java.financialQueryTool.queryParametersPkg.APIQueryParameters;
 import main.java.financialQueryTool.queryParametersPkg.QueryParamInterface;
@@ -19,7 +21,9 @@ public class GenerateApiUri extends GenerateURI {
 
 	@Override
 	public URI getURI(ArrayList<Stock> stocks){
-
+		if (stocks.size() <1) {
+			throw new RuntimeException("No Stocks found. Please check the input.");
+		}
 		System.out.println("Generating the API URI : " + this.getClass());
 
 		URI finalURI = null;
@@ -37,9 +41,32 @@ public class GenerateApiUri extends GenerateURI {
 		}
 		return finalURI;
 	}
+	
+	@Override
+	public URI getURI(Stock stock){
+		if (stock.getStockNameStr().isEmpty()) {
+			throw new RuntimeException("Invalid Stock name.");
+		}
+		System.out.println("Generating the API URI : " + this.getClass());
+
+		URI finalURI = null;
+		QueryParamInterface getAllParams = new APIQueryParameters();
+
+		try {
+			finalURI = new URI ("http://finance.yahoo.com/d/quotes.csv?s=" + stock.getStockNameStr() + "&f=" + getAllParams.getAllQueryParams());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return finalURI;
+	}
 
 	public QueryType getQueryType() {
 		return QueryType.API;
+	}
+	
+	@Override
+	public URI getURI() throws RuntimeException{
+		throw new RuntimeErrorException(null, "API URI generation requires at least one Stock Parameter.");
 	}
 
 }

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 import main.java.financialQueryTool.generateURIPkg.GenerateHistoricalUri;
+import main.java.financialQueryTool.generateURIPkg.GenerateURI;
 import main.java.financialQueryTool.parseInputOutputPkg.WriteToCSV;
 import main.java.financialQueryTool.stockPkg.Stock;
 
@@ -48,8 +49,10 @@ public class InitiateHistoricalQuery implements InitiateQueryInterface {
 	@Override
 	public void initiateQuery(ArrayList<Stock> stockList, Path outputFile) {
 		URI queryUri = null;
+		GenerateURI generateHistoricalUri;
 		for (Stock stock : stockList) {
-			queryUri = GenerateHistoricalUri.getHistoricalUri(stock);
+			generateHistoricalUri = new GenerateHistoricalUri();
+			queryUri = generateHistoricalUri.getURI(stock);
 			System.out.println("Using the URI: \t" + queryUri.toString());
 
 			HttpURLConnection apiConnection = null;

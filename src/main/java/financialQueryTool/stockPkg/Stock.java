@@ -357,4 +357,7 @@ public class Stock {
 	public void setStockWeekRange(ParamWeekRange stockWeekRange) {
 		this.stockWeekRange = stockWeekRange;
 	}
+	public boolean isStockInvalid() {
+		return this.getStockNameStr().isEmpty();
+	}
 }

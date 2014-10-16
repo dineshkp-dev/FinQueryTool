@@ -4,26 +4,25 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import main.java.financialQueryTool.parametersPkg.ParamListInterface;
+import main.java.financialQueryTool.parseInputOutputPkg.QueryType;
 import main.java.financialQueryTool.stockPkg.Stock;
 
 public class GenerateYahooWebQueryUri extends GenerateURI {
 	
 	@Override
-	public URI getURI(Stock stock,
-			ArrayList<ParamListInterface> applicableQueryParams) {
-		URI finalURI = null;
-		System.out.println("Generating Yahoo Web Query URI.");
-		//http://finance.yahoo.com/q?s=AMD&ql=1
-		
-		
-		return finalURI;
+	public QueryType getQueryType() {
+		return QueryType.WEBYAHOO;
 	}
 	@Override
 	public URI getURI(Stock stock) {
 		
 		URI finalURI = null;
-		
+		if (stock.isStockInvalid()){
+			throw new RuntimeException("Stock cannot be null/empty.");
+		}
 		System.out.println("Generating Yahoo Web Query URI.");
 		//http://finance.yahoo.com/q?s=AMD&ql=1
 		try {
@@ -31,7 +30,14 @@ public class GenerateYahooWebQueryUri extends GenerateURI {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		
 		return finalURI;
+	}
+	@Override
+	public URI getURI(ArrayList<Stock> stocks) {
+		throw new RuntimeErrorException(null, "WEB QUERY URI generation currently doesnt support Multiple Stock queries.");
+	}
+	@Override
+	public URI getURI() throws RuntimeException{
+		throw new RuntimeErrorException(null, "WEB QUERY URI generation requires at least one Stock Parameter.");
 	}
 }
