@@ -36,15 +36,23 @@ repositories {
    //To add local repositories, declare them as a variable (at the top), and declare the locations as 'dirs'
    flatDir{dirs repostioryPath}
    flatDir{dirs additionalPath}
+
+    for (ArtifactRepository repo : repositories) {
+      println "${repo.getDirs().toString()}"
+    }
+
+   jcenter()
 //    mavenCentral()
 }
-
+/*
 for (ArtifactRepository repo : repositories) {
 	println "${repo.getDirs().toString()}"
-}
+} */
 //Project dependencies
 dependencies {
-	compile 'Jsoup:jsoup-1.7.3'
+	compile 	'Jsoup:jsoup-1.7.3'
+  testCompile "org.junit:com.springsource.org.junit:4.10.0" //use ':' when there are multiple choices, else use '.'
+	testCompile "org.mockito:mockito-core:1.9.5"
 	//compile fileTree(dir: 'libs', include: ['jsoup-1.7.3.jar'])
 	//compile jSoup
 }

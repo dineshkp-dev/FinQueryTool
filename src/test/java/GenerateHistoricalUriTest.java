@@ -1,6 +1,6 @@
 package test.java;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import main.java.financialQueryTool.generateURIPkg.GenerateHistoricalUri;
 import main.java.financialQueryTool.generateURIPkg.GenerateURI;
-import main.java.financialQueryTool.generateURIPkg.GenerateYahooWebQueryUri;
 import main.java.financialQueryTool.parseInputOutputPkg.QueryType;
 import main.java.financialQueryTool.queryParametersPkg.QueryParamInterface;
 import main.java.financialQueryTool.queryParametersPkg.YahooWebQueryParameters;

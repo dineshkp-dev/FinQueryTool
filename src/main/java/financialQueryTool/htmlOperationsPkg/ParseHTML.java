@@ -45,8 +45,14 @@ public class ParseHTML {
 
 		System.out.println("*********************");
 		System.out.println("Extracting the required data from page: ParseHTML.extractReqdDatafrmYahooWebsite");
+		if (doc.title().isEmpty()) {
+			throw new RuntimeException("The HTML is invalid.");
+		}
 		System.out.println("Document title is: "+doc.title());
 		Elements tableElement = doc.getElementsByClass("yfi_quote_summary").select("tr"); //This is the Content that we are interested in.
+		if (tableElement.isEmpty()) {
+			throw new RuntimeException("The extract table was not found. Please check the HTML page.");
+		}
 		for (Element eachTableElement : tableElement) { //stepping through each element of the table
 //						System.out.println(eachTableElement.select("th").text());  //Enable for DEBUG, this prints the table headers
 			mappedData.put(eachTableElement.select("th").text(), eachTableElement.select("td").text());

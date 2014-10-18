@@ -1,6 +1,5 @@
 package test.java;
 
-import static org.junit.Assert.*;
 import main.java.FinancialQueryTool;
 
 import org.junit.Test;
