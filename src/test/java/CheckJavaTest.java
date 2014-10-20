@@ -1,6 +1,7 @@
 package test.java;
 
 import main.java.CheckJava;
+import static org.mockito.Mockito.*;
 
 //import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -17,10 +18,13 @@ public class CheckJavaTest {
 		checkJavaTest.JavaVersion();
 	}
 //This test expects the RunTimeException to be thrown
+//Mock the CheckJava class and set the 'System' static method 
+//'getProperty' to return '1.6.32' (fail condition)
 	@Test(expected = RuntimeException.class)
 	public void testzWrongJavaVersion() {
 		System.out.println("Test two.");
-		System.setProperty("java.version", "1.6.32"); //Should not set the System property
-		checkJavaTest.JavaVersion();
+		CheckJava mockCheckJava = mock(CheckJava.class);
+		when(System.getProperty("java.version")).thenReturn("1.6.32");
+		mockCheckJava.JavaVersion();
 	}
 }

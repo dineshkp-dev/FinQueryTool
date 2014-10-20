@@ -1,4 +1,4 @@
-/*package main.java;
+package main.java;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -16,7 +16,7 @@ public class TestRunner {
 		Result result = JUnitCore.runClasses(CheckJavaTest.class, FinancialQueryToolTest.class, GenerateApiUriTest.class, GenerateYahooWebQueryUriTest.class
 				,GenerateHistoricalUriTest.class, ParseHTMLTest.class);
 		for (Failure fails : result.getFailures()) {
-			System.out.println(fails.toString());
+			System.out.println("\n\n==>Failing Test: " + fails.toString());
 		}
 		System.out.println("\n");
 		System.out.println("\t******************************");
@@ -29,4 +29,3 @@ public class TestRunner {
 	}
 
 }
-*/

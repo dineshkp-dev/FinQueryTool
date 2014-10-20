@@ -51,8 +51,8 @@ for (ArtifactRepository repo : repositories) {
 //Project dependencies
 dependencies {
 	compile 	'Jsoup:jsoup-1.7.3'
-  testCompile "org.junit:com.springsource.org.junit:4.10.0" //use ':' when there are multiple choices, else use '.'
-	testCompile "org.mockito:mockito-core:1.9.5"
+        testCompile     "org.junit:com.springsource.org.junit:4.10.0" //use ':' when there are multiple choices, else use '.'
+	testCompile     "org.mockito:mockito-core:1.9.5"
 	//compile fileTree(dir: 'libs', include: ['jsoup-1.7.3.jar'])
 	//compile jSoup
 }
