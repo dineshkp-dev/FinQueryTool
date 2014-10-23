@@ -12,17 +12,25 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
+//import org.mockito.MockitoAnnotations.Mock;
+
+
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 public class ParseHTMLTest {
-
-	public ParseHTML parseHTML;
+//	@Mock
+	ParseHTML mockparseHTML;
+	ParseHTML parseHTML;
 	Map<String, String> mappedData;
 	String expectedKeys, expectedValues, malformedHTML, htmlValue, htmlValue_noTable;
 	Document testDoc;
 
 	@Before
 	public void setUp() {
+//		MockitoAnnotations.initMocks(this);
 		parseHTML = new ParseHTML();
+		mockparseHTML = Mockito.mock(ParseHTML.class);
 		htmlValue 	= "<HTML>"
 				+ "<Title>DummyHTML</Title>"
 				+ "<div class=\"yfi_quote_summary\">"
@@ -86,11 +94,19 @@ public class ParseHTMLTest {
 		assertEquals("Expected values are not found", expectedValues, mappedData.values().toString());
 	}
 
-	@Test(expected=RuntimeException.class)
-	public void testSearchFoValMalformedHTML() {
+	@Test
+	public void testSearchFoValMalformedHTML() throws Exception{
 		mappedData = new HashMap<String, String>();
-		mappedData = parseHTML.searchFoVal(malformedHTML);
-		System.out.println(mappedData.values().toString());
+//		mockparseHTML.searchFoVal(malformedHTML);
+//		when(mockparseHTML.searchFoVal(malformedHTML)).thenThrow(new RuntimeException("Exception thrown."));
+		try {
+			mockparseHTML.searchFoVal(malformedHTML);
+//			Mockito.verify(mockparseHTML).searchFoVal(malformedHTML);
+			System.out.println("mockParse value: " + mockparseHTML.searchFoVal(malformedHTML));
+			fail("Should have thrown exception.");
+		}
+		catch(Exception err) {}
+		System.out.println("Mapped return value for result: " + mappedData.values().toString());
 	}
 
 	@Test(expected=RuntimeException.class)
@@ -106,7 +122,7 @@ public class ParseHTMLTest {
 	@Test
 	public void testExtractReqdDatafrmYahooWebsiteHTML() {
 		testDoc = Jsoup.parse(htmlValue);
-		assertEquals("Expected value does not match.", "{Table2Header1_Value Table2Header2_Value Table2Header3_Value Table2Header4_Value=Table2Data1_Value Table2Data2_Value Table2Data3_Value Table2Data4_Value, Table1Header1_Value=Table1Data1_Value}", parseHTML.extractReqdDatafrmYahooWebsite(testDoc).toString());
+		assertEquals("Expected value does not match.", "{Table2Header1_Value Table2Header2_Value Table2Header3_Value Table2Header4_Value=Table2Data1_Value Table2Data2_Value Table2Data3_Value Table2Data4_Value, Table1Header1_Value=Table1Data1_Value}", ParseHTML.extractReqdDatafrmYahooWebsite(testDoc).toString());
 	}
 	// Requires a mock object
 	@Test
