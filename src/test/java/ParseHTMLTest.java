@@ -97,12 +97,8 @@ public class ParseHTMLTest {
 	@Test
 	public void testSearchFoValMalformedHTML() throws Exception{
 		mappedData = new HashMap<String, String>();
-//		mockparseHTML.searchFoVal(malformedHTML);
-//		when(mockparseHTML.searchFoVal(malformedHTML)).thenThrow(new RuntimeException("Exception thrown."));
 		try {
-			mockparseHTML.searchFoVal(malformedHTML);
-//			Mockito.verify(mockparseHTML).searchFoVal(malformedHTML);
-			System.out.println("mockParse value: " + mockparseHTML.searchFoVal(malformedHTML));
+			parseHTML.searchFoVal(malformedHTML);
 			fail("Should have thrown exception.");
 		}
 		catch(Exception err) {}
