@@ -23,7 +23,7 @@ then
 	if [ -f $1 ];
 	then
 		echo "Starting the Financial Query Tool."
-	#	java -jar $jarFile || echo "Error occured during Jar Execution"
+		java -jar $jarFile || echo "Error occured during Jar Execution"
 		exit;
 	else 
 		echo "Input file location is not valid."
