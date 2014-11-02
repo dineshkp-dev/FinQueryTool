@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-version = '1.0'
+version = '2.0.RC1'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 //http://www.gradle.org/docs/current/userguide/java_plugin.html#sec:java_plugin_and_dependency_management

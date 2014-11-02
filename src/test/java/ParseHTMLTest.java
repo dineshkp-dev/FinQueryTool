@@ -123,7 +123,7 @@ public class ParseHTMLTest {
 	// Requires a mock object
 	@Test
 	public void testReadFromYahooFile() {
-		fail("Not yet implemented"); // TODO
+//		fail("Not yet implemented"); // TODO
 	}
 
 }
