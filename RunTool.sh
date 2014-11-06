@@ -5,10 +5,14 @@ Please execute the script as shown below:
 	$ ./RunTool.sh [\"inputFileLocation.xml\"]
 "
 inputFile="inputdetails.xml"
+#extract the version from the 'build.gradle' file
+version=$(grep "version =" 'build.gradle' | awk -F\' '{print $2}')
 
 echo "************************"
 echo "Welcome, $USER!"
-jarFile="build/FinancialQueryToolBuild/FinancialQueryTool-2.0.RC1.jar"
+jarFile="build/FinancialQueryToolBuild/FinancialQueryTool-${version}.jar"
+echo "Jar File is: ${jarFile}"
+
 if [[ -z $1 ]];
 then
 	echo "Using '$inputFile' file in current directory"
