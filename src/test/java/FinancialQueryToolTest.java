@@ -1,6 +1,6 @@
 package test.java;
 
-import main.java.FinancialQueryTool;
+import main.java.financialQueryTool.control.FinancialQueryTool;
 
 import org.junit.Test;
 

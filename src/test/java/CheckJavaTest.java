@@ -1,7 +1,9 @@
 package test.java;
 
-import main.java.CheckJava;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import main.java.financialQueryTool.control.CheckJava;
+
 import org.junit.Before;
 import org.junit.Test;
 

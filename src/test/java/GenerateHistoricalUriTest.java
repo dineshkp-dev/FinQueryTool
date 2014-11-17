@@ -6,12 +6,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import main.java.financialQueryTool.generateURIPkg.GenerateHistoricalUri;
-import main.java.financialQueryTool.generateURIPkg.GenerateURI;
-import main.java.financialQueryTool.parseInputOutputPkg.QueryType;
-import main.java.financialQueryTool.queryParametersPkg.QueryParamInterface;
-import main.java.financialQueryTool.queryParametersPkg.YahooWebQueryParameters;
-import main.java.financialQueryTool.stockPkg.Stock;
+import main.java.financialQueryTool.control.generateURIPkg.GenerateHistoricalUri;
+import main.java.financialQueryTool.control.generateURIPkg.GenerateURI;
+import main.java.financialQueryTool.control.queryParametersPkg.QueryParamInterface;
+import main.java.financialQueryTool.control.queryParametersPkg.YahooWebQueryParameters;
+import main.java.financialQueryTool.model.stockPkg.Stock;
+import main.java.financialQueryTool.view.parseInputOutputPkg.QueryType;
 
 import org.junit.Before;
 import org.junit.Test;
