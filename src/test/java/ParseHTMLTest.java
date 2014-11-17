@@ -3,6 +3,14 @@ package test.java;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,18 +20,20 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
-//import org.mockito.MockitoAnnotations.Mock;
 
+import static org.mockito.Mockito.*;
 
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.stubbing.Answer;
 
 public class ParseHTMLTest {
 //	@Mock
 	ParseHTML mockparseHTML;
 	ParseHTML parseHTML;
 	Map<String, String> mappedData;
-	String expectedKeys, expectedValues, malformedHTML, htmlValue, htmlValue_noTable;
+	String expectedKeys, expectedValues, malformedHTML, htmlValue_noTable;
+	String htmlValue;
 	Document testDoc;
 
 	@Before
@@ -124,6 +134,27 @@ public class ParseHTMLTest {
 	@Test
 	public void testReadFromYahooFile() {
 //		fail("Not yet implemented"); // TODO
+//		Path fileName = new File("DummyFile.html").toPath();
+		Path fileName = null;
+		try {
+			when(Files.newBufferedReader(fileName, StandardCharsets.UTF_8)).thenReturn(new BufferedReader(new Reader(htmlValue) {
+				
+				@Override
+				public int read(char[] cbuf, int off, int len) throws IOException {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+				
+				@Override
+				public void close() throws IOException {
+					// TODO Auto-generated method stub
+					
+				}
+			}));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
