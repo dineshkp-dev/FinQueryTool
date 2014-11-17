@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="dependency/libs/jsoup-1.7.3.jar" sourcepath="externalsource/jsoup-1.7.3-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="dependency/libs/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="dependency/libs/controlsfx-8.0.6_20.jar"/>
+	<classpathentry kind="lib" path="dependency/libs/jsoup-1.7.3-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
