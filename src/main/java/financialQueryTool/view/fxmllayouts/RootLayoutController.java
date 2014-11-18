@@ -2,7 +2,6 @@ package main.java.financialQueryTool.view.fxmllayouts;
 
 //import com.sun.javafx.geom.Rectangle;
 
-import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -10,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.effect.Lighting;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.financialQueryTool.control.MainApp;
@@ -29,22 +28,10 @@ public class RootLayoutController {
 	@FXML
 	private Rectangle bluerect;
 	
-	private Duration duration = Duration.millis(500);
+	private Duration duration = Duration.seconds(4);
 	
     @FXML
     private void initialize() {
-    	
-    	// Set the Stage value to be same as the one in the Main App
-//    	this.setPrimaryStage();
-    	
-//    	firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNamePropery());
-//    	lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-    	
-    	// Clear the person details
-//    	showPersonDetails(null);
-    	
-    	// Listen for selection changes and show the person details when changed.
-//    	personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
     	
     }
 	
@@ -55,55 +42,42 @@ public class RootLayoutController {
 	@FXML
 	public void changeVisibility () {
 		
-    	Group group = new Group();
-//		Group group = mainApp.getMainGroup();
-//    	Scene scene = new Scene(group);
+		Rectangle whrect = new Rectangle(-30, 142, 100, 65);
+		whrect.setFill(Color.BLUE);
+		
     	Scene scene = mainApp.getMainScene();   	
-    	 
-    	((Group)scene.getRoot()).getChildren().addAll(bluerect);
+    	System.out.println("scene xval: " + scene.getHeight());
+    	System.out.println("scene yval: " + scene.getWidth());
+    	((Group)scene.getRoot()).getChildren().addAll(bluerect, whrect);
+    	whrect.setVisible(false);
+    	
     	mainApp.getPrimaryStage().setScene(scene);
 		timeline = new Timeline();
 		timeline.setCycleCount(Timeline.INDEFINITE);
-//		timeline.setRate(1);
-		timeline.setAutoReverse(true);
-		bluerect.setVisible(true);
+		timeline.setRate(1);
 		
-		KeyValue kv = new KeyValue(bluerect.xProperty(), 300);
-		KeyFrame kf = new KeyFrame(duration, kv);
+		
+		KeyValue kvx = new KeyValue(bluerect.xProperty(), 600);
+		System.out.println("KVX END VALUE: "+kvx.getEndValue());
+		
+		KeyFrame kf = new KeyFrame(duration, kvx);
     	timeline.getKeyFrames().add(kf);
+    	
     	timeline.play();
     	
-//    	mainApp.getPrimaryStage().requestFocus();
-//    	mainApp.getPrimaryStage().setFullScreen(true);
-//    	mainApp.getPrimaryStage().toFront();
-//		mainApp.getPrimaryStage().show();
-		/*
-		Group group = new Group();
-		Scene scene = new Scene(group);
-		
-		final Text text = new Text("Hello there!");
-		timeline = new Timeline();
-		timeline.setCycleCount(Timeline.INDEFINITE);
-//		timeline.setRate(1);
-		timeline.setAutoReverse(true);
-		
-		
-		final Rectangle rect = new Rectangle(200, 50, 100, 40);
-		((Group)scene.getRoot()).getChildren().addAll(rect, text);
-//		Duration duration = Duration.millis(500);
-//		final KeyValue kv = new KeyValue(blueCircle.centerXProperty(), 500);
-		final KeyValue kv = new KeyValue(rect.xProperty(), 300, Interpolator.EASE_BOTH);
-		
-		final KeyFrame kf = new KeyFrame(duration, kv);
-		timeline.getKeyFrames().add(kf);
-		
-//		
-//		KeyValue keyValueX = new KeyValue(, endValue) 
-		timeline.play();
-		
-//		KeyFrame keyframe = new KeyFrame(duration, keyValueX, keyValueY);
-		
-*/		blueCircle.setEffect(new Lighting());
+/*    	Timeline timeln2 = new Timeline();
+    	Duration durationm500ms = Duration.seconds(3.8);
+    	Duration durationp500ms = Duration.seconds(4.2);
+    	timeln2.setDelay(durationm500ms);
+    	timeln2.setCycleCount(Timeline.INDEFINITE);
+    	timeln2.setRate(1);
+    	KeyValue kvx2 = new KeyValue(whrect.xProperty(), 600);
+    	KeyFrame kf2 = new KeyFrame(durationp500ms, kvx2);
+    	timeln2.getKeyFrames().add(kf2);
+    	timeln2.play();
+    	whrect.setVisible(true);
+*/    	
+		blueCircle.setEffect(new Lighting());
 //		blueCircle.setVisible(false);
 	}
 
