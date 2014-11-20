@@ -3,6 +3,9 @@ package main.java.financialQueryTool.model.stockPkg;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import javax.management.RuntimeErrorException;
 
 import main.java.financialQueryTool.control.queryParametersPkg.QueryParamInterface;
@@ -359,5 +362,9 @@ public class Stock {
 	}
 	public boolean isStockInvalid() {
 		return this.getStockNameStr().isEmpty();
+	}
+	public StringProperty getStockNameProperty() {
+		StringProperty stockNameProperty = new SimpleStringProperty(this.getStockNameStr());
+		return stockNameProperty;
 	}
 }
