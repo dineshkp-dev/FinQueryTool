@@ -8,6 +8,8 @@ import javafx.beans.property.StringProperty;
 
 import javax.management.RuntimeErrorException;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import main.java.financialQueryTool.control.queryParametersPkg.QueryParamInterface;
 import main.java.financialQueryTool.model.parametersPkg.ParamAsk;
@@ -29,6 +31,27 @@ import main.java.financialQueryTool.model.parametersPkg.ParamStockSym;
 import main.java.financialQueryTool.model.parametersPkg.ParamVolume;
 import main.java.financialQueryTool.model.parametersPkg.ParamWeekRange;
 
+
+@XmlRootElement(name="Stock")
+@XmlType(propOrder = {
+		"stockAskStr",
+		"stockAverageVolumeStr",
+		"stockBetaStr",
+		"stockBidStr",
+		"stockDaysRangeStr",
+		"stockDividendYieldStr",
+		"stockEarnDateStr",
+		"stockEarningsPerShareStr",
+		"stockMarketCapitalizationStr",
+		"stockOneYearTargetStr",
+		"stockOpenStr",
+		"stockPERatioStr",
+		"stockNameStr",
+		"stockSymStr",
+		"stockPreviousCloseStr",
+		"stockVolumeStr",
+		"stockWeekRangeStr"
+})
 public class Stock {
 	
 	protected ParamAsk stockAsk;
@@ -281,60 +304,60 @@ public class Stock {
 	public ParamWeekRange getStockWeekRange() {
 		return stockWeekRange;
 	}
-/*	public ParamWeekRange getstockWeekRange() {
-		return getStockWeekRange();
-	}*/
+
 	/*
 	 * Getter methods to return Data as String values for each of the parameters.
 	 * 
 	 */
-
+	@XmlElement(name="StockAsk")
 	public String getStockAskStr() {
 		return stockAsk.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockAverageVolume")
 	public String getStockAverageVolumeStr() {
 		return stockAverageVolume.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockBeta")
 	public String getStockBetaStr() {
 		return stockBeta.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockBid")
 	public String getStockBidStr() {
 		return stockBid.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockDaysRange")
 	public String getStockDaysRangeStr() {
-		if (stockDaysRange.getparamData().length() != 0) {
 			return stockDaysRange.getparamData().replaceAll(",", "");
-		}
-		return stockDaysRange.getparamData();
 	}
+	@XmlElement(name="StockDividendYield")
 	public String getStockDividendYieldStr() {
-		if (stockDividendYield.getparamData().length() != 0) {
 			return stockDividendYield.getparamData().replaceAll(",", "");
-		}
-		return stockDividendYield.getparamData();
 	}
+	@XmlElement(name="StockEarnDate")
 	public String getStockEarnDateStr() {
-		if (!stockEarnDate.getparamData().isEmpty()) {
 			return stockEarnDate.getparamData().replaceAll(",", "");
-		}
-		return stockEarnDate.getparamData();
 	}
+	@XmlElement(name="StockEarningsPerShare")
 	public String getStockEarningsPerShareStr() {
 		return stockEarningsPerShare.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockMarketCapitalization")
 	public String getStockMarketCapitalizationStr() {
 		return stockMarketCapitalization.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockOneYearTarget")
 	public String getStockOneYearTargetStr() {
 		return stockOneYearTarget.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockOpen")
 	public String getStockOpenStr() {
 		return stockOpen.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockPERatio")
 	public String getStockPERatioStr() {
 		return stockPERatio.getparamData().replaceAll(",", "");
 	}
-	@XmlElement(name="StockPreviouClose")
+	@XmlElement(name="StockPreviousClose")
 	public String getStockPreviousCloseStr() {
 		return stockPreviousClose.getparamData().replaceAll(",", "");
 	}
@@ -349,9 +372,11 @@ public class Stock {
 	public String getStockName() {
 		return this.getStockNameParam().getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockName")
 	public String getStockNameStr() {
 		return this.getStockNameParam().getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockSym")
 	public String getStockSymStr() {
 		return this.stockSym.getparamData().replaceAll(",", "");
 	}
@@ -365,9 +390,9 @@ public class Stock {
 	public void setStockName(ParamStockName stockName) {
 		this.stockName = stockName;
 	}
-	public void setStockWeekRange(ParamWeekRange stockWeekRange) {
+/*	public void setStockWeekRange(ParamWeekRange stockWeekRange) {
 		this.stockWeekRange = stockWeekRange;
-	}
+	}*/
 	public boolean isStockInvalid() {
 		return this.getStockNameStr().isEmpty();
 	}
