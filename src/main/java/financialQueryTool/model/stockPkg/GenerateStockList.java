@@ -1,6 +1,7 @@
 package main.java.financialQueryTool.model.stockPkg;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author dineshkp
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  */
 
 public class GenerateStockList {
-
+	
 	/**
 	 * 
 	 * Static method that can be used to create an ArrayList of Stocks based on the Stock

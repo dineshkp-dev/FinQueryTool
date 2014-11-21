@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import javax.management.RuntimeErrorException;
+import javax.xml.bind.annotation.XmlElement;
 
 import main.java.financialQueryTool.control.queryParametersPkg.QueryParamInterface;
 import main.java.financialQueryTool.model.parametersPkg.ParamAsk;
@@ -29,6 +30,7 @@ import main.java.financialQueryTool.model.parametersPkg.ParamVolume;
 import main.java.financialQueryTool.model.parametersPkg.ParamWeekRange;
 
 public class Stock {
+	
 	protected ParamAsk stockAsk;
 	protected ParamAverageVolume stockAverageVolume;
 	protected ParamBeta stockBeta;
@@ -63,7 +65,7 @@ public class Stock {
 	 * @param epsTtm
 	 * @param divnYield
 	 */
-	private Stock(){
+	Stock(){
 	}
 	public Stock(ParamListInterface stockName) {
 		this.setStockName((ParamStockName) stockName);
@@ -95,7 +97,7 @@ public class Stock {
 		stock.getStockPERatio().setQueryCode(paramCodeValues.getParamPERatioVal());
 		stock.getStockPreviousClose().setQueryCode(paramCodeValues.getParamPreviousCloseVal());
 		stock.getStockVolume().setQueryCode(paramCodeValues.getParamVolumeVal());
-		stock.getstockWeekRange().setQueryCode(paramCodeValues.getParamWeekRangeVal());
+		stock.getStockWeekRange().setQueryCode(paramCodeValues.getParamWeekRangeVal());
 		
 	}
 
@@ -126,7 +128,8 @@ public class Stock {
 		this.stockPERatio = new ParamPERatio();
 		this.stockPreviousClose = new ParamPreviousClose();
 		this.stockVolume = new ParamVolume();
-		this.setStockWeekRange(new ParamWeekRange());
+//		this.setStockWeekRange(new ParamWeekRange());
+		this.stockWeekRange = new ParamWeekRange();
 	}
 
 	public void printDetails() {
@@ -270,12 +273,17 @@ public class Stock {
 	public ParamStockSym getStockSym() {
 		return stockSym;
 	}
+
 	public ParamVolume getStockVolume() {
 		return stockVolume;
 	}
-	public ParamWeekRange getstockWeekRange() {
-		return getStockWeekRange();
+	
+	public ParamWeekRange getStockWeekRange() {
+		return stockWeekRange;
 	}
+/*	public ParamWeekRange getstockWeekRange() {
+		return getStockWeekRange();
+	}*/
 	/*
 	 * Getter methods to return Data as String values for each of the parameters.
 	 * 
@@ -326,12 +334,15 @@ public class Stock {
 	public String getStockPERatioStr() {
 		return stockPERatio.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockPreviouClose")
 	public String getStockPreviousCloseStr() {
 		return stockPreviousClose.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockVolume")
 	public String getStockVolumeStr() {
 		return stockVolume.getparamData().replaceAll(",", "");
 	}
+	@XmlElement(name="StockWeekRange")
 	public String getStockWeekRangeStr() {
 		return getStockWeekRange().getparamData().replaceAll(",", "");
 	}
@@ -353,9 +364,6 @@ public class Stock {
 	}
 	public void setStockName(ParamStockName stockName) {
 		this.stockName = stockName;
-	}
-	public ParamWeekRange getStockWeekRange() {
-		return stockWeekRange;
 	}
 	public void setStockWeekRange(ParamWeekRange stockWeekRange) {
 		this.stockWeekRange = stockWeekRange;

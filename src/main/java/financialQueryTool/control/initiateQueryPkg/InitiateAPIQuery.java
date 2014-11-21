@@ -1,5 +1,6 @@
 package main.java.financialQueryTool.control.initiateQueryPkg;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -17,6 +18,8 @@ import main.java.financialQueryTool.control.generateURIPkg.GenerateURI;
 import main.java.financialQueryTool.control.queryParametersPkg.APIQueryParameters;
 import main.java.financialQueryTool.model.parametersPkg.ParamListInterface;
 import main.java.financialQueryTool.model.stockPkg.Stock;
+import main.java.financialQueryTool.model.stockPkg.StockListWrapper;
+import main.java.financialQueryTool.view.parseInputOutputPkg.SaveToXML;
 import main.java.financialQueryTool.view.parseInputOutputPkg.WriteToCSV;
 
 public class InitiateAPIQuery implements InitiateQueryInterface{
@@ -67,6 +70,7 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		int bufferSize = 2048;
 		boolean captureStream = true;
 
+		ArrayList<Stock> fullStockList = new ArrayList<Stock>();
 		Map<String, String> requiredDataList = new HashMap<String, String>();
 		ArrayList<String> userRequestedData = new ArrayList<String>();
 
@@ -83,7 +87,13 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 			System.out.println(apiConnection.getContentType());
 
 			String queryResult = InitiateAPIQuery.getAPIData(connectionStream, bufferSize, captureStream);
-			setStockDatafrmStr(stockList, queryResult);
+			fullStockList = setStockDatafrmStr(stockList, queryResult);
+			StockListWrapper stockListWrapper = new StockListWrapper();
+			stockListWrapper.setStocks(fullStockList);
+			
+			SaveToXML saveToXML = new SaveToXML();
+			saveToXML.saveStockListToFile(new File("StockList.xml").toPath(), stockListWrapper);
+			
 			userRequestedData = InitiateAPIQuery.getRequireDataOnly(stockList, requiredParameters);
 
 			WriteToCSV.WriteDataToCSV(outputFileLocation, userRequestedData);
@@ -180,6 +190,14 @@ public class InitiateAPIQuery implements InitiateQueryInterface{
 		return null;
 	}
 
+	
+	/**
+	 * Adds the Stock Query Results to the Array of Stocks from input 'StockList' and String 'Query Result'
+	 * The Final resultant Stock List should have the Stock parameters with the Stock information.
+	 * @param stockList
+	 * @param queryResult
+	 * @return
+	 */
 	public ArrayList<Stock> setStockDatafrmStr(ArrayList<Stock> stockList, String queryResult) {
 		System.out.println("Setting the query result to each Stock Symbol.\t" + this.getClass());
 		String[] queryResultarr = queryResult.trim().split("\n");
