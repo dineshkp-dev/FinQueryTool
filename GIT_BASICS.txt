@@ -147,6 +147,16 @@ GIT STASH:
 	$ git stash list
 	: stash@{0}: WIP on master: 4579345 refactor the directories
 		- shows the list of stashes
+		
+GIT FORK AND PULL-REQUEST (FOR ONLINE COLLABORATION):
+To pull changes from another user:
+	Step 1: From your project repository, check out a new branch and test the changes.
+		git checkout -b gpkumaravel-master master
+		git pull https://github.com/gpkumaravel/JStreakAPI.git master
+	Step 2: Merge the changes and update on GitHub.
+		git checkout master
+		git merge --no-ff gpkumaravel-master
+		git push origin master
 
 More info:
 	- youtube: GitHub Training & Guides
