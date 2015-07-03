@@ -139,6 +139,12 @@ GIT CONFLICT RESOLUTION:
 		$ git add fileThatHadConflict.txt
 GIT REVERT PUSHED DATA:
 	- git push -f origin <prev-working-hash>:<branch>
+GIT REVERT COMMITTED DATA, BUT NOT PUSHED TO REMOTE REPOSITORY:
+	- reset all the changes that were committed:
+		- git reset --hard origin/master
+	- reset only some of the files that were committed:
+		- git rm --cached <files to be removed from commit>
+
 GIT LOG/HISTORY:
 	- git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 
