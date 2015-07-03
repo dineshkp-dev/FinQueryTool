@@ -138,7 +138,7 @@ GIT CONFLICT RESOLUTION:
 	- After resolving the conflict, the file has to be added using the following command
 		$ git add fileThatHadConflict.txt
 GIT REVERT PUSHED DATA:
-
+	- git push -f origin <prev-working-hash>:<branch>
 GIT LOG/HISTORY:
 	- git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 
