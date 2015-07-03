@@ -137,6 +137,11 @@ GIT CONFLICT RESOLUTION:
 	- The conflict has to be resolved using a text editor to specify which of the changes needs to kept or if both has to be removed and a new change has to be made.
 	- After resolving the conflict, the file has to be added using the following command
 		$ git add fileThatHadConflict.txt
+GIT REVERT PUSHED DATA:
+
+GIT LOG/HISTORY:
+	- git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+
 GIT STASH:
 	- can be used as a temporary location to store changes, without committing
 	- the stash 'stack' is available for all the branches in the local repository
